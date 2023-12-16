@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-HelloWorld'</title>
+    <!--导入vue start-->
+    <script src="./js/vue.js"></script>
+    <!--导入vue end-->
+</head>
+<body>
+<div id="app">
+    <h1>Hello, {{name.toUpperCase()}}, {{address}}</h1>
+</div>
+
+    <script>
+        //阻止 vue 在启动时生成生产错误
+        Vue.config.productionTip = false;
+
+        //创建 vue 实例
+        new Vue({
+            el: "#app", //el用于指定当前vue实例为哪个容器服务，值通常为css选择器字符串
+            data:{
+                name: "Tom",
+                address: "广西"
+            },
+        });
+    </script>
+</body>
+</html>

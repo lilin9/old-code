@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-pre</title>
+    <!--导入vue start-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!--导入vue end-->
+</head>
+
+<body>
+    <div id="app">
+        <h1 v-pre>Vue其实很简单, 反正我暂时也还没感受到</h1>
+        <h1 v-pre>n的值是: {{n}}</h1>
+        <button v-pre @click="n++">点击n加1</button>
+    </div>
+</body>
+<script>
+    /* 阻止 vue 在启动时生成生产错误 */
+    Vue.config.productionTip = false;
+    new Vue({
+        el: "#app",
+        data: {
+            n: 1,
+        }
+    });
+</script>
+
+</html>

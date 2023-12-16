@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天猫国际商城</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+<!-- /*页面最顶部------开始*/ -->
+<div class="pagetop">
+    <div class="pagetop-content">
+        <p>
+            汪，欢迎来天猫
+            <a href="login.html" target="_Blank" id="pleaseSign">请登录</a>
+            <a href="register.html" target="_Blank">免费注册</a>
+            <a href="login.html" target="_Blank" id="signOut">安全退出</a>
+        </p>
+        <ul>
+            <li><a href="#"><i class="iconfont icon-liebiao"></i>网站导航</a></li>
+            <li><a href="#">商家支持</a></li>
+            <li><a href="https://www.taobao.com/">淘宝网</a></li>
+            <li><a href="#"><i class="iconfont icon-shouji"></i>手机版</a></li>
+            <li><a href="collection.html">收藏夹</a></li>
+            <li><a href="cart.html"><i class="iconfont icon-gouwuchexuanzhong"></i>购物车</a></li>
+            <li id="my-taobao">
+                <span class="btn-list-group">
+                  <a class="btn">我的淘宝</a>
+                  <span class="btn-list-area">
+                    <a href="update-password.html" class="btn">修改密码</a>
+                    <a href="personal-information.html" class="btn">个人资料</a>
+                    <a href="upload-avatar.html" class="btn">上传头像</a>
+                    <a href="shipping-address.html" class="btn">收货管理</a>
+                  </span>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- /*页面最顶部------结束*/ -->
+
+<!-- /*页面头部搜索部分-------开始*/ -->
+<div class="head-search">
+    <div class="head-search-content">
+        <div class="Logo"><!--<img src="../static/images/head-logo.png" alt="">--></div>
+        <div class="search">
+            <form method="get">
+                <div class="searct-text">
+                    <label>
+                        <input id="searchParam" type="text" placeholder="搜索 天猫 商品/品牌/店铺">
+                    </label>
+                </div>
+                <div class="search-submit">
+                    <input id="searchButton" type="button" value="搜 索">
+                </div>
+            </form>
+            <ul>
+                <li><a href="shopList.html">针织衫</a></li>
+                <li><a href="shopList.html">连衣裙</a></li>
+                <li><a href="shopList.html">四件套</a></li>
+                <li><a href="shopList.html">摄像头</a></li>
+                <li><a href="shopList.html">客厅灯</a></li>
+                <li><a href="shopList.html">口红</a></li>
+                <li><a href="shopList.html">手机</a></li>
+                <li><a href="shopList.html">运动鞋</a></li>
+                <li><a href="shopList.html">牛奶</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- /*页面头部搜索部分-------结束*/ -->
+
+<!-- 主体导航---------开始 -->
+<div class="main-nav">
+
+
+</div>
+<!-- 导航主体内容    结束 -->
+</div>
+<!-- 主体导航---------结束 -->
+
+
+<!-- 页面banner 图片轮播--------结束 -->
+<div style="clear: both;"></div>
+
+<!-- 主体内容开始 -->
+<div class="main">
+
+    <!-- 猜你喜欢 --------------开始-->
+    <div class="guess-You-Like">
+        <div class="title">
+            <span> </span>
+            <i class="iconfont icon-xihuan"></i>
+            <b>检索后的商品</b>
+            <span></span>
+        </div>
+        <div class="content">
+            <ul id="product-list">
+                <li>
+                    <div class="You-Likw-item">
+                        <a href="#">
+                            <img src="images/天猫国际-right-4.jpg" alt="">
+                            <p>洁婷卫生巾透气双u超薄日啊啊啊啊啊啊啊啊啊啊啊啊啊啊水水水水水水水水水水水夜组合日用</p>
+                            <span>￥159.4</span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="You-Likw-item">
+                        <a href="#">
+                            <img src="images/天猫国际-right-4.jpg" alt="">
+                            <p>洁婷卫生巾透气双u超薄日啊啊啊啊啊啊啊啊啊啊啊啊啊啊水水水水水水水水水水水夜组合日用</p>
+                            <span>￥159.4</span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="You-Likw-item">
+                        <a href="#">
+                            <img src="images/天猫国际-right-4.jpg" alt="">
+                            <p>洁婷卫生巾透气双u超薄日啊啊啊啊啊啊啊啊啊啊啊啊啊啊水水水水水水水水水水水夜组合日用</p>
+                            <span>￥159.4</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 猜你喜欢 --------------结束-->
+</div>
+<!-- 主体内容结束 -->
+
+
+<!-- 购物车---------开始 -->
+
+<div class="m-sidebar">
+    <div class="cart">
+        <i id="end"></i>
+        <span><a href="cart.html">购物车</a></span>
+    </div>
+</div>
+<div id="msg">已成功加入购物车！</div>
+
+<!-- 底部用iframe框架引入写好的foot页面 -->
+<iframe th:src="@{/foot}" frameborder="0" style="width: 100%;height: 280px;"></iframe>
+
+
+<script src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-getUrlParam.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script>
+    $(document).ready(function () {
+        showPreloading();
+    });
+
+    //当用户跳转到搜索页面时预加载数据
+    function showPreloading() {
+        //获取链接地址
+        const str = location.search;
+        const type = str.substring(str.indexOf("?") + 1);
+
+        //搜索框信息回显
+        const param = type.substring(type.indexOf("=")+1);
+        //decodeURI --> 对中文进行转码（呵，谁让计算机是美国人发明的呢）
+        $("#searchParam").val(decodeURI(param));
+
+        //请求商品数据
+        getProducts(type);
+    }
+
+    //搜索框的点击事件
+    $("#searchButton").click(function () {
+        const param = $("#searchParam").val();
+        const type = "type=" + param;
+
+        //搜索框信息回显
+        $("#searchParam").val(param);
+
+        //请求商品数据
+        getProducts(type);
+    });
+
+    //搜索后请求商品数据的ajax逻辑
+    function getProducts(type) {
+        $("#product-list").empty();
+        $.ajax({
+            url: "/product/getProductByType",
+            type: "post",
+            data: type,
+            dataType: "json",
+            success: function (json) {
+                let list = json.data;
+                //如果有数据
+                if (list.length > 0) {
+                    for (let i = 0; i < list.length; i++) {
+                        let li = '<li>\n' +
+                            '<div class="You-Likw-item">\n' +
+                            '<a href="showShop.html?id=#{id}">\n' +
+                            '<img src="#{image}" alt="">\n' +
+                            '<p>#{title}</p>\n' +
+                            '<span>￥#{price}</span>\n' +
+                            '</a>\n' +
+                            '</div>\n' +
+                            '</li>';
+
+                        li = li.replace(/#{id}/g, list[i].id);
+                        li = li.replace(/#{image}/g, list[i].image);
+                        li = li.replace(/#{title}/g, list[i].title);
+                        li = li.replace(/#{price}/g, list[i].price);
+
+                        //添加商品
+                        $("#product-list").append(li);
+                    }
+                } else {
+                    //如果没有数据，添加提示信息
+                    $(".title b").text("抱歉，您搜索的商品不存在")
+                }
+            },
+            error: function (xhr) {
+                alert("搜索商品时产生未知错误" + "\n" + xhr.status)
+            }
+        });
+    }
+</script>
+</body>
+</html>

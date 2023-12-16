@@ -1,0 +1,119 @@
+.searchContainer {
+  padding: 0 20rpx;
+}
+/* 头部-start */
+.header {
+  display: flex;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding: 10rpx 0;
+}
+.searchInput {
+  position: relative;
+  flex: 1;
+  background-color: rgba(237, 237, 237, 0.3);
+  border-radius: 30rpx;
+}
+.placeholderContent {
+  font-size: 30rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cancel {
+  width: 100rpx;
+  text-align: center;
+}
+.icon-sousuo {
+  position: absolute;
+  left: 15rpx;
+}
+.inputSearch {
+  margin-left: 60rpx;
+  height: 60rpx;
+}
+.searchInput .clear {
+  position: absolute;
+  z-index: 10;
+  right: 30rpx;
+  top: 0;
+  font-size: 30rpx;
+}
+/* 头部-end */
+
+/* 热搜-start */
+.hotSearchContainer .title {
+  font-size: 28rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #eee;
+}
+.hotList {
+  display: flex;
+  flex-wrap: wrap;
+}
+.hotItem {
+  width: 50%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 26rpx;
+}
+.hotList .hotItem .order {
+  margin: 0 10px;
+}
+.hotList .hotItem .iconImg {
+  width: 35rpx;
+  height: 20rpx;
+  margin-left: 10rpx;
+}
+/* 热搜-end */
+
+/* 搜索内容展示-start */
+.searchContainer .searchContent {
+  color: #d43c33;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 24rpx;
+  border-bottom: 1rpx solid #d43c33;
+}
+.searchContainer .searchItem {
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+}
+.searchContainer .searchItem .content {
+  flex: 1;
+  margin-left: 25rpx;
+  border-bottom: 1rpx solid #eee;
+  font-size: 26rpx;
+}
+/* 搜索内容展示-end */
+
+/* 搜索的历史记录-start */
+.historyContainer {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 50rpx;
+}
+.historyContainer .title {
+  height: 50rpx;
+  font-size: 28rpx;
+}
+.historyContainer .historyItem {
+  height: 50rpx;
+  font-size: 26rpx;
+  background-color: #ededed;
+  margin-left: 20rpx;
+  padding: 0 30rpx;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+}
+.historyContainer .iconfont {
+  position: absolute;
+  bottom: 10rpx;
+  right: 15rpx;
+  font-size: 36rpx;
+  color: #d43c33;
+}
+/* 搜索的历史记录-end */

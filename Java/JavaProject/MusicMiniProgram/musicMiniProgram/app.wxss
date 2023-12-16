@@ -1,0 +1,6 @@
+/* 全局导入图标样式 */
+@import '/static/css/iconfont.wxss';
+
+page {
+  height: 100%;
+}

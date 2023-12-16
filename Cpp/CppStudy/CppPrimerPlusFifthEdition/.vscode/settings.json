@@ -1,0 +1,17 @@
+{
+    "C_Cpp.errorSquiggles": "disabled",
+    "C_Cpp.intelliSenseEngine":"Default",
+    "editor.suggest.snippetsPreventQuickSuggestions":true,
+    "files.associations": {
+        "ostream": "cpp",
+        "istream": "cpp",
+        "*.tcc": "cpp",
+        "typeinfo": "cpp",
+        "iostream": "cpp",
+        "cstring": "cpp",
+        "list": "cpp"
+    },
+    "C_Cpp.codeAnalysis.clangTidy.checks.disabled": [
+        "clang-diagnostic-error"
+    ]
+}

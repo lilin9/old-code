@@ -1,0 +1,24 @@
+﻿body {
+}
+#order-body{
+    background:rgba(247, 247, 247, 0.5);
+    min-height:660px;
+    padding-top:38px;
+}
+#order-content{
+    width:600px;
+    margin:0px auto;
+    padding:10px 8px;;
+    border: 1px solid #E8E8E8;
+}
+#order-content table{
+   width:100%;
+   margin:18px auto;
+   line-height:25px;
+   border-bottom: 1px solid #ccc;
+   padding-bottom:8px;
+}
+#order-content table thead{
+    font-size:14px;
+}
+

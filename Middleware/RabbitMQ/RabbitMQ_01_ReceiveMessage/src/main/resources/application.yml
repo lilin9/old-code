@@ -1,0 +1,15 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: RabbitMQ_01_ReceiveMessage
+
+  #rabbitmq
+  rabbitmq:
+    host: 192.168.15.129
+    port: 5672
+    username: admin
+    password: 123abc
+    virtual-host: testing
+

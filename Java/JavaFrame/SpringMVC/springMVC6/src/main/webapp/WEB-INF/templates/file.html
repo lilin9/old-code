@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试文件的下载与上传</title>
+</head>
+<body>
+
+<a th:href="@{/testDown}">下载文件 1.jpg</a> <br><br>
+<form th:href="@{/testUp}" method="post" enctype="multipart/form-data">
+    头像：<label><input type="file" name="photo"></label> <br><br>
+    <label><input type="submit" value="上传头像" </label>
+</form>
+
+</body>
+</html>

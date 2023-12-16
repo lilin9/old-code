@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: RabbitMQ_05_DelayQueue_DelayMessagePlugins
+
+  #rabbitmq
+  rabbitmq:
+    host: 192.168.15.129
+    port: 5672
+    username: admin
+    password: 123abc
+    virtual-host: testing
+
+my:
+  exchangeName: exchange.delay.2  #delay change
+  queueDelayName: queue.delay.2 #delay queue

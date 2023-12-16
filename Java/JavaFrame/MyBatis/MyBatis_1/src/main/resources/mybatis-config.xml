@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 配置文件的根元素 -->
+<configuration>
+    <properties resource="jdbc.properties" />
+
+    <!--
+        核心配置文件中的标签必须按照固定的顺序：
+            properties?,settings?,typeAliases?,typeHandlers?,objectFactory?,objectWrapperFactory?,
+            plugins?,environments?,databaseLdProvider?,mappers?
+    -->
+    <typeAliases>
+        <!--<typeAlias type="com.MrLi.pojo.User" alias="user" />  不常用-->
+
+        <!--以包为单位，为包下所有的类型设置默认的类型别名，即类名且不区分大小写  常用-->
+        <package name="com.MrLi.pojo"/>
+    </typeAliases>
+
+    <!--
+        environments：配置多个连接数据库的环境
+        属性：
+            default：设置默认使用的环境的 id
+    -->
+    <environments default="development">
+        <!--
+            environment：配置某个具体的环境
+            属性：
+                id：表示连接数据库环境的唯一标识，不能重复
+        -->
+        <environment id="development">
+            <!--
+                transactionManager：设置事务管理方式
+                属性：
+                    type="JDBC"：表示当前环境中，执行SQL时，使用的是JDBC中原生的事务管理方式，事物的提交或者回滚需要手动设置
+                    type="MANAGED"：表示被管理，例如Spring
+            -->
+            <transactionManager type="JDBC" />
+            <!--
+                dataSource：配置数据源
+                属性：
+                    type="POOLED"：表示使用数据库连接池缓存数据库连接
+                    type="UNPOOLED"：表示不使用数据库连接池
+                    type="JNDI"：表示使用上下文中的数据源
+            -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}" />
+                <property name="url" value="${jdbc.url}" />
+                <property name="username" value="${jdbc.username}" />
+                <property name="password" value="${jdbc.password}" />
+            </dataSource>
+        </environment>
+    </environments>
+    <!--引入映射文件-->
+    <mappers>
+        <!--<mapper resource="mappers/UserMapper.xml" />-->
+
+        <!--
+            以包为单位引入映射文件
+            要求：
+                1、mapper接口所在的包要和映射文件所在的包一致
+                2、mapper接口要和映射文件的名字一致
+        -->
+        <package name="com.MrLi.mapper"/>
+    </mappers>
+</configuration>

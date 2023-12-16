@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>key的原理和作用</title>
+    <!--导入vue start-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!--导入vue end-->
+</head>
+
+<body>
+    <div id="app">
+        <!-- 遍历数组 -->
+        <h2>人员列表</h2>
+        <ul>
+            <li v-for="(item,index) in persons" :key="index">
+                {{item.name}}-{{item.age}}
+                <input type="text">
+            </li>
+        </ul>
+
+        <button @click.once="add">添加</button>
+    </div>
+</body>
+<script>
+    /* 阻止 vue 在启动时生成生产错误 */
+    Vue.config.productionTip = false;
+    new Vue({
+        el: "#app",
+        data: {
+            persons: [
+                {id:"1001", name:"tom", age:12},
+                {id:"1002", name:"amy", age:15},
+                {id:"1003", name:"smith", age:13},
+            ],
+        },
+        methods:{
+            add() {
+                this.persons.unshift({id:"1004",name:"tony",age:16});
+            }
+        }
+    });
+</script>
+
+</html>

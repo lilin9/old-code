@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{/js/wangEditor.min.js}"></script>
+    <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+</head>
+<body>
+        <!-- 创建一个DIV用于存放富文本编辑器 -->
+        <div id="div1" style="width: 80%;"></div>
+<script type="text/javascript">
+    // 创建wangEditor编辑器
+    const E = window.wangEditor
+    // 把wangEditor加载到指定的位置
+    const editor = new E("#div1");
+    // 定义wangEditor图片文件的名字
+    // 该名字是需要和后台交互
+    editor.config.uploadFileName = 'file';
+    // // wangEditor上传文件触发该事件 editor.config.uploadImgServer
+    editor.config.uploadImgServer = '/issue/article-image-upload';
+    editor.config.onchange = function (data) {
+        $("#articleContent").val(data);
+    }
+    editor.create();
+
+</script>
+</body>
+</html>

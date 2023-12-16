@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+<h1>首页</h1>
+
+测试基本注解：
+<ul>
+    <li><a href="/PathVariable/1/owner/tom">@PathVariable (路径变量)</a></li>
+    <li><a href="/RequestHeader/2/owner/smith">@RequestHeader (获取请求头)</a></li>
+    <li><a href="/RequestParam/2/owner/smith?age=18&inters=tea&inters=coffee">@RequestParam (获取请求参数)</a></li>
+    <li><a href="/PathVariable/1/owner/tom">@CookieValue (获取cookie值)</a></li>
+    <li><a href="/goto">@RequestAttribute (获取request域属性)</a></li>
+    <li><a href="/MatrixVariable/sell;low=34;brand=byd,audi,yd">@MatrixVariable (矩阵变量)</a></li>
+    <li><a href="/MatrixVariable2/1;age=20/2;age=10">@MatrixVariable2 (矩阵变量)</a></li>
+</ul>
+<form method="post" action="/RequestBody">
+    @RequestBody (获取请求体) <br><br>
+    用户名：<label><input name="username" type="text"/></label><br><br>
+    邮箱：<label><input name="email" type="text" /></label><br><br>
+</form> <br><br>
+
+测试封装POJO：
+<form action="/saveUser" method="post">
+    姓名： <label><input name="username" value="smith"/> </label> <br>
+    年龄： <label><input name="age" value="18"/> </label> <br>
+    生日： <label><input name="birth" value="2022/3/20"/> </label> <br>
+<!--宠物姓名： <label><input name="pet.name" value="cat"/> </label> <br>
+    宠物年龄： <label><input name="pet.age" value="1"/> </label> <br>-->
+    宠物信息：<label><input name="pet" value="cat,2"></label>
+    <input type="submit" value="保存" /> <br>
+</form>
+</body>
+</html>

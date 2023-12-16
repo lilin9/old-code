@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件的基本使用</title>
+    <!--导入vue start-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!--导入vue end-->
+</head>
+
+<body>
+    <div id="app">
+        <h2>欢迎来到{{name}}学习</h2>
+        <!-- <button v-on:click="showInfo">提示信息</button> -->
+        <button @click="showInfo1">提示信息</button><br><br>
+        <button @click="showInfo2(66, $event)">提示信息</button>
+    </div>
+</body>
+<script>
+    /* 阻止 vue 在启动时生成生产错误 */
+    Vue.config.productionTip = false;
+
+    new Vue({
+        el: "#app",
+        data: {
+            name: "哔哩哔哩"
+        },
+        methods: {
+            showInfo1() {
+                alert("你点击了1");
+            },
+
+            showInfo2(number, event) {
+                console.log(event);
+                alert("你点击了2 --> " + number);
+            }
+        }
+    });
+</script>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+<!--    <script src="/js/jquery-3.6.3.min.js"></script>-->
+</head>
+<body>
+<div id="text">
+    你好
+</div>
+
+<br/>
+
+<button id="btn" type="button">点我</button>
+<br/>
+
+<script type="text/javascript">
+
+    document.getElementById("btn").onclick = function () {
+        let list = [
+            {
+                "articleId": 2,
+                "articleTitle": "ddsf",
+                "articleContent": "<p>sfdsfsdfasdfa</p>",
+                "articleIssueTime": "2023-06-30T02:12:03.000+00:00",
+                "humanId": 2,
+                "human": null,
+                "typeId": 3,
+                "type": null,
+                "result": null
+            },
+            {
+                "articleId": 4,
+                "articleTitle": "是是记",
+                "articleContent": "<p>事实是事实是事实是事实烧死是事实是黑色试试hi实施烧死是事实是事实是是是是是是是</p>",
+                "articleIssueTime": "2023-08-01T12:23:01.000+00:00",
+                "humanId": 1,
+                "human": null,
+                "typeId": 2,
+                "type": null,
+                "result": null
+            }
+        ];
+
+        list.forEach((item, index) => {
+            console.log("item: ");
+            console.log(item);
+
+            console.log("index: ");
+            console.log(index);
+        });
+    };
+
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lilin.mapper.CollectRecordMapper">
+    <select id="getAllCollects" resultType="com.lilin.vo.CollectDetailVo">
+        SELECT collect.`id`, u.`user_name`, comp.`job_title`, collect.`collect_user`, collect.`is_delete`, collect.`update_time`
+        FROM `collect_record` collect
+                 LEFT JOIN `user` u ON collect.`user_id` = u.`id`
+                 LEFT JOIN `comp_job_info` comp ON collect.`job_id` = comp.`id`
+        ORDER BY collect.`create_time` DESC
+    </select>
+    <select id="getAllCollectsByUserIds" resultType="com.lilin.vo.CollectDetailVo">
+        SELECT collect.`id`, u.`user_name`, comp.`job_title`, collect.`collect_user`, collect.`is_delete`, collect.`update_time`
+        FROM `collect_record` collect
+                 LEFT JOIN `user` u ON collect.`user_id` = u.`id`
+                 LEFT JOIN `comp_job_info` comp ON collect.`job_id` = comp.`id`
+        WHERE collect.`user_id` in
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item}
+        </foreach>
+        ORDER BY collect.`create_time` DESC
+    </select>
+    <select id="getAllCollectsByJobIds" resultType="com.lilin.vo.CollectDetailVo">
+        SELECT collect.`id`, u.`user_name`, comp.`job_title`, collect.`collect_user`, collect.`is_delete`, collect.`update_time`
+        FROM `collect_record` collect
+                 LEFT JOIN `user` u ON collect.`user_id` = u.`id`
+                 LEFT JOIN `comp_job_info` comp ON collect.`job_id` = comp.`id`
+        WHERE comp.`id` in
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item}
+        </foreach>
+        ORDER BY collect.`create_time` DESC
+    </select>
+</mapper>

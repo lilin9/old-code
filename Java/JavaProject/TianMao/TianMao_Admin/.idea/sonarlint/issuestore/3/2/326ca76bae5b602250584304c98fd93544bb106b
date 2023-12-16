@@ -1,0 +1,29 @@
+
+E
+java:S3740>"/Provide the parametrized type for this generic.(‰ÌÑŒ
+w
+java:S1488„"`Immediately return this expression instead of assigning it to the temporary variable "tProduct".(é€éÜ
+a
+java:S2095«"JUse try-with-resources or close this "HSSFWorkbook" in a "finally" clause.(‚·Ú
+G
+java:S1135 "2Complete the task associated to this TODO comment.(£°§\
+‡
+java:S1130="qRemove the declaration of thrown exception 'java.text.ParseException', as it cannot be thrown from method's body.(áîÔÇ
+D
+java:S2140U")Use "java.util.Random.nextInt()" instead.(¨õÍ“ıÿÿÿÿ
+N
+java:S1854É"8Remove this useless assignment to local variable "cell".(ÏİŸZ
+N
+java:S1854ó"8Remove this useless assignment to local variable "cell".(ÏİŸZ
+U
+java:S1155Ï">Use isEmpty() to check whether the collection is empty or not.(¢¬È
+R	java:S125ù"<This block of commented-out lines of code should be removed.(ü‚½
+W	java:S125‚"<This block of commented-out lines of code should be removed.(…¦‰Ñüÿÿÿÿ
+\
+java:S1128"ARemove this unused import 'com.pcjp.crm.commons.utils.UUIDUiles'.(¦ï¶ßøÿÿÿÿ
+[
+java:S1128	"@Remove this unused import 'com.pcjp.crm.workbench.domain.TUser'.(óõŸˆıÿÿÿÿ
+W
+java:S1128"ARemove this unused import 'org.apache.poi.ss.usermodel.DateUtil'.(£­å‰
+J
+java:S1128"5Remove this unused import 'java.io.FileOutputStream'.(˜«ªg

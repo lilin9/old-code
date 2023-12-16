@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: RabbitMQ_05_DelayQueue_Question1
+
+  #rabbitmq
+  rabbitmq:
+    host: 192.168.15.129
+    port: 5672
+    username: admin
+    password: 123abc
+    virtual-host: testing
+
+my:
+  exchangeName: exchange.delay.1  #change(normal and dead change)
+  queueNormalName: queue.delay.normal.1 #normal queue
+  queueDeadName: queue.delay.dead.1 #dead queue

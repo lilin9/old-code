@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pcjp.crm.workbench.mapper.TUserDao">
+
+    <resultMap type="com.pcjp.crm.workbench.domain.TUser" id="TUserMap">
+        <result property="uid" column="uid" jdbcType="INTEGER"/>
+        <result property="username" column="username" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="salt" column="salt" jdbcType="VARCHAR"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="gender" column="gender" jdbcType="INTEGER"/>
+        <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+        <result property="isDelete" column="is_delete" jdbcType="INTEGER"/>
+        <result property="createdUser" column="created_user" jdbcType="VARCHAR"/>
+        <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/>
+        <result property="modifiedUser" column="modified_user" jdbcType="VARCHAR"/>
+        <result property="modifiedTime" column="modified_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" parameterType="string" resultMap="TUserMap">
+        select
+          uid, username, password, salt, phone, email, gender, avatar, is_delete, created_user, created_time, modified_user, modified_time
+        from t_user
+        where uid = #{uid}
+    </select>
+
+
+
+
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="uid" useGeneratedKeys="true" >
+        insert into t_user(username, password,  phone, email,  created_user, created_time)
+        values (#{username}, #{password}, #{phone}, #{email}, #{createdUser}, #{createdTime})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="uid" useGeneratedKeys="true">
+        insert into t_user(username, password, salt, phone, email, gender, avatar, is_delete, created_user, created_time, modified_user, modified_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.username}, #{entity.password}, #{entity.salt}, #{entity.phone}, #{entity.email}, #{entity.gender}, #{entity.avatar}, #{entity.isDelete}, #{entity.createdUser}, #{entity.createdTime}, #{entity.modifiedUser}, #{entity.modifiedTime})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="uid" useGeneratedKeys="true">
+        insert into t_user(username, password, salt, phone, email, gender, avatar, is_delete, created_user, created_time, modified_user, modified_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.username}, #{entity.password}, #{entity.salt}, #{entity.phone}, #{entity.email}, #{entity.gender}, #{entity.avatar}, #{entity.isDelete}, #{entity.createdUser}, #{entity.createdTime}, #{entity.modifiedUser}, #{entity.modifiedTime})
+        </foreach>
+        on duplicate key update
+        username = values(username),
+        password = values(password),
+        salt = values(salt),
+        phone = values(phone),
+        email = values(email),
+        gender = values(gender),
+        avatar = values(avatar),
+        is_delete = values(is_delete),
+        created_user = values(created_user),
+        created_time = values(created_time),
+        modified_user = values(modified_user),
+        modified_time = values(modified_time)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update t_user
+        <set>
+            <if test="username != null and username != ''">
+                username = #{username},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="salt != null and salt != ''">
+                salt = #{salt},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone},
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email},
+            </if>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+            <if test="avatar != null and avatar != ''">
+                avatar = #{avatar},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete},
+            </if>
+            <if test="createdUser != null and createdUser != ''">
+                created_user = #{createdUser},
+            </if>
+            <if test="createdTime != null">
+                created_time = #{createdTime},
+            </if>
+            <if test="modifiedUser != null and modifiedUser != ''">
+                modified_user = #{modifiedUser},
+            </if>
+            <if test="modifiedTime != null">
+                modified_time = #{modifiedTime},
+            </if>
+        </set>
+        where uid = #{uid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from t_user where uid in
+        <foreach collection="array" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+
+
+
+    <select id="selectUserByLoginActAndpwd" parameterType="map" resultMap="TUserMap">
+        select
+          uid, username, password, salt, phone, email, gender, avatar, is_delete, created_user, created_time, modified_user, modified_time
+        from t_user
+        where username=#{loginAct} and password=#{loginPwd}
+
+    </select>
+
+
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" parameterType="map" resultMap="TUserMap">
+        select
+        uid, username, password, salt, phone, email, gender, avatar, is_delete, created_user, created_time, modified_user, modified_time
+        from t_user
+        <where>
+            <if test="username != null and username != ''">
+                and username  like  '%' #{username} '%'
+            </if>
+
+            <if test="phone != null and phone != ''">
+                and phone like  '%' #{phone} '%'
+            </if>
+            <if test="email != null and email != ''">
+                and email like '%' #{email} '%'
+            </if>
+
+            <if test="createdUser != null and createdUser != ''">
+                and created_user like '%' #{createdUser} '%'
+            </if>
+        </where>
+        order by created_time desc
+        limit #{beginNo}, #{pageSize}
+    </select>
+
+
+    <select id="selectCountOfUserByCondition" parameterType="map" resultType="int">
+
+        select COUNT(*)
+        from t_user
+        <where>
+            <if test="username != null and username != ''">
+                and username  like  '%' #{username} '%'
+            </if>
+
+            <if test="phone != null and phone != ''">
+                and phone like  '%' #{phone} '%'
+            </if>
+            <if test="email != null and email != ''">
+                and email like '%' #{email} '%'
+            </if>
+
+            <if test="createdUser != null and createdUser != ''">
+                and created_user like '%' #{createdUser} '%'
+            </if>
+        </where>
+
+    </select>
+
+
+
+    <select id="selectallUser" resultMap="TUserMap">
+        select
+          uid, username, password, salt, phone, email, gender, avatar, is_delete, created_user, created_time, modified_user, modified_time
+        from t_user
+    </select>
+</mapper>
+

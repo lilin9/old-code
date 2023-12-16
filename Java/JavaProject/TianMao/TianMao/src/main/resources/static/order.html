@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>订单</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/order.css">
+</head>
+<body>
+<!-- /*页面最顶部------开始*/ -->
+<div class="pagetop">
+    <div class="pagetop-content">
+        <p>
+            汪，欢迎来天猫
+            <a href="login.html" target="_Blank" id="pleaseSign">请登录</a>
+            <a href="register.html" target="_Blank">免费注册</a>
+            <a href="javascript:void(0)" target="_Blank" id="signOut">安全退出</a>
+        </p>
+        <ul>
+            <li><a href="#"><i class="iconfont icon-liebiao"></i>网站导航</a></li>
+            <li><a href="#">商家支持</a></li>
+            <li><a href="https://www.taobao.com/">淘宝网</a></li>
+            <li><a href="#"><i class="iconfont icon-shouji"></i>手机版</a></li>
+            <li><a href="collection.html">收藏夹</a></li>
+            <li><a href="cart.html"><i class="iconfont icon-gouwuchexuanzhong"></i>购物车</a></li>
+            <li id="my-taobao">
+                <span class="btn-list-group">
+                  <a class="btn">我的淘宝</a>
+                  <span class="btn-list-area">
+                    <a href="update-password.html" class="btn">修改密码</a>
+                    <a href="personal-information.html" class="btn">个人资料</a>
+                    <a href="upload-avatar.html" class="btn">上传头像</a>
+                    <a href="shipping-address.html" class="btn">收货管理</a>
+                  </span>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- /*页面最顶部------结束*/ -->
+
+<!-- 头部--------------开始 -->
+<div class="head">
+    <div class="logo"><a href="index.html"><!--<img src="images/head-logo.png" alt="" width="184" height="33">--></a></div>
+    <div class="text"></div>
+</div>
+<!-- 头部--------------结束 -->
+
+<!-- 购物车表单开始 -->
+<div class="container ">
+    <p style="text-align: right;"><img src="images/订单流程.jpg" alt=""></p><br>
+    <form action="">
+        <div class="address-group">
+            <label>
+                <p>选择收货地址：</p>
+            </label>
+            <label>
+                <select name="aid" id="address-list" class="address-control">
+                    <option value="1">
+                        八戒&nbsp;&nbsp;&nbsp;家&nbsp;&nbsp;&nbsp;北京市房山区高老庄3排6号&nbsp;&nbsp;&nbsp;1380***1234
+                    </option>
+                    <option value="2">八戒&nbsp;&nbsp;&nbsp;公司&nbsp;&nbsp;&nbsp;北京市海淀区中关村中路1号1001室&nbsp;&nbsp;&nbsp;1380***1234</option>
+                    <option value="3">
+                        八戒&nbsp;&nbsp;&nbsp;宿舍&nbsp;&nbsp;&nbsp;北京市海淀区永丰镇30号&nbsp;&nbsp;&nbsp;1380***1234
+                    </option>
+                </select>
+            </label>
+        </div>
+
+        <table id="tablestyle">
+            <thead>
+            <tr>
+                <th>商品图片</th>
+                <th>商品名字</th>
+                <th>单价</th>
+                <th>数量</th>
+                <th width="14%">小计</th>
+            </tr>
+            </thead>
+            <tbody id="cart-list">
+            <tr>
+                <td><img src="images/天猫国际-right-2.jpg" alt=""></td>
+                <td>吕洗发水</td>
+                <td name="goodsprice">128</td>
+                <td>
+                    <div id="goods-num">
+                        <p>1</p>
+                    </div>
+                </td>
+                <td name="goodssum">128</td>
+            </tr>
+
+            <tr>
+                <td><img src="images/天猫国际-right-1.jpg" alt=""></td>
+                <td>毕加索钢笔</td>
+                <td name="goodsprice">50</td>
+                <td>
+                    <div id="goods-num">
+                        <p>1</p>
+                    </div>
+                </td>
+                <td name="goodssum">100</td>
+            </tr>
+
+            <tr>
+                <td><img src="images/天猫国际-right-4.jpg" alt=""></td>
+                <td>厨房用锅</td>
+                <td name="goodsprice">749</td>
+                <td>
+                    <div id="goods-num">
+                        <p>1</p>
+                    </div>
+                </td>
+                <td name="goodssum">749</td>
+            </tr>
+            </tbody>
+        </table>
+        <div id="tablefoot">
+            <ul>
+                <li><input type="button" onclick="submitOrder()" value="提交订单" id="jiesuan"></li>
+                <li id="allmoney">666</li>
+                <li>合计:&nbsp;</li>
+                <label>
+                    <button id="deleteBut">返回购物车</button>
+                </label>
+            </ul>
+        </div>
+    </form>
+</div>
+<!-- 购物车表单结束 -->
+
+<!--  底部------------开始   -->
+<iframe src="foot.html" frameborder="0" style="width: 100%;height: 280px; border-top: 2px solid red; margin-top: 150px;padding-top: 20px;"></iframe>
+<!-- 底部-------------结束 -->
+
+<script type="text/javascript" src="js/order.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-getUrlParam.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script>
+    $(document).ready(function () {
+        //先清空订单数据
+        $("#cart-list").empty();
+        //展示商品
+        showOrder();
+        //先清空地址数据
+        $("#address-list").empty();
+        //展示地址
+        showAddressList();
+        showAvatar();
+    });
+
+    //在 select 下拉框中展示收货地址
+    function showAddressList() {
+        $.ajax({
+            url: "/address",
+            type: "GET",
+            dataType: "JSON",
+            success: function (json) {
+                if (json.state === 200) {
+                    let list = json.data;
+
+                    for (let i = 0; i < list.length; i++) {
+                        let option = '<option value="#{aid}">#{name}&nbsp;&nbsp;&nbsp;#{tag}&nbsp;&nbsp;&nbsp;#{provinceName}#{cityName}#{areaName}#{address}&nbsp;&nbsp;&nbsp;#{phone}</option>';
+
+                        option = option.replace(/#{aid}/g, list[i].aid);
+                        option = option.replace(/#{name}/g, list[i].name === null ? "" : list[i].name);
+                        option = option.replace(/#{tag}/g, list[i].tag === null ? "" : list[i].tag);
+                        option = option.replace(/#{provinceName}/g, list[i].provinceName === null ? "" : list[i].provinceName);
+                        option = option.replace(/#{cityName}/g, list[i].cityName === null ? "" : list[i].cityName);
+                        option = option.replace(/#{areaName}/g, list[i].areaName === null ? "" : list[i].areaName);
+                        option = option.replace(/#{address}/g, list[i].address === null ? "" : list[i].address);
+                        option = option.replace(/#{phone}/g, list[i].phone === 0 ? "" : list[i].phone);
+
+                        $("#address-list").append(option);
+                    }
+                } else {
+                    alert("加载收货地址数据失败" + "\n" + json.message);
+                }
+            },
+            error: function (xhr) {
+                alert("加载收货地址数据出现未知错误" + "\n" + xhr.status);
+            }
+        });
+    }
+
+    //展示用户勾选的购物车商品数据
+    function showOrder() {
+        //获取链接中的商品id
+        let href = location.href;
+        let array = href.split("?")[1].split("&")
+        let strPids = []
+        let num = 0;
+        for (const item in array) {
+            let pid = array[item].split("=")
+            //如果链接中没有包含商品数量，就将商品id连接成字符串
+            if (pid[0] !== 'num') {
+                strPids += "pid=" + pid[1] + "&"
+            } else {
+                //如果链接中有商品数量，就将数量赋值给num
+                num = pid[1]
+            }
+        }
+        strPids = strPids.substring(0, strPids.length - 1)
+        if (num === 0) {
+            getOrderData(strPids);
+        } else {
+            getOrderDataHaveNum(strPids, num)
+        }
+    }
+    //向服务器请求数据，当链接中包含商品数量时
+    function getOrderDataHaveNum(strPids, count_) {
+        $.ajax({
+            url: "/order/",
+            type: "post",
+            data: {pids: strPids},
+            dataType: "json",
+            success: function (json) {
+                let list = json.data;
+                let allGoodsPrice = 0;
+                for (let i = 0; i < list.length; i++) {
+                    let tr = '<tr>\n' +
+                        '<td><img src="#{image}" alt=""></td>\n' +
+                        '<td>#{title}</td>\n' +
+                        '<td name="goodsprice">#{price}</td>\n' +
+                        '<td>' +
+                        '<div id="goods-num">' +
+                        '<p>#{num}</p>' +
+                        '</div>' +
+                        '</td>\n' +
+                        '<td name="goodssum">#{totalPrice}</td>\n' +
+                        '</tr>';
+
+                    tr = tr.replace(/#{image}/g, list[i].image);
+                    tr = tr.replace(/#{title}/g, list[i].title);
+                    tr = tr.replace(/#{price}/g, list[i].price);
+                    tr = tr.replace(/#{num}/g, count_);
+                    tr = tr.replace(/#{totalPrice}/g, count_ * list[i].realPrice);
+
+                    $("#cart-list").append(tr);
+
+                    allGoodsPrice += count_ * list[i].realPrice;
+                }
+                $("#allmoney").html(allGoodsPrice);
+            },
+            error: function (xhr) {
+                alert("加载订单数据时产生未知错误" + "\n" + xhr.status)
+            }
+        });
+    }
+
+    //向服务器请求数据
+    function getOrderData(strPids) {
+        $.ajax({
+            url: "/order/",
+            type: "post",
+            data: {pids: strPids},
+            dataType: "json",
+            success: function (json) {
+                let list = json.data;
+                let allGoodsPrice = 0;
+                for (let i = 0; i < list.length; i++) {
+                    let tr = '<tr>\n' +
+                        '<td><img src="#{image}" alt=""></td>\n' +
+                        '<td>#{title}</td>\n' +
+                        '<td name="goodsprice">#{price}</td>\n' +
+                        '<td>' +
+                        '<div id="goods-num">' +
+                        '<p>#{num}</p>' +
+                        '</div>' +
+                        '</td>\n' +
+                        '<td name="goodssum">#{totalPrice}</td>\n' +
+                        '</tr>';
+
+                    tr = tr.replace(/#{image}/g, list[i].image);
+                    tr = tr.replace(/#{title}/g, list[i].title);
+                    tr = tr.replace(/#{price}/g, list[i].price);
+                    tr = tr.replace(/#{num}/g, list[i].num);
+                    tr = tr.replace(/#{totalPrice}/g, list[i].num * list[i].realPrice);
+
+                    $("#cart-list").append(tr);
+
+                    allGoodsPrice += list[i].num * list[i].realPrice;
+                }
+                $("#allmoney").html(allGoodsPrice);
+            },
+            error: function (xhr) {
+                alert("加载订单数据时产生未知错误" + "\n" + xhr.status)
+            }
+        });
+    }
+
+    //返回购物车
+    $("#deleteBut").click(function () {
+        location.href = "cart.html";
+        return false
+    });
+
+    //提交订单
+    function submitOrder() {
+        const cids = location.search.substr(1);
+        const aid = $("#address-list option:selected").val();
+        $.ajax({
+            url: "/order/create",
+            type: "post",
+            data: "aid=" + aid + "&" + cids,
+            dataType: "json",
+            success: function (json) {
+                if (json.state === 200) {
+                    location.href = "index.html";
+                    alert("创建订单成功");
+                } else {
+                    alert("加载订单数据失败" + "\n" + json.message);
+                }
+            },
+            error: function (xhr) {
+                alert("提交订单时产生未知错误" + "\n" + xhr.status)
+            }
+        });
+    }
+
+    //显示头像
+    function showAvatar() {
+        let userAvatar = '<img src="' + $.cookie("avatar") + '" alt="" style="width: 20px;height: 20px;margin-left: 13px;margin-top:2%">'
+        $.ajax({
+            url: "/users/getSession",
+            type: "get",
+            dataType: "json",
+            success: function (json) {
+                if (json.data) {
+                    $("#pleaseSign").replaceWith(userAvatar);
+                }
+            }
+        })
+    }
+
+    //退出登录点击事件
+    $("#signOut").click(function () {
+        if (!confirm("你确定要退出登录吗？")) return;
+        //重置保存在cookie中的头像
+        $.cookie("avatar", "", {path: "/"});
+        //清空session域中的用户信息
+        $.ajax({
+            url: "/users/clear",
+            type: "get",
+            dataType: "json",
+            success: function (json) {
+                if (json.state === 200) {
+                    alert("退出登录成功")
+                    location.href = "login.html"
+                } else {
+                    alert("退出登录失败" + "\n" + json.message)
+                }
+            },
+            error: function (xhr) {
+                alert("退出登录时产生未知错误" + "\n" + xhr.status)
+            }
+        });
+    });
+</script>
+</body>
+</html>

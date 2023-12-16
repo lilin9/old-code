@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.MrLi.mapper.EmpMapper">
+
+    <!--开启二级缓存-->
+    <cache type="org.mybatis.caches.ehcache.EHcacheCache" />
+
+    <!--查询所有员工信息-->
+    <select id="getAllEmpOld" resultType="com.MrLi.pojo.Emp">
+        <!--select eid,emp_name empName,age,sex,email,did from `t_emp`-->
+        select * from `t_emp`
+    </select>
+
+    <!--查询所有员工信息-->
+    <!--resultMap：设置自定义映射关系-->
+    <resultMap id="empResultMap" type="emp">
+        <id property="eid" column="eid" />
+        <result property="empName" column="emp_name" />
+        <result property="age" column="age" />
+        <result property="sex" column="sex" />
+        <result property="email" column="email" />
+    </resultMap>
+    <select id="getAllEmp" resultMap="empResultMap">
+        <!--select eid,emp_name empName,age,sex,email,did from `t_emp`-->
+        select * from `t_emp`
+    </select>
+
+    <!--查询员工以及员工所对应的部门信息-->
+    <resultMap id="empAndDeptResultMapOne" type="emp">
+        <id property="eid" column="eid" />
+        <result property="empName" column="emp_name" />
+        <result property="age" column="age" />
+        <result property="sex" column="sex" />
+        <result property="email" column="email" />
+        <result property="dept.did" column="did" />
+        <result property="dept.deptName" column="dept_name" />
+    </resultMap>
+
+    <resultMap id="empAndDeptResultMapTwo" type="emp">
+        <id property="eid" column="eid" />
+        <result property="empName" column="emp_name" />
+        <result property="age" column="age" />
+        <result property="sex" column="sex" />
+        <result property="email" column="email" />
+        <association property="dept" javaType="Dept">
+            <id property="did" column="did" />
+            <result property="deptName" column="dept_name" />
+        </association>
+    </resultMap>
+    <select id="getEmpAndDept" resultMap="empAndDeptResultMapTwo">
+        select * from `t_emp` left join `t_dept` on t_emp.did = t_dept.did where t_emp.eid = #{eid}
+    </select>
+
+    <!--通过分布查询查询员工以及员工所对应的部门信息
+        分布查询第一步：查询员工信息-->
+    <resultMap id="empAndDeptByStepResultMap" type="Emp">
+        <id property="eid" column="eid" />
+        <result property="empName" column="emp_name" />
+        <result property="age" column="age" />
+        <result property="sex" column="sex" />
+        <result property="age" column="age" />
+        <result property="email" column="email" />
+        <!--
+            property：需要处理的多对一中的属性
+            select：设置分布查询的sql的唯一标识（namespace.SQLId或者mapper接口的全类名 + .方法名）
+            column：设置分布查询的条件
+            当开启全局加载后：
+                fetchType="lazy"  -> 延迟加载
+                fetchType="eager" -> 立即加载
+        -->
+        <association property="dept"
+                     select="com.MrLi.mapper.DeptMapper.getEmpAndDeptByStepTwo"
+                     column="did"
+                     fetchType="eager"/>
+    </resultMap>
+    <select id="getEmpAndDeptByStepOne" resultMap="empAndDeptByStepResultMap">
+        select * from `t_emp` where eid = #{eid}
+    </select>
+</mapper>

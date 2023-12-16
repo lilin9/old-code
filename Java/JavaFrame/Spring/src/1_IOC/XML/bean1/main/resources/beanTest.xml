@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd" >
+
+    <!--1、创建 UserService 和 UserDao 对象-->
+    <bean id="userService" class="service.BookService">
+        <!--2、注入userDao对象-->
+        <property name="userDao" ref="userDaoImpl"/>
+    </bean>
+    <bean id="userDaoImpl" class="dao.Impl.UserDaoImpl" />
+
+
+    <!--级联赋值-->
+    <bean id="employee" class="pojo.Employee">
+        <!--设置普通属性-->
+        <property name="name" value="lucy"/>
+        <property name="gender" value="woman"/>
+
+        <!--为特殊属性级联赋值-->
+        <property name="dept" ref="dept"/>
+        <property name="dept.deptName" value="技术部"/>
+    </bean>
+    <bean id="dept" class="pojo.Dept">
+        <property name="deptName" value="财务部"/>
+    </bean>
+</beans>

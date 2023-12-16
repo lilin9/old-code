@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据代理</title>
+</head>
+
+<body>
+</body>
+<script>
+    let number = 18;
+    let person = {
+        name: "tom",
+        sex: "boy",
+        //age: "18"
+    };
+
+    Object.defineProperty(person, 'age', {
+        // value: 18,
+        // Enumerator: true,       //控制属性是否可以被枚举，默认值是false
+        // Writable: true,         //控制属性是否可以被修改，默认值是false
+        // configurable: true,     //控制属性是否可以被删除，默认值是false
+
+        get: function () {
+            return number;
+        }
+    })
+
+    console.log(person);
+</script>
+
+</html>

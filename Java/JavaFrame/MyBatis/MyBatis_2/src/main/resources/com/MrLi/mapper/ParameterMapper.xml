@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.MrLi.mapper.ParameterMapper">
+    <!--查询所有员工信息-->
+    <select id="queryUsers" resultType="User">
+        select * from t_user
+    </select>
+
+    <!--根据员工名查询员工信息-->
+    <select id="queryUserByUsername" resultType="User">
+        <!--select * from t_user where username=#{username}-->
+        select * from t_user where username='${username}'
+    </select>
+
+    <!--根据用户名和用户密码查询用户信息-->
+    <select id="queryUserByUsernameAndPassword" resultType="User">
+        <!--select * from t_user where username=#{arg0} and password=#{arg1}-->
+        select * from t_user where username='${param1}' and password='${param2}'
+    </select>
+
+    <!--通过map查询用户信息-->
+    <select id="queryUserByMap" resultType="User">
+        <!--select * from t_user where username=#{username} and password=#{password}-->
+        select * from t_user where username='${username}' and password='${password}'
+    </select>
+
+    <!--通过@param查询用户信息-->
+    <select id="queryUserByParam" resultType="User">
+        <!--select * from t_user where username=#{username} and password=#{password}-->
+        select * from t_user where username='${username}' and password='${password}'
+    </select>
+
+    <!--添加用户信息-->
+    <insert id="insertUser">
+        <!--insert into t_user(username,`password`,age,sex,email) values(#{username},#{password},#{age},#{sex},#{email})-->
+        insert into t_user(username,`password`,age,sex,email) values('${username}','${password}','${age}','${sex}','${email}')
+    </insert>
+</mapper>

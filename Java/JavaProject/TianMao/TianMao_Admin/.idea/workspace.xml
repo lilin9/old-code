@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="crm:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bdcdc85c-fee7-4239-ba87-049e8f554cd2" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="Jsp File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/crm/src/main/java/com/pcjp/crm/workbench/web/controller/TUserController.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\APP\Java\java-jdk-11\install\Maven\repository" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../APP/Java/java-jdk-11/install/Maven/apache-maven-3.8.4" />
+        <option name="userSettingsFile" value="D:\APP\Java\java-jdk-11\install\Maven\apache-maven-3.8.4\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="28b39TCgI9eMrgJwjJxP0H4G5Gc" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15527344" />
+    <property name="project.structure.side.proportion" value="0.19444445" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\houtaiguanli\crm-project\crm\src\main\java\com\pcjp\crm\workbench\web\controller" />
+      <recent name="E:\houtaiguanli\crm-project\crm\src\main\java\com\pcjp\crm\workbench\mapper" />
+      <recent name="E:\houtaiguanli\crm-project\crm\src\main\webapp\WEB-INF\pages\workbench\goods" />
+      <recent name="E:\houtaiguanli\crm-project\crm\src\main\java\com\bjpowernode\crm" />
+      <recent name="E:\houtaiguanli\crm-project\crm\src\main\java\com\bjpowernode\crm\workbench\web" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.pcjp.crm.workbench.servince.impl" />
+      <recent name="com.pcjp.crm.workbench.servince" />
+      <recent name="com.pcjp.crm.workbench.domain" />
+      <recent name="com.bjpowernode.crm.settings.servince.impl" />
+      <recent name="com.bjpowernode.crm.settings.servince" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\houtaiguanli\crm-project\crm\src\main\webapp\image" />
+      <recent name="E:\houtaiguanli\crm-project\crm\src\main\java\com\pcjp\crm\workbench\mapper" />
+      <recent name="E:\houtaiguanli\crm-project\crm\src\main\java\com\bjpowernode\crm\workbench\mapper" />
+      <recent name="G:\MavenNeed\crm-project1\crm-project\src\main\webapp\WEB-INF\pages" />
+      <recent name="G:\MavenNeed\crm-project1\crm-project\src\main\webapp\WEB-INF" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.59">
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.bbgu.pcjp.Test" />
+      <module name="crm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bbgu.pcjp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="TianMao" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="TianMao" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TianMaoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="TianMao" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.tianmao.TianMaoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 9.0.59" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.59" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8081" />
+      <option name="BROWSER_ID" value="37cae5b9-e8b2-4949-9172-aafa37fbc09c" />
+      <option name="START_JAVASCRIPT_DEBUGGER" value="true" />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
+      <deployment>
+        <artifact name="crm:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_crm-project" />
+        <option name="HTTP_PORT" value="8081" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="11593" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="crm-project:war exploded" />
+          <artifact name="crm:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Test" />
+      <item itemvalue="Spring Boot.TianMaoApplication" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.59" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bdcdc85c-fee7-4239-ba87-049e8f554cd2" name="Default Changelist" comment="" />
+      <created>1651471306189</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1651471306189</updated>
+      <workItem from="1651471310366" duration="6602000" />
+      <workItem from="1651478013680" duration="2046000" />
+      <workItem from="1651653201081" duration="29000" />
+      <workItem from="1651653247587" duration="11000" />
+      <workItem from="1651653321671" duration="33000" />
+      <workItem from="1651653392058" duration="27000" />
+      <workItem from="1651653475873" duration="112000" />
+      <workItem from="1651653649340" duration="3597000" />
+      <workItem from="1651665322658" duration="7851000" />
+      <workItem from="1651712262001" duration="1122000" />
+      <workItem from="1651715889611" duration="149000" />
+      <workItem from="1651732645161" duration="2481000" />
+      <workItem from="1651754459484" duration="284000" />
+      <workItem from="1651820516664" duration="1783000" />
+      <workItem from="1651904890803" duration="4421000" />
+      <workItem from="1651929685059" duration="889000" />
+      <workItem from="1651972964899" duration="15683000" />
+      <workItem from="1652078162632" duration="7638000" />
+      <workItem from="1652191098692" duration="618000" />
+      <workItem from="1652284245728" duration="583000" />
+      <workItem from="1652317346844" duration="1990000" />
+      <workItem from="1652320768770" duration="776000" />
+      <workItem from="1652331884227" duration="6104000" />
+      <workItem from="1652357486620" duration="727000" />
+      <workItem from="1652406590367" duration="2634000" />
+      <workItem from="1652425566273" duration="2519000" />
+      <workItem from="1652487466877" duration="1259000" />
+      <workItem from="1652490538599" duration="5990000" />
+      <workItem from="1652621266487" duration="325000" />
+      <workItem from="1652669136304" duration="8224000" />
+      <workItem from="1652763274374" duration="850000" />
+      <workItem from="1652921933728" duration="401000" />
+      <workItem from="1653094411336" duration="2137000" />
+      <workItem from="1653114729250" duration="2524000" />
+      <workItem from="1653190097620" duration="4985000" />
+      <workItem from="1653202894482" duration="637000" />
+      <workItem from="1653289639473" duration="849000" />
+      <workItem from="1653306835761" duration="1478000" />
+      <workItem from="1653396612358" duration="241000" />
+      <workItem from="1653459785612" duration="1076000" />
+      <workItem from="1653460918249" duration="3797000" />
+      <workItem from="1653530172971" duration="94000" />
+      <workItem from="1653554557609" duration="1606000" />
+      <workItem from="1653702062328" duration="1038000" />
+      <workItem from="1653706718531" duration="362000" />
+      <workItem from="1653712841066" duration="17071000" />
+      <workItem from="1653786601358" duration="16385000" />
+      <workItem from="1653882961699" duration="13247000" />
+      <workItem from="1653919388167" duration="1396000" />
+      <workItem from="1653924077199" duration="1435000" />
+      <workItem from="1653955654309" duration="25659000" />
+      <workItem from="1654065744172" duration="8992000" />
+      <workItem from="1654082082035" duration="9591000" />
+      <workItem from="1654130547146" duration="8410000" />
+      <workItem from="1654145095245" duration="15229000" />
+      <workItem from="1654304670660" duration="25218000" />
+      <workItem from="1654334069535" duration="3383000" />
+      <workItem from="1654340463226" duration="16744000" />
+      <workItem from="1654417756909" duration="5642000" />
+      <workItem from="1654653824062" duration="4012000" />
+      <workItem from="1654681832716" duration="344000" />
+      <workItem from="1654682199115" duration="301000" />
+      <workItem from="1654686867624" duration="444000" />
+      <workItem from="1654739988079" duration="2596000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/crm/src/main/java/com/pcjp/crm/workbench/web/controller/TProductController.java</url>
+          <line>155</line>
+          <option name="timeStamp" value="90" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/crm/src/main/java/com/pcjp/crm/workbench/web/controller/TProductController.java</url>
+          <line>156</line>
+          <option name="timeStamp" value="91" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/crm/src/main/java/com/pcjp/crm/workbench/web/controller/TProductController.java</url>
+          <line>157</line>
+          <option name="timeStamp" value="92" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/crm/src/main/java/com/pcjp/crm/workbench/web/controller/TProductController.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="106" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/crm/src/main/java/com/pcjp/crm/workbench/web/controller/TProductController.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="107" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/crm/src/main/java/com/pcjp/crm/workbench/web/controller/TProductController.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="108" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/crm/src/main/java/com/pcjp/crm/workbench/web/controller/TProductController.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="109" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo />
+      </pinned-members>
+    </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+        <watch expression="tUsers.get(0)" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/crm_project$Tomcat_8.ic" NAME="Tomcat 8 Coverage Results" MODIFIED="1654157276154" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件渲染</title>
+    <!--导入vue start-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!--导入vue end-->
+
+    <style>
+        .basic {
+            width: 400px;
+            height: 100px;
+            border: 1px solid black;
+            color: white;
+        }
+
+        .happy {
+            background-color: aqua;
+        }
+
+        .sad {
+            background-color: darkgrey;
+        }
+
+        .normal {
+            background-color: blue;
+        }
+
+        .demo1 {
+            background-color: green;
+        }
+
+        .demo2 {
+            font-size: 30px;
+            color: tomato;
+        }
+
+        .demo3 {
+            border-radius: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 使用 v-show 做条件渲染 -->
+        <!-- <h2 v-show="false">你好</h2> -->
+        <!-- <h2 v-show="1 === 1">你好</h2> -->
+
+        <!-- 使用 v-if 做条件渲染 -->
+        <!-- <h2 v-if="false">你好</h2> -->
+        <!-- <h2 v-if="1 === 1">你好</h2> -->
+
+        <h2>当前n的值: {{n}}</h2>
+        <button @click="n++">点击</button>
+
+        <!-- <div v-if="n === 1">Angular</div> -->
+        <!-- <div v-show="n === 2">React</div> -->
+        <!-- <div v-if="n === 3">Vue</div> -->
+
+        <!-- <div v-if="n === 1">Angular</div>
+        <div v-else-if="n === 1">React</div>
+        <div v-else-if="n === 3">Vue</div>
+        <div v-else>Web3</div> -->
+
+        <template v-if="n === 3">
+            <h2>北京</h2>
+            <h2>上海</h2>
+            <h2>广州</h2>
+            <h2>深圳</h2>
+        </template>
+    </div>
+</body>
+<script>
+    /* 阻止 vue 在启动时生成生产错误 */
+    Vue.config.productionTip = false;
+    new Vue({
+        el: "#app",
+    });
+</script>
+
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>购物详情</title>
+    <link rel="stylesheet" type="text/css" href="css/showShop.css">
+</head>
+<body>
+
+<!-- /*页面最顶部------开始*/ -->
+<div class="pagetop">
+    <div class="pagetop-content">
+        <p>
+            汪，欢迎来天猫
+            <a href="login.html" target="_Blank" id="pleaseSign">请登录</a>
+            <a href="register.html" target="_Blank">免费注册</a>
+            <a href="javascript:void(0)" target="_Blank" id="signOut">安全退出</a>
+        </p>
+        <ul>
+            <li><a href="#"><i class="iconfont icon-liebiao"></i>网站导航</a></li>
+            <li><a href="#">商家支持</a></li>
+            <li><a href="https://www.taobao.com/">淘宝网</a></li>
+            <li><a href="#"><i class="iconfont icon-shouji"></i>手机版</a></li>
+            <li><a href="collection.html">收藏夹</a></li>
+            <li><a href="cart.html"><i class="iconfont icon-gouwuchexuanzhong"></i>购物车</a></li>
+            <li id="my-taobao">
+                <span class="btn-list-group">
+                  <a class="btn">我的淘宝</a>
+                  <span class="btn-list-area">
+                    <a href="update-password.html" class="btn">修改密码</a>
+                    <a href="personal-information.html" class="btn">个人资料</a>
+                    <a href="upload-avatar.html" class="btn">上传头像</a>
+                    <a href="shipping-address.html" class="btn">收货管理</a>
+                  </span>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- /*页面最顶部------结束*/ -->
+
+<div style="clear: both;"></div>
+
+<!-- 搜索框--------开始 -->
+<div class="search-box">
+    <div class="content">
+        <div class="logo"><a href="index.html"><!--<img alt="" src="images/head-logo.png">--></a></div>
+        <div class="search"><input type="text" id="searchInput" placeholder="搜索 天猫 商品/品牌/店铺"><input type="submit"
+                                                                                                    value="搜 索"
+                                                                                                    id="submitInput"><input
+                type="submit" id="searchOtherInput" value="搜本店"></div>
+    </div>
+</div>
+<!-- 搜索框--------结束 -->
+
+<div style="clear: both;"></div>
+
+<!-- 广告页面----------开始 -->
+<div class="banner"></div>
+<!-- 广告页面----------结束 -->
+
+
+<!-- 主要内容----------开始 -->
+<div class="main">
+    <!-- 商品展示---------开始 -->
+    <div class="showShop">
+        <div class="showImg-middle">
+            <div class="collection">
+                <img src="images/collection-no.png" alt="" id="collection-image">
+            </div>
+            <img alt="" src="images/天猫电器城-main-item-img-3.jpg" width="400px" height="400px" id="middleImg">
+            <div id="cover"></div>
+        </div>
+        <div class="showImg-big">
+            <img alt="" src="images/天猫电器城-main-item-img-3.jpg" width="800px" height="800px" id="bigImg">
+        </div>
+
+
+        <div class="showShop-content">
+            <h1>C罗SIXPAD智能健腹仪CR7+2BODY腹部健腹器懒人智能健腹收腹腹肌贴</h1>
+            <p>商品特色： <span id="info">双USB接口，纯铜机身一体成型，精选优质芯片，智能分配输出电流，充电快速安全。</span></p>
+            <div class="changeNum">
+                数量
+                <button id="reduce-num">-</button>
+                <label><input type="text" value="1" id="buyNum" onkeyup="value=value.replace(/[^\d]/g,'')"></label>
+                <button id="add-num">+</button>
+                <span id="num-message">有货</span>
+                <p>价格： <span id="goods-price">999</span></p>
+            </div>
+            <div class="huabei">
+                <div class="huabei-title">选择花呗分期付款</div>
+                <div class="huabei-item" id="huabei-item-one"><p><i>¥</i><b>998</b>x3期</p>(0元手续费)</div>
+                <div class="huabei-item" id="huabei-item-two"><p><i>¥</i><b>298</b>x6期</p>(0元手续费)</div>
+                <div class="huabei-item" id="huabei-item-three"><p><i>¥</i><b>198</b>x12期</p>(含手续费)</div>
+            </div>
+            <div class="button">
+                <input type="button" value="立即购买" id="buyNow">
+                <input type="button" value="加入购物车" id="addCartBut">
+            </div>
+        </div>
+    </div>
+    <!-- 商品展示---------结束 -->
+
+    <!-- 下面商品介绍---------开始 -->
+    <div class="mainBottom">
+        <img src="images/showShop-Bottom-1.png" alt="">
+    </div>
+    <!-- 下面商品介绍---------结束 -->
+
+    <!-- 右边列表-----------开始 -->
+    <div class="rightNav">
+        <div class="title"><b></b><span>看了又看</span></div>
+        <div class="list">
+            <ul>
+                <li>
+                    <img src="images/showShop-Right-Nav-img.jpg" alt="">
+                    <p>¥1012.00</p>
+                </li>
+                <li>
+                    <img src="images/showShop-Right-Nav-img.jpg" alt="">
+                    <p>¥1012.00</p>
+                </li>
+                <li>
+                    <img src="images/showShop-Right-Nav-img.jpg" alt="">
+                    <p>¥1012.00</p>
+                </li>
+                <li>
+                    <img src="images/showShop-Right-Nav-img.jpg" alt="">
+                    <p>¥1012.00</p>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <!-- 右边列表-----------结束 -->
+</div>
+<!-- 主要内容----------结束 -->
+
+
+<!-- 页脚 -->
+<iframe src="foot.html" frameborder="0" style="width: 100%;height: 280px;margin-top: 50px;border-top: 2px solid red;"></iframe>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/showShop.js"></script>
+<script>
+    $(document).ready(function () {
+        //展示商品数据
+        showProduct();
+        showAvatar();
+    });
+
+    let start = location.href.indexOf("=");
+    const pid = location.href.substring(start + 1);
+
+    function showProduct() {
+        console.log("显示商品数据函数被调用")
+        $.ajax({
+            url: "/product/getProduct/" + pid,
+            type: "post",
+            dataType: "json",
+            success: function (json) {
+                let list = json.data;
+                if (json.state === 200) {
+                    $("#middleImg").attr("src", list.image);
+                    console.log("image ---> ", list.image)
+                    $("#bigImg").attr("src", list.image);
+                    $(".showShop-content").find("h1").text(list.title);
+                    $("#info").text(list.sellPoint);
+                    $("#goods-price").text(list.price);
+                    //判断商品有货还是没货
+                    showMessage(list.num);
+                } else {
+                    alert("加载商品数据失败" + "\n" + json.message)
+                }
+            },
+            error: function (xhr) {
+                alert("加载商品数据时产生未知错误" + "\n" + xhr.status)
+            }
+        });
+    }
+
+    //加入收藏夹点击事件
+    $(".collection").click(function () {
+        $.ajax({
+            url: "/collection/get",
+            type: "get",
+            data: "pid=" + pid,
+            dataType: "json",
+            success: function (json) {
+                let result = json.data;
+                //如果收藏夹不存在，就加入收藏夹
+                if (result === 0) {
+                    saveCollection();
+                } else if (result === 1) {
+                    //如果收藏夹存在，就取消收藏
+                    deleteCollection();
+                }
+            },
+            error: function (xhr) {
+                alert("删除收藏夹时产生未知错误" + "\n" + xhr.status)
+            }
+        });
+    });
+
+    //立即购买点击事件
+    $("#buyNow").click(function () {
+        //跳转到订单页面
+        location.href = "order.html?pid=" + pid + "&num=" + $("#buyNum").val();
+    });
+
+    //加入购物车按钮的点击事件
+    $("#addCartBut").click(function () {
+        if (!confirm("你确定要将此商品加入购物车吗？"))
+            return;
+        $.ajax({
+            url: "/carts/add/" + pid,
+            type: "post",
+            data: {
+                num: $("#buyNum").val(),
+                price: $("#goods-price").text()
+            },
+            dataType: "JSON",
+            success: function (json) {
+                if (json.state === 200) {
+                    alert("添加商品到购物车成功");
+                } else {
+                    alert("添加商品到购物车失败" + "\n" + json.message);
+                }
+            },
+            error: function (xhr) {
+                alert("添加商品到购物车时产生未知异常" + "\n" + xhr.status);
+            }
+        });
+    });
+
+    //增加商品数量的点击事件
+    $("#add-num").click(function () {
+        //获取商品数量
+        let number = $("#buyNum").val();
+        //修改商品数量
+        $("#buyNum").val(++number);
+    });
+
+    //减少商品数量的点击事件
+    $("#reduce-num").click(function () {
+        //获取商品id
+        // const id = location.href.substring(location.href.indexOf("=") + 1);
+        //获取商品数量
+        let number = $("#buyNum").val();
+        //确保数量不会小于0
+        if (number > 0) {
+            //修改商品数量
+            $("#buyNum").val(--number);
+        }
+    });
+
+    //判断商品有货还是没货，有货页面显示有货，没货页面显示没货
+    function showMessage(num) {
+        if (num < 1) {
+            $("#num-message").text("商品紧销")
+        }
+    }
+
+    //这个回调函数用来执行保存收藏夹的ajax逻辑
+    function saveCollection() {
+        $.ajax({
+            url: "/collection/save",
+            type: "post",
+            data: "pid=" + pid,
+            dataType: "json",
+            success: function (json) {
+                if (json.state === 200) {
+                    //替换收藏夹图片路径
+                    $("#collection-image").attr('src', 'images/collection-yes.png')
+                    alert("加入收藏成功")
+                } else {
+                    alert("加入收藏夹失败" + "\n" + json.message)
+                }
+            },
+            error: function (xhr) {
+                alert("删除收藏夹时产生未知错误" + "\n" + xhr.status)
+            }
+        });
+    }
+
+    //这个回调函数用来执行删除收藏夹的ajax逻辑
+    function deleteCollection() {
+        $.ajax({
+            url: "/collection/delete",
+            type: "get",
+            data: "pid=" + pid,
+            dataType: "json",
+            success: function (json) {
+                let state_ = json.state;
+                if (state_ === 200) {
+                    //替换收藏夹图片路径
+                    $("#collection-image").attr('src', 'images/collection-no.png')
+                    alert("取消收藏成功")
+                } else if (state_ === 7000) {
+                    alert("删除收藏夹失败" + "\n" + json.message);
+                }
+            },
+            error: function (xhr) {
+                alert("删除收藏夹时产生未知错误" + "\n" + xhr.status)
+            }
+        });
+    }
+
+    //显示头像
+    function showAvatar() {
+        let userAvatar = '<img src="' + $.cookie("avatar") + '" alt="" style="width: 20px;height: 20px;margin-left: 13px;margin-top:2%">'
+        $.ajax({
+            url: "/users/getSession",
+            type: "get",
+            dataType: "json",
+            success: function (json) {
+                if (json.data) {
+                    $("#pleaseSign").replaceWith(userAvatar);
+                }
+            }
+        })
+    }
+
+    //退出登录点击事件
+    $("#signOut").click(function () {
+        if (!confirm("你确定要退出登录吗？")) return;
+        //重置保存在cookie中的头像
+        $.cookie("avatar", "", {path: "/"});
+        //清空session域中的用户信息
+        $.ajax({
+            url: "/users/clear",
+            type: "get",
+            dataType: "json",
+            success: function (json) {
+                if (json.state === 200) {
+                    alert("退出登录成功")
+                    location.href = "login.html"
+                } else {
+                    alert("退出登录失败" + "\n" + json.message)
+                }
+            },
+            error: function (xhr) {
+                alert("退出登录时产生未知错误" + "\n" + xhr.status)
+            }
+        });
+    });
+</script>
+</body>
+</html>

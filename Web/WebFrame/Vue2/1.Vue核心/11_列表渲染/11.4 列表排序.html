@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表排序</title>
+    <!--导入vue start-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!--导入vue end-->
+</head>
+
+<body>
+    <div id="app">
+
+        <h2>人员列表</h2>
+        <input v-model="keyWords" type="text" placeholder="输入姓名">
+        <button @click="sortType = 2">年龄升序</button>
+        <button @click="sortType = 1">年龄降序</button>
+        <button @click="sortType = 0">原顺序</button>
+        <ul>
+            <li v-for="(item,index) in filPersons" :key="item.id">
+                {{item.name}}-{{item.age}}-{{item.sex}}
+            </li>
+        </ul>
+
+    </div>
+</body>
+<script>
+    /* 阻止 vue 在启动时生成生产错误 */
+    Vue.config.productionTip = false;
+    //computed实现
+    new Vue({
+        el: "#app",
+        data: {
+            keyWords: "",
+            sortType: 0, //0原顺序，1降序，2升序
+            persons: [
+                { id: "1001", name: "马冬梅", age: 40, sex: "女" },
+                { id: "1002", name: "周冬雨", age: 30, sex: "女" },
+                { id: "1003", name: "周杰伦", age: 35, sex: "男" },
+                { id: "1004", name: "温兆伦", age: 45, sex: "男" },
+            ]
+        },
+        computed: {
+            filPersons() {
+                const arr = this.persons.filter((item) => {
+                    return item.name.indexOf(this.keyWords) !== -1;
+                });
+                //判断是否需要排序
+                if (this.sortType) {
+                    arr.sort((a1, a2) => {
+                        return this.sortType === 1 ? a2.age-a1.age : a1.age-a2.age
+                    });
+                }
+                return arr;
+            }
+        }
+    });
+</script>
+
+</html>

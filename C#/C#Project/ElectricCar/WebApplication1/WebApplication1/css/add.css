@@ -1,0 +1,38 @@
+﻿body {
+}
+#add-body{
+    background:rgba(247, 247, 247, 0.5);
+    min-height:500px;
+    margin:0 auto;
+    padding-top:28px;
+}
+#add-content{
+    width:320px;
+    margin:10px auto;
+}
+#update-body{
+    background:rgba(247, 247, 247, 0.5);
+    min-height:500px;
+    margin:0 auto;
+    padding-top:28px;
+}
+#update-content{
+    width:320px;
+    margin:10px auto;
+}
+#add-content{
+   
+}
+#add-content table{
+ 
+}
+/*#add-content table tr:nth-child(2n+1){
+    background:rgb(255, 255, 255);
+}
+#add-body table tr:nth-child(2n-1){
+    background:#ccc;
+}*/
+#add-content table td{
+    line-height:28px;
+    min-width:80px;
+}

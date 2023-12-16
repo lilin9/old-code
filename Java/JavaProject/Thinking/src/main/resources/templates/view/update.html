@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="/js/jquery-3.6.3.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/main.css" rel="stylesheet"/>
+
+</head>
+<body>
+<div id="navigationBar"></div>
+
+<div class="mainDivStyle">
+<div class="divStyle" >
+    <form id="updateForm">
+        <div class="form-group">
+            <label for="oldHumanName">旧密码</label>
+            <input type="password" name="oldHumanPassword" class="form-control" id="oldHumanName">
+        </div>
+        <div class="form-group">
+            <label for="humanPassword">密码</label>
+            <input type="password" name="humanPassword" class="form-control" id="humanPassword">
+        </div>
+
+        <div class="btmStyle">
+            <button type="button" class="btn btn-primary btm" id="updateBtn">修改密码</button>
+
+        </div>
+
+    </form>
+</div>
+</div>
+
+<script type="module">
+    import utils from '/js/utils.js';
+    //点击修改密码
+    $("#updateBtn").click(function () {
+        //获取修改密码表单数据
+        let userData = $("#updateForm").serializeArray();
+        let item = {name: "humanId", value: JSON.parse(sessionStorage.getItem("human")).humanId};
+        userData.push(item);
+        //转成 json 数据
+        userData = utils.getObjectJson(userData);
+        //异步提交表单数据
+        $.ajax({
+            type: "POST",
+            url: "/update",
+            async: false,
+            data: userData,
+            dataType: "json",
+            headers: {'Content-Type': 'application/json'},
+            success: function (data) {
+                console.log(data);
+                //是不是修改成功
+                if (data.code == "200") {
+                    window.location.href = "./show.html";
+                } else {
+                    alert(data.message + ", 请重新登录");
+                    window.location.href = "./login.html";
+                }
+            }
+        });
+    });
+
+    $(function(){
+        $("#navigationBar").load("/to/base/navigation");
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue数据监测总结</title>
+    <!--导入vue start-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!--导入vue end-->
+</head>
+
+<body>
+    <div id="app">
+        <h1>学生信息</h1>
+
+        <button @click="student.age++">年龄 + 1岁</button> <br><br>
+        <button @click="addSex">添加性别属性，默认值：男</button> <br><br>
+        <button @click="student.sex = '女'">修改性别为女</button> <br><br>
+        <button @click="addFriend">在列表首位添加一个朋友</button> <br><br>
+        <button @click="updateName">修改第一个朋友的名字为：张三</button> <br><br>
+        <button @click="addHobby">添加一个爱好</button> <br><br>
+        <button @click="updateFirstHobby">修改第一个爱好为：读书</button> <br><br>
+
+        <h2>姓名：{{student.name}}</h2>
+        <h2>年龄：{{student.age}}</h2>
+        <h2 v-if="student.sex">性别：{{student.sex}}</h2>
+        <h2>爱好：</h2>
+        <ul>
+            <li v-for="(item, index) in student.hobbys" :key="index">
+                {{item}}
+            </li>
+        </ul>
+        <h2>朋友们</h2>
+        <ul>
+            <li v-for="(item, index) in student.friends" :key="index">
+                {{item.name}}-{{item.age}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    /* 阻止 vue 在启动时生成生产错误 */
+    Vue.config.productionTip = false;
+    new Vue({
+        el: "#app",
+        data: {
+            student: {
+                name: "tom",
+                age: 18,
+                hobbys: ["吃", "喝", "嫖", "赌", "抽"],
+                friends: [
+                    { name: "jerry", age: 18 },
+                    { name: "tony", age: 19 }
+                ]
+            }
+        },
+        methods: {
+            addSex() {
+                // Vue.set(this.student, "sex", "男");
+                this.$set(this.student, "sex", "男");
+            },
+            addFriend() {
+                this.student.friends.unshift({name:"tom",age:"22"});
+            },
+            updateName() {
+                this.student.friends[0].name = "Lucy",
+                this.student.friends[0].age = "18"
+            },
+            addHobby() {
+                this.student.hobbys.push("打游戏");
+            },
+            updateFirstHobby() {
+                // this.student.hobbys.splice(0, 1, "读书");
+                // Vue.set(this.student.hobbys, 0, "读书");
+                this.$set(this.student.hobbys, 0, "读书");
+            }
+        },
+    });
+</script>
+
+</html>

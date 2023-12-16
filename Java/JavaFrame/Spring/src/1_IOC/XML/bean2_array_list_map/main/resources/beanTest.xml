@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd" >
+
+    <!--普通Bean-->
+    <bean id="student" class="pojo.Student">
+        <!--数组类型属性注入-->
+        <property name="courses">
+            <array>
+                <value>数学</value>
+                <value>英语</value>
+                <value>语文</value>
+                <value>物理</value>
+                <value>生物</value>
+                <value>化学</value>
+                <value>历史</value>
+                <value>政治</value>
+                <value>地理</value>
+                <value>体育</value>
+            </array>
+        </property>
+
+        <!--列表类型属性注入-->
+        <property name="list">
+            <list>
+                <value>小明</value>
+            </list>
+        </property>
+
+        <!--集合类型属性注入-->
+        <property name="map">
+            <map>
+                <entry key="数学" value="150"/>
+                <entry key="英语" value="150"/>
+                <entry key="语文" value="150"/>
+                <entry key="物理" value="100"/>
+                <entry key="生物" value="100"/>
+                <entry key="化学" value="100"/>
+                <entry key="历史" value="100"/>
+                <entry key="政治" value="100"/>
+                <entry key="地理" value="100"/>
+                <entry key="体育" value="100"/>
+            </map>
+        </property>
+    </bean>
+
+    <!--工厂Bean-->
+    <bean id="factoryBean1" class="pojo.FactoryBean1">
+
+    </bean>
+</beans>

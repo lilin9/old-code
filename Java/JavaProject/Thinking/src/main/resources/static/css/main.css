@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* 文章样式 */
+.splitP {
+    margin-top: 10px;
+}
+
+#titleStyle {
+    text-decoration: none;
+    font-size: 26px;
+    font-weight: 700;
+    color: inherit;
+}
+
+.contextStyle {
+    margin-bottom: 36px;
+}
+
+.page-link {
+    cursor: pointer;
+}
+
+.page-link.active {
+    background: #0f5132;
+}
+
+.page-link.replyDelStyle{
+   color:#0d6efd;
+}
+
+.btm {
+    width: 168px;
+}
+
+.aStyle{
+    margin-right: 20px;
+}
+
+/* 登录注册样式*/
+
+.divStyle {
+    width: 500px;
+    margin: 300px auto 0;
+}
+
+
+.btmStyle {
+    margin-top: 36px;
+    text-align: right;
+}
+
+a {
+    text-decoration: none;
+}
+
+label {
+    margin: 10px 0;
+}
+
+
+.contextStyle {
+    margin-bottom: 36px;
+}
+
+#hTitle {
+    text-align: center;
+}
+
+/*导航 绝对固定定位会脱离文档流，宽度根据内容决定，*/
+#navigationBar{
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.mainDivStyle{
+    margin-top: 100px;
+}
+
+#navigationBar{
+    z-index: 11000;
+    position:fixed;
+}
+
+/*文章 TOP10 榜单样式*/
+#ranking .title {
+    text-decoration: none;
+    font-size: 26px;
+    font-weight: 700;
+    color: inherit;
+    margin-bottom: 10px;
+}
+
+#ranking .number {
+    font-size: 18px;
+    font-weight: bold;
+    /*color: #ff9607;*/
+    color: rgb(168, 160, 149);
+}
+
+#ranking .topic {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#ranking .intro {
+    font-size: 14px;
+}
+
+#ranking #rankingList p {
+    margin-bottom: 0;
+}
+
+#ranking #rankingList .intro p:not(:first-child) {
+    display: none;
+}
+
+#ranking #rankingList .intro p:first-of-type {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+
+
+
+
+
+
+
+

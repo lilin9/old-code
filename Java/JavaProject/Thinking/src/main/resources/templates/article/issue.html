@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/wangEditor.min.js"></script>
+    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/js/jquery-3.6.3.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <link href="/css/main.css" rel="stylesheet"/>
+
+
+
+<!--    <style>-->
+<!--        .btm{-->
+<!--            width: 168px;-->
+<!--        }-->
+<!--        .btmStyle{-->
+<!--            margin-top : 20px;-->
+<!--            text-align: right;-->
+<!--            margin-right: 36px;-->
+<!--        }-->
+<!--    </style>-->
+</head>
+<body>
+<div id="navigationBar">
+</div>
+<div class="mainDivStyle">
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col col-lg-10">
+<!--    <form action="/article/issue" method="post">-->
+<!--        <p><input type="text" name="articleTitle" placeholder="文章标题"></p>-->
+        <div class="form-group">
+            <label for="articleTitle">发布文章标题</label>
+            <textarea class="form-control" name="articleTitle" id="articleTitle" rows="2"></textarea>
+            <select id="typeSelect" name="typeId" class="form-control">
+
+            </select>
+        </div>
+        <p>
+<!--            内容：<textarea name="articleContent" id="articleContent" style="display: none"></textarea>-->
+            <label>文章内容</label>
+        </p>
+        <div id="div1" style="width: 100%;">
+
+        </div>
+        <div class="btmStyle">
+        <button class="btn btn-primary btm" id="issue-button">发布</button>
+            <hr>
+        </div>
+<!--    </form>-->
+        </div>
+    </div>
+</div>
+</div>
+</script>
+<script type="text/javascript">
+    var imgsrc ;
+    var html;
+    var result = [];
+    const E = window.wangEditor;
+    const editor = new E("#div1");
+    //定义wangEditor图片文件的名字
+    editor.config.uploadFileName = 'file';
+    editor.config.height=500;
+    // wangEditor上传文件触发该事件 editor.config.uploadImgServer
+    editor.config.uploadImgServer = '/issue/article-image-upload';
+    editor.config.onchange = function () {
+        // $("#articleContent").val(data);
+        html = editor.txt.html();
+        imgsrc = getSrc(html);
+        console.log(imgsrc);
+    }
+    editor.create();
+
+
+
+
+    function loadTypes(){
+        $.ajax({
+            url:"/type/typeList",
+            type:"POST",
+            success:function (data){
+                let typeList = data.data
+                var typeSelect = $("#typeSelect");
+                $.each(typeList,function (i , type){
+                    var options = $("<option></option>");
+                    options.text(type.typeName);
+                    options.val(type.typeId);
+                    typeSelect.append(options);
+                });
+            }
+        });
+    }
+
+
+    function getSrc(html) {
+        var imgReg = /<img.*?(?:>|\/>)/gi
+        // 匹配src属性
+        var srcReg = /src=[\\"]?([^\\"]*)[\\"]?/i
+        var arr = html.match(imgReg)
+
+        let imgs = []
+        if (arr) {
+            for (let i = 0; i < arr.length; i++) {
+                var src = arr[i].match(srcReg)[1]
+                imgs.push(src)
+            }
+        }
+        return imgs;
+    }
+
+    function issue(){
+        $('#issue-button').click(function (){
+            var articleTitle =$('#articleTitle').val();
+            var typeId = $('#typeSelect').val();
+            var result = {'result':imgsrc , 'articleContent':html , 'articleTitle':articleTitle , 'typeId':typeId};
+            $.ajax({
+                url:"/issue/articleIssue",
+                type:"post",
+                data:result,
+                success: function (data){
+                   if(data.code == "200"){
+                       console.log("执行发帖成功！！！")
+                       window.location.href="../view/index.html";
+                   }
+                }
+            });
+        });
+
+    }
+
+    $(function () {
+        $("#navigationBar").load("/to/base/navigation");
+        loadTypes();
+        issue();
+    });
+
+</script>
+</body>
+</html>

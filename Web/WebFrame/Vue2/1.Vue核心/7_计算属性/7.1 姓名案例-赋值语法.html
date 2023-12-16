@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姓名案例-赋值语法</title>
+    <!--导入vue start-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!--导入vue end-->
+</head>
+<body>
+    <div id="app">
+        姓：<input type="text" v-model:value="firstName"> <br><br>
+        名：<input type="text" v-model:value="lastName"> <br><br>
+        姓名：<span>{{firstName.slice(0,3)}} - {{lastName}}</span>
+    </div>
+</body>
+
+<script>
+    /* 阻止 vue 在启动时生成生产错误 */
+    Vue.config.productionTip = false;
+
+    new Vue({
+        el: "#app",
+        data: {
+            firstName: "张",
+            lastName: "三"
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/js/jquery-3.6.3.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <link href="/css/main.css" rel="stylesheet"/>
+    <!--    <style>-->
+    <!--        .splitP {-->
+    <!--            margin-top: 10px;-->
+    <!--        }-->
+
+    <!--        #titleStyle {-->
+    <!--            text-decoration: none;-->
+    <!--            font-size: 26px;-->
+    <!--            font-weight: 700;-->
+    <!--            color: inherit;-->
+    <!--        }-->
+
+    <!--        .contextStyle {-->
+    <!--            margin-bottom: 36px;-->
+    <!--        }-->
+
+    <!--        #hTitle{-->
+    <!--            text-align: center;-->
+    <!--        }-->
+    <!--    </style>-->
+    <style>
+        .d1 {
+            margin-top: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="navigationBar"></div>
+<div class="mainDivStyle">
+    <div class="container">
+        <span th:if="${articles != null}" id="articlesList">
+                <span th:each="article,status:${articles}">
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                    <div class="col-lg-11">
+                     <a id="titleStyle" th:href="@{'/article/articleById/'+${article.articleId}}">
+                         <span th:text="${article.articleTitle}"></span>
+                     </a>
+                    </div>
+                    </div>
+                    <div class="row contextStyle">
+                        <div class="col-lg-1"></div>
+                    <div class="col-lg-1">
+                        <span th:text="${article.human.humanNiceName}"></span>
+                    </div>
+                    <div class="col-lg-5">
+                        <span th:text="|最后修改时间:${#dates.format(article.articleIssueTime,'yyyy年MM月dd日 HH时mm分ss秒')}|"></span>
+                    </div>
+                </div>
+            </span>
+        </span>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination splitP" id="splitP">
+               <span th:each="index:${#numbers.sequence(1,allPage)}">
+                   <li class="page-item"><a class="page-link" th:href="@{'/article/articleList/'+${index}}"
+                                            th:text="${index}"></a></li>
+               </span>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<script type="module">
+    import utils from '/js/utils.js';
+
+    //给动态添加的分页页码添加点击事件
+    $(document).on("click", ".page-link", function () {
+        let href = this.href;
+        //获取点击的页码是多少，然后根据页码重新获取数据
+        //页码在跳转地址最后一个 / 后面
+        requestData(utils.getUrlLastVal(href));
+        return false;
+    })
+
+    //这个用来渲染页码部分
+    function renderPageIndex(allPage) {
+        //判空
+        if (allPage < 1) {
+            return;
+        }
+
+        let dom = '';
+        for (let i = 1; i <= allPage; i++) {
+            dom += '     <span>\n' +
+                '            <li class="page-item"><a class="page-link"\n' +
+                '                                     href="' + i + '">' + i + '</a></li>\n' +
+                '        </span>';
+        }
+        $("#splitP").html(dom);
+    }
+
+    //此方法用来渲染文章列表数据
+    function renderArticles(data) {
+        //判空
+        if (Object.keys(data).length === 0) {
+            return;
+        }
+        let dom = '';
+        $.each(data.articles, function (index, item) {
+            dom += '        <span>\n' +
+                '            <div class="row">\n' +
+                '                <div class="col-lg-1"></div>\n' +
+                '            <div class="col-lg-11">\n' +
+                '                 <a id="titleStyle" href="/article/articlebyid.html?articleId=' + item.articleId + '">\n' +
+                '                     <span>' + item.articleTitle + '</span>\n' +
+                '                 </a>\n' +
+                '            </div>\n' +
+                '            </div>\n' +
+                '            <div class="row contextStyle">\n' +
+                '                <div class="col-lg-1"></div>\n' +
+                '            <div class="col-lg-1">\n' +
+                '             <span>' + item.human.humanNiceName + '</span>\n' +
+                '            </div>\n' +
+                '              <div class="col-lg-5">\n' +
+                '                <span>最后修改时间:' + utils.timeFormat(item.articleIssueTime) + '</span>\n' +
+                '            </div>\n' +
+                '        </div>\n' +
+                '    </span>';
+        });
+        //重写 #articlesList 内内容
+        $("#articlesList").html(dom);
+    }
+
+    //请求后台数据
+    function requestData(pageIndex) {
+        $.ajax({
+            type: "POST",
+            url: "/article/articleList/" + pageIndex,
+            async: false,
+            dataType: "json",
+            headers: {'Content-Type': 'application/json'},
+            success: function (data) {
+                if (data.code == "200") {
+                    console.log("文章列表数据：");
+                    console.log(data);
+                    //渲染文章列表数据
+                    renderArticles(data.data);
+                    //渲染分页页码
+                    renderPageIndex(data.data.allPage);
+                } else {
+                    //如果没有拿到数据，就不显示文章列表
+                    $("#articlesList").css("display", "none");
+                }
+            }
+        });
+    }
+
+    //在页面加载时加载页面数据
+    $(document).ready(function () {
+        requestData(1);
+        $("#navigationBar").load("/to/base/navigation");
+    });
+</script>
+</body>
+</html>

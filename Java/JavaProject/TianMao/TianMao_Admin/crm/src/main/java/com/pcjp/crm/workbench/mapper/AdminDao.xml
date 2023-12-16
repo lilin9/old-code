@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pcjp.crm.workbench.mapper.AdminDao">
+
+    <resultMap type="com.pcjp.crm.workbench.domain.Admin" id="AdminMap">
+        <result property="adminid" column="adminid" jdbcType="INTEGER"/>
+        <result property="adminuser" column="adminuser" jdbcType="VARCHAR"/>
+        <result property="adminpass" column="adminpass" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+
+    <select id="selectUserByLoginActAndpwd" parameterType="map" resultMap="AdminMap">
+         select
+          adminid, adminuser, adminpass
+        from admin
+        where  adminuser =#{loginAct} and adminpass = #{loginPwd}
+    </select>
+
+    <select id="selectAllAdmin" resultMap="AdminMap">
+         select
+          adminid, adminuser, adminpass
+        from admin
+    </select>
+
+</mapper>
+

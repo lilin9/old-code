@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="BaseManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="None.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="PAMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SetBases.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SetUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UserAppraisalEditManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UserAppraisalManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UserManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

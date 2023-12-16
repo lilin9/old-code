@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+
+<div style="text-align: center; font-family: 微软雅黑,serif; color: red">
+    <h1>首页</h1>
+    <a th:href="@{/requestMappingTest}">RequestMappingTest</a> <br>
+    <a th:href="@{/test}">test</a> <br>
+    <a th:href="@{/requestMapping}">requestMapping</a> <br>
+    <a th:href="@{/requestMapping}">GET</a> <br>
+    <a th:href="@{/testPath/1}">测试@RequestMapping支持路径中的占位符 --> /testPath</a> <br>
+
+    <form th:action="@{/test}" method="post">
+        <input type="submit">
+    </form>
+</div>
+
+</body>
+</html>

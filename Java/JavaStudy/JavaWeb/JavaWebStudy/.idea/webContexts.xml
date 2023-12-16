@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebContextManager">
+    <option name="state">
+      <map>
+        <entry key="file://$PROJECT_DIR$/28_BookCity/web/pages/cart/cart.jsp" value="file://$PROJECT_DIR$/28_BookCity/web" />
+        <entry key="file://$PROJECT_DIR$/28_BookCity/web/pages/user/regist.jsp" value="file://$PROJECT_DIR$/28_BookCity/web/pages/user" />
+        <entry key="file://$PROJECT_DIR$/39_JSON_AJAX_i18n/web/JSON.html" value="file://$PROJECT_DIR$/39_JSON_AJAX_i18n/web" />
+      </map>
+    </option>
+  </component>
+</project>

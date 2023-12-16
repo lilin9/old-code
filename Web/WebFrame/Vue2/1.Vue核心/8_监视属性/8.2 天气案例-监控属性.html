@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天气案例-监控属性</title>
+    <!--导入vue start-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!--导入vue end-->
+</head>
+
+<body>
+    <div id="app">
+        <h1>今天天气非常{{info}}</h1>
+        <button @click="change">切换天气</button>
+    </div>
+</body>
+<script>
+    /* 阻止 vue 在启动时生成生产错误 */
+    Vue.config.productionTip = false;
+    const vm = new Vue({
+        el: "#app",
+        data: {
+            isHot: false,
+        },
+        computed: {
+            info() {
+                return this.isHot ? "热" : "冷";
+            }
+        },
+        methods: {
+            /* change() {
+                this.isHot = !this.isHot;
+            } */
+        },
+        /* watch: {
+            isHot: {
+                //初始化页面时调用一次handler
+                immediate: true,
+                //当 isHot 发生改变时，handler 会被调用
+                handler(newValue, oldValue) {
+                    console.log("isHot 被修改了 ", newValue, oldValue);
+                }
+            }
+        } */
+    });
+
+    vm.$watch('isHot', {
+        //初始化页面时调用一次handler
+        immediate: true,
+        //当 isHot 发生改变时，handler 会被调用
+        handler(newValue, oldValue) {
+            console.log("isHot 被修改了 ", newValue, oldValue);
+        }
+    });
+</script>
+
+</html>

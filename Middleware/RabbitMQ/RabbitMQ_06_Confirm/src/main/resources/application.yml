@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: RabbitMQ_06_Confirm
+
+  #rabbitmq
+  rabbitmq:
+    host: 192.168.15.129
+    port: 5672
+    username: admin
+    password: 123abc
+    virtual-host: testing
+    #start confirm
+    publisher-confirm-type: correlated
+
+my:
+  exchangeName: exchange.confirm.1  #delay change
+  queueName: queue.confirm.1 #delay queue

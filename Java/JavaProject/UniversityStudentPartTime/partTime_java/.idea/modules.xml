@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/partTime/partTime.iml" filepath="$PROJECT_DIR$/partTime/partTime.iml" />
+      <module fileurl="file://$PROJECT_DIR$/partTime_admin/partTime_admin.iml" filepath="$PROJECT_DIR$/partTime_admin/partTime_admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/partTime_framework/partTime_framework.iml" filepath="$PROJECT_DIR$/partTime_framework/partTime_framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/partTime_java.iml" filepath="$PROJECT_DIR$/partTime_java.iml" />
+    </modules>
+  </component>
+</project>

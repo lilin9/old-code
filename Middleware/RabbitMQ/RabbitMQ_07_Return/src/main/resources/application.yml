@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: RabbitMQ_07_Return
+
+  #rabbitmq
+  rabbitmq:
+    host: 192.168.15.129
+    port: 5672
+    username: admin
+    password: 123abc
+    virtual-host: testing
+    #open return
+    publisher-returns: true
+
+my:
+  exchangeName: exchange.return.1  #delay change
+  queueName: queue.return.1 #delay queue

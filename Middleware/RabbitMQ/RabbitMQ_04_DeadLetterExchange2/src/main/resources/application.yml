@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: RabbitMQ_04_DLX2
+
+  #rabbitmq
+  rabbitmq:
+    host: 192.168.15.129
+    port: 5672
+    username: admin
+    password: 123abc
+    virtual-host: testing
+
+my:
+  exchangeNormal: exchange.Normal.2
+  queueNormal: queue.Normal.2
+
+  exchangeDead: exchange.Dead.2
+  queueDead: queue.Dead.2

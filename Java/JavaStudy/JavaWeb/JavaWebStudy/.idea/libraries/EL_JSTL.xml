@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="EL_JSTL">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/35_EL&amp;JSTL/web/WEB-INF/libs/jstl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/35_EL&amp;JSTL/web/WEB-INF/libs/servlet.jar!/" />
+      <root url="jar://$PROJECT_DIR$/35_EL&amp;JSTL/web/WEB-INF/libs/standard.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

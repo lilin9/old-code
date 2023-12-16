@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上传头像</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/personal-center.css">
+</head>
+<body>
+<!-- /*页面最顶部------开始*/ -->
+<div class="pagetop">
+    <div class="pagetop-content">
+        <p>
+            汪，欢迎来天猫
+            <a href="login.html" target="_Blank" id="pleaseSign">请登录</a>
+            <a href="register.html" target="_Blank">免费注册</a>
+            <a href="login.html" target="_Blank" id="signOut">安全退出</a>
+        </p>
+        <ul>
+            <li><a href="#"><i class="iconfont icon-liebiao"></i>网站导航</a></li>
+            <li><a href="#">商家支持</a></li>
+            <li><a href="https://www.taobao.com/">淘宝网</a></li>
+            <li><a href="#"><i class="iconfont icon-shouji"></i>手机版</a></li>
+            <li><a href="collection.html">收藏夹</a></li>
+            <li><a href="cart.html"><i class="iconfont icon-gouwuchexuanzhong"></i>购物车</a></li>
+            <li><a href="index.html">首页</a></li>
+        </ul>
+    </div>
+</div>
+<!-- /*页面最顶部------结束*/ -->
+<div class="container">
+    <div class="col-md-2">
+        <!--左侧导航开始-->
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <!--主选项：资料修改-->
+                    <p class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">资料修改</a>
+                    </p>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div><a href="update-password.html">修改密码</a></div>
+                        <div><a href="personal-information.html">个人资料</a></div>
+                        <div><a href="upload-avatar.html"><b>上传头像</b></a></div>
+                        <div><a href="shipping-address.html">收货管理</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--左侧导航结束-->
+    </div>
+    <div class="col-md-10	">
+        <div class="panel panel-default">
+            <ul class="nav nav-tabs">
+                <li><a href="update-password.html">修改密码</a></li>
+                <li><a href="personal-information.html">个人资料</a></li>
+                <li class="active"><a href="upload-avatar.html">上传头像</a></li>
+                <li><a href="shipping-address.html">收货管理</a></li>
+            </ul>
+            <div class="panel-body">
+                <!--上传头像表单开始-->
+                <form id="form-change-avatar" class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">选择头像:</label>
+                        <div class="col-md-5">
+                            <img id="img-avatar" src="images/avatar/user.png" class="img-responsive" alt=""/>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-md-offset-2 col-md-4">
+                            <input id="avatar-file" type="file" name="file">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <input id="btn-change-avatar" type="button" class="btn btn-primary" value="上传"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 底部用iframe框架引入写好的foot页面 -->
+<iframe src="foot.html" frameborder="0" style="width: 100%;height: 280px;"></iframe>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script src="js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    $(document).ready(function () {
+        const avatar = $.cookie("avatar");
+        $("#img-avatar").attr("src", avatar);
+        showAvatar();
+    });
+
+    $("#btn-change-avatar").click(function () {
+        //文件上传按钮误触发设置
+        if ($("#avatar-file").val().length === 0) {
+            alert("你还没有选择文件");
+            return;
+        }
+        $.ajax({
+            url: "/users/updateAvatar",
+            type: "POST",
+            data: new FormData($("#form-change-avatar")[0]),
+            processData: false,   //处理数据的形式，默认开启的
+            contentType: false,   //提交数据的形式，默认开启的
+            dataType: "json",
+            success: function (json) {
+                //如果登录成功，跳转到首页
+                if (json.state === 200) {
+                    $("#img-avatar").attr("src", json.data);
+                    alert("头像修改成功");
+                } else {
+                    alert("头像修改失败");
+                }
+            },
+            error: function (xhr) {
+                alert("更新头像中出现不可知错误" + "\n" + xhr.message);
+            }
+        });
+    });
+
+    //显示头像
+    function showAvatar() {
+        let userAvatar = '<img src="' + $.cookie("avatar") + '" alt="" style="width: 20px;height: 20px;margin-left: 13px;margin-bottom:2%">'
+        $.ajax({
+            url: "/users/getSession",
+            type: "get",
+            dataType: "json",
+            success: function (json) {
+                if (json.data) {
+                    $("#pleaseSign").replaceWith(userAvatar);
+                }
+            }
+        })
+    }
+
+    //退出登录点击事件
+    $("#signOut").click(function () {
+        if (!confirm("你确定要退出登录吗？")) return;
+        //重置保存在cookie中的头像
+        $.cookie("avatar", "", {path: "/"});
+        //清空session域中的用户信息
+        $.ajax({
+            url: "/users/clear",
+            type: "get",
+            dataType: "json",
+            success: function (json) {
+                if (json.state === 200) {
+                    alert("退出登录成功")
+                    location.href = "login.html"
+                } else {
+                    alert("退出登录失败" + "\n" + json.message)
+                }
+            },
+            error: function (xhr) {
+                alert("退出登录时产生未知错误" + "\n" + xhr.status)
+            }
+        });
+    });
+</script>
+</body>
+
+</html>

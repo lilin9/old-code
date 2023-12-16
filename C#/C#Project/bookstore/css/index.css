@@ -1,0 +1,348 @@
+body{
+	width:100%;
+	margin: 0 auto;
+	padding: 0;
+}
+nav{
+    padding-left:10px;
+    padding-right:20px;
+	margin:0 auto;
+	height: 56px;
+	line-height: 56px;
+	font-family: '黑体';
+   /* border-bottom: 2px solid rgb(231, 79, 77);*/
+}
+button{
+    cursor:pointer;
+}
+a{
+    cursor:pointer;
+}
+.logo{
+	float: left;
+	height: 56px;
+	margin: 0;
+	border: none;
+	padding: 0;
+}
+nav span{
+	height: 100%;
+}
+.left{
+	float: left;
+	font-size: 20px;
+	font-weight: 600;
+}
+nav .login{
+	float: right;
+	color: #e74f4d;
+}
+nav label{
+    float: right;
+	color: #e74f4d;
+}
+nav .login:hover{
+	font-size: 20px;
+	color: red;
+
+}
+#login-out{
+    float:right;
+    font-size: 12px;
+    margin-left: 5px;
+}
+nav ul {
+	height: 100%;
+	float: right;
+	margin-right: 15px;
+	margin-top:0;
+	margin-bottom: 0; 
+}
+nav ul li{
+	list-style: none;
+	float: left;
+	width: 88px;
+	text-align: center;
+}
+nav ul li:hover{
+	border-bottom: 3px solid #e74f4d;
+	color:#e74f4d;
+}
+
+.current{
+	border-bottom: 3px solid #e74f4d;
+	color:#e74f4d;
+}
+.section1{
+	position: relative;
+	top:-51px;
+	width: 100%;
+	height: 692px;
+	background: url(../images/section1_bg.png);
+	background-size: cover;
+}
+.section1 section{
+	width:80%;
+	color: #fff;
+	position: relative;
+	top:250px;
+	left: 130px;
+}
+.section1 h1{
+	font-weight: 500;
+	font-size: 65px;
+	font-family: '黑体';
+	margin-bottom: 15px;
+}
+.section1 p{
+	font-size: 20px;
+	margin: 5px;
+	font-weight: 600px;
+}
+.section1 a{
+	display: block;
+	width: 250px;
+	height: 50px;
+	background: #e74f4d;
+	text-align: center;
+	line-height: 50px;
+	text-decoration: none;
+	color: #fff;
+	margin-top: 50px;
+	font-weight: 500;
+	font-family: '黑体';
+	font-size: 25px;
+}
+.section1 a:hover{
+	color: #e74f4d;
+	background: #fff;
+}
+.section2{
+	width: 100%;
+	height: 180px;
+
+}
+.section2 ul{
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+.section2 ul li{
+	float: left;
+	list-style: none;
+	display: block;
+	width: 24.5%;
+	text-align: center;
+}
+.section2 ul li p{
+	display: block;
+	width:100%;
+	margin:10px auto;
+	color: gray;
+	border-right: 2px solid gray;
+}
+.section3{
+	padding: 75px 0;
+	width: 100%;
+	text-align: center;
+	background: rgb(237,237,237);
+}
+.section3 img{
+	margin-bottom: 25px;
+}
+.section3 h1{
+	margin: 0;
+	font-size: 35px;
+	font-family: '黑体';
+	color: rgb(159,159,159);
+}
+.section4{
+	color: #fff;
+	text-align: center;
+	padding: 70px 0;
+	width: 100%;
+	height: 200px;
+	background: url(../images/section4_bg.png);
+	background-size: cover;
+}
+.section4 section{
+	width: 80%;
+	margin: 40px auto;
+}
+.section4 section hr{
+	width: 55px;
+	font-weight: 1000px;
+}
+.section5{
+	background: rgb(247,247,247);
+	width: 100%;
+	height: 535px;
+}
+.section5 ul{
+	width: 1040px;
+	margin: 0 auto;
+	padding: 50px 0;
+	height: 530px;
+}
+.section5 ul li{
+	list-style: none;
+	float: left;
+	display: block;
+	width:260px;
+	text-align: center;
+}
+.section5 ul li img{
+	padding: 3px;
+	border:4px solid white;
+}
+.section5 ul li h4{
+	margin: 5px;
+}
+.section5 ul li p{
+	color: gray;
+	margin: 10px;
+}
+.section6{
+	width: 100%;
+	height: 570px;
+}
+.section6 .left{
+	width: 70%;
+	height: 100%;
+	background:url(../images/section6_bg.png);
+	background-size: cover;
+}
+.section6 .left .content{
+	width: 50%;
+	margin: 150px auto;
+	color: #fff;
+	font-family: '黑体';
+	text-align: center;
+}
+.section6 .left .content h2{
+	font-size: 42px;
+	margin: 2px 0;
+}
+.section6 .left .content h1{
+	font-size:130px;
+	margin: 5px auto;
+}
+.section6 .left .content h4{
+	margin: 10px auto;
+	font-size: 25px;
+}
+.section6 .right{
+	background: #fff;
+	width: 30%;
+	float: left;
+	height: 100%;
+}
+.section6 .right section{
+	text-align: center;
+	color: gray;
+	width:70%;
+	margin: 100px auto;
+}
+.section6 .right section h2{
+	color: #000;
+}
+.section6 .right section h2 span{
+	color:  #e74f4d;
+}
+ .section6 .right section a{
+ 	display: block;
+ 	text-decoration: none;
+ 	margin: 25px auto;
+ 	width: 120px;
+ 	height: 40px;
+ 	font-size: 15px;
+ 	line-height: 40px;
+ 	text-align: center;
+ 	color:  #e74f4d;
+ 	border: 1px solid  #e74f4d;
+ }
+ .section6 .right section a:hover{
+	color: #fff;
+	background: #e74f4d;
+}
+.section7{
+	width: 100%;
+	height: 522px;
+}
+.section7 div{
+	width: 33.3%;
+	height: 100%;
+	float: left;
+}
+.section7 .first{
+	background: #e74f4d;
+	color: #fff;
+}
+.section7 .second{
+	background: #fff;
+	color: #000;
+}
+.section7  .three{
+	background: url(../images/section7.png);
+	background-size: cover;
+}
+.section7 section{
+	margin: 180px auto;
+	width: 50%;
+	text-align: center;
+	font-family: '黑体';
+	font-size:18px;
+	font-weight: normal;
+}
+.section7 section h3{
+	margin: 8px 0;
+}
+.section7 section hr{
+	width: 30px;
+	color: gray;
+}
+.section7 section a{
+	display: block;
+ 	text-decoration: none;
+ 	margin: 25px auto;
+ 	width: 120px;
+ 	height: 40px;
+ 	font-size: 15px;
+ 	line-height: 40px;
+ 	text-align: center;
+ 	color:  #e74f4d;
+ 	border: 1px solid  #e74f4d;
+}
+.section7 section  a:hover{
+	color: #fff;
+	background: #e74f4d;
+}
+.section7 .first a{
+	color: #fff;
+	border-color:#fff; 
+}
+.section7 .first a:hover{
+	color:#e74f4d;
+	background: #fff;
+}
+/*.section8{
+	width: 100%;
+	height: 650px;
+}
+.section9{
+	width: 100%;
+	height:415px;
+}*/
+footer{
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+nav a{
+    text-decoration:none;
+    color:black;
+}
+a{
+    text-decoration:none;
+}

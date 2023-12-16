@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="lilin-admin" />
+        <module name="lilin-blog" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="lilin-admin" options="-parameters" />
+      <module name="lilin-blog" options="-parameters" />
+      <module name="lilin-framework" options="-parameters" />
+      <module name="myBlog_java" options="-parameters" />
+      <module name="myblog_java" options="" />
+    </option>
+  </component>
+</project>

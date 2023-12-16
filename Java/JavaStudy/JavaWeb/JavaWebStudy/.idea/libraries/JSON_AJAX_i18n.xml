@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="JSON_AJAX_i18n">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/39_JSON_AJAX_i18n/web/WEB-INF/libs/gson-2.2.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

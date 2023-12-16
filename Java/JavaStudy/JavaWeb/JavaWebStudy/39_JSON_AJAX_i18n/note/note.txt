@@ -1,0 +1,219 @@
+一、JSON
+	1、什么是JSON
+		JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，易于人阅读和编写，同时也易于机器解析和生成。JSON采用完全独立于语言的文本格式，而且很多语言都提供了对JSON的支持（包括C、C++、C#、Java、JavaScript、Perl、Python等），这就使得JSON成为理想的数据交换语言。
+
+		轻量级指的是和 xml 作比较。
+
+		数据交换指的是客户端和服务器之间业务数据的传递格式。
+
+	2、JSON在JavaScript中的使用
+		（1）JSON的定义
+			json由键值对组成，并由“{}”包围，每个键由“""”包围起来，键和值之间用冒号分割，多组键值对之间使用“:”进行分隔
+
+			let json1 = {
+	            "key1":12,
+	            "key2":"value2"
+	        };
+
+	        for (let i = 0; i < json1.key3.length; i++) {
+	            alert(json1.key3[i])
+	        }
+
+	    （2）JSON的访问
+	    	alert(json1.key1);
+
+	    （3）JSON的两个常用方法
+	    	a）json的两种存在形式
+	    		一种是：对象的形式存在，称其为json对象
+	    		一种是：字符串形式存在，称其为json字符串
+
+	    	b）使用场景：
+	    		当需要操作json中的数据的时候，需要json对象的格式；
+	    		当需要在客户端和服务器之间进行数据交换的时候，使用json字符串。
+
+	    	c）JSON.stringify() 将json对象转换成为json字符串
+	    		const jsonString = JSON.stringify(json);
+	        	alert(jsonString);
+
+	    	d）JSON.parse() 将json字符串转换成为json对象
+	    	    const jsonObject = JSON.parse(jsonString);
+	        	alert(jsonObject);
+
+	3、JSON在Java中的使用
+		（1）javaBean 和json的转换
+			Person person = new Person("Tony", 23);
+			Gson gson = new Gson();
+
+			String personGson = gson.toJson(person);
+			System.out.println(personGson);
+
+			Person person1 = gson.fromJson(personGson, Person.class);
+			System.out.println(person1);
+
+		（2）List 和json的转换
+			List<Person> personList = new ArrayList<>();
+			personList.add(new Person("Tony", 23));
+			personList.add(new Person("Tom", 32));
+			personList.add(new Person("Ami", 12));
+			personList.add(new Person("Lily", 15));
+
+			Gson gson = new Gson();
+			String listJson = gson.toJson(personList);
+			System.out.println(listJson);
+
+			List personList1 = gson.fromJson(listJson, new PersonListType().getType());
+			System.out.println(personList1);
+
+		（3）Map 和json的转换
+			Map<String, Object> map = new LinkedHashMap<>();
+			map.put("person1", new Person("Tony", 12));
+			map.put("person2", new Person("Tom", 12));
+			map.put("person3", new Person("Smith", 12));
+			map.put("person4", new Person("Lily", 12));
+
+			Gson gson = new Gson();
+			String mapJson = gson.toJson(map);
+			System.out.println(mapJson);
+
+			Map<String, Object> map1 = gson.fromJson(mapJson, new PersonMapType().getType());
+			//匿名内部类的形式
+			Map<String, Object> map2 = gson.fromJson(mapJson, new TypeToken<Map<String, Object>>(){}.getType());
+			
+			System.out.println(map1);
+			System.out.println(map2);
+
+
+二、AJAX请求
+	1、什么是AJAX请求
+		AJAX 即“Asynchronous Javascript And XML”（异步JavaScript和XML），是指一种创建交互式网页应用的网页开发技术
+		注：AJAX是一种浏览器通过js异步发起请求，局部更新页面的技术
+
+	2、原生AJAX请求的示例
+	    protected void javaScriptAjax(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	        System.out.println("阿Sir， 收到AJAX的请求了！");
+
+	        Person person = new Person("Tom", 22);
+	        //将person对象转换成JSON字符串
+	        Gson gson = new Gson();
+	        String personJson = gson.toJson(person);
+
+	        resp.getWriter().write(personJson);
+	    }
+
+	    <script type="text/javascript">
+	        //使用JavaScript语言发起Ajax请求，访问服务器AjaxServlet中的javaScriptAjax方法
+	        function ajaxRequest() {
+	            //1、创建XMLHttpRequest
+	            const xmlHttpRequest = new XMLHttpRequest()
+
+	            //2、调用open方法设置请求参数
+	            xmlHttpRequest.open("GET", "http://localhost:8080/39_JSON_AJAX_i18n/ajaxServlet?action=javaScriptAjax", true);
+
+	            //3、在send方法前绑定onreadystatechange事件，处理请求完成后的操作
+	            xmlHttpRequest.onreadystatechange = function () {
+	                if (xmlHttpRequest.readyState === 4 && xmlHttpRequest.status === 200) {
+	                    const jsonObject = JSON.parse(xmlHttpRequest.responseText);
+
+	                    //将响应的数据显示在页面上
+	                    document.getElementById("div01").innerHTML = "name=" + jsonObject.name + ", age=" + jsonObject.age;
+	                }
+	            }
+
+	            //4、调用send方法发送请求
+	            xmlHttpRequest.send();
+	        }
+
+	    </script>
+
+	3、jQuery中的AJAX请求
+		（1）$.ajax()
+			参数：
+				url			表示请求的地址
+				type 		表示请求的类型GET或POST请求
+				data 		表示发送给服务器的数据
+					两种格式：
+						a）name=value&name=value
+						b）{key:value}
+
+				success 	请求成功，响应的回调函数
+				dataType 	响应的数据类型
+					返回的常见的数据类型：text、xml、json
+
+			<script type="text/javascript">
+		        $(function () {
+		            //ajax请求
+		            $("#ajaxBtn").click(function () {
+		                $.ajax({
+		                    url: "http://localhost:8080/39_JSON_AJAX_i18n/ajaxServlet",
+		                    data: "action=jQueryAjax",
+		                    type: "get",
+		                    success: function (data) {
+		                        alert("服务器返回的数据是：" + data);
+
+
+		                        //const dataJson = JSON.parse(data);
+		                        $("#msg").html("姓名：" + data.name + "，年龄是：" + data.age);
+		                    },
+		                    //dataType: "text"
+		                    dataType: "json"
+		                })
+		            })
+		        })
+		    </script>
+
+		(2)$.get() 和 $.post()
+			参数：
+				url			请求的url地址
+				data 		发送的数据
+				callback 	成功的回调函数
+				type 		返回的数据类型
+
+			//get请求
+            $("#getBtn").click(function () {
+                $.get("http://localhost:8080/39_JSON_AJAX_i18n/ajaxServlet",
+                    "action=jQueryGet",
+                    function (data) {
+                        $("#msg").html("get 姓名：" + data.name + "，年龄是：" + data.age);
+                    },
+                    "json");
+            });
+
+            //post请求
+            $("#postBtn").click(function () {
+                $.post("http://localhost:8080/39_JSON_AJAX_i18n/ajaxServlet",
+                    "action=jQueryPost",
+                    function (data) {
+                        $("#msg").html("post 姓名：" + data.name + "，年龄是：" + data.age);
+                    },
+                    "json");
+            });
+
+		(3)$.getJSON()
+			参数：
+				url 		请求的url地址
+				data 		发送给服务器的数据
+				callback 	成功的回调函数
+
+			//getJSON请求
+            $("getJSONBtn").click(function () {
+                $.getJSON("http://localhost:8080/39_JSON_AJAX_i18n/ajaxServlet",
+                "action=jQueryGetJSON",
+                function (data) {
+                    $("#msg").html("getJSON 姓名：" + data.name + "，年龄是：" + data.age);
+                })
+            });
+
+		（4）表单序列化 serialize()
+			其可以把表单中所有表单项的内容都获取到，并且以 name=value&name=value 的形式进行拼接。
+
+			//serialize()
+            $("submit").click(function () {
+                $.getJSON("http://localhost:8080/39_JSON_AJAX_i18n/ajaxServlet",
+                    "action=jQuerySerialize&" + $("#form01").serialize(),
+                    function (data) {
+                        $("#msg").html("serialize() 姓名：" + data.name + "，年龄是：" + data.age);
+                    })
+            });
+
+
+三、i18n国际化（了解内容）

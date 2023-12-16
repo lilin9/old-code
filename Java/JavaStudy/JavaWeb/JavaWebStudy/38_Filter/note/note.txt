@@ -1,0 +1,80 @@
+一、Fileter过滤器
+	1、Filter过滤器是javaweb三大组件之一（Servlet程序、Listener监听器、Filter过滤器）
+	2、Filter过滤器是JavaEE的规范，即接口
+	3、Filter过滤器的作用：拦截请求，过滤响应
+	4、拦截请求常见应用场景：
+		（1）权限检查
+		（2）日记操作
+		（3）事务管理
+		……
+
+
+二、Filter初体验
+	要求在web工程下，有一个admin目录，在admin目录中的所有资源（HTML页面，jpg文件等等）都必须要求用户登录之后才允许访问。
+	思路：由于用户登录之后都会把用户登录信息保存到 Session 域中，所以检查用户是否登录页面，各以判断 Session 中是否包含有用户登录的信息。
+	<%
+	    Object user = session.getAttribute("user");
+	    if (user == null) {
+	        request.getRequestDispatcher("/login.jsp").forward(request, response);
+	        return;
+	    }
+	%>
+	我是 a.jsp 文件
+
+
+三、Filter的生命周期
+	1、Filter的生命周期包含的方法：
+		（1）构造器方法
+		（2）init初始化方法
+
+			（1）（2）步，在web工程启动的时候执行（Filter已经创建）
+
+		（3）doFilter过滤方法
+
+			（3）步在每次拦截到请求时执行
+
+		（4）destroy销毁方法
+
+			（4）步在停止web工程时就会执行（停止web工程就会销毁 Filter 过滤器）
+
+
+四、FilterConfig类
+	1、FilterConfig类是Filter过滤器的配置文件类
+
+	2、Tomcat每次创建Filter的同时，也会创建一个 FilterConfig 类，其包含了Filter配置文件的配置信息
+
+	3、FilterConfig类的作用是获取Filter过滤器的配置内容
+		（1）获取 filter-name 的内容
+			System.out.println("获取 filter-name 的内容：" + filterConfig.getFilterName());
+
+		（2）获取 web.xml 中 init-param 初始化参数
+			System.out.println("获取 init-param 初始化参数：" + filterConfig.getInitParameter("username"));
+
+		（3）获取 ServletContext 对象
+			System.out.println("获取 ServletContext 对象：" + filterConfig.getServletContext());
+
+	4、FilterChain.doFilter() 方法的作用
+		（1）执行下一个Filter过滤器（当存在下一个Filter时）
+		（2）执行目标资源（当不存在下一个Filter时）
+
+	5、多个Filter过滤器执行的特点：
+		（1）当多个Filter过滤器执行的时候，它们的优先执行顺序有其在 web.xml 中从上到下配置的顺序决定的。
+		（2）所有Filter和目标资源都默认执行在同一个线程中。
+		（3）多个Filter共同执行的时候，都是用同一个 Request 对象。
+
+
+五、Filter的拦截路径
+	1、精确匹配
+		<url-pattern>/target.jsp</url-pattern>
+
+		以上配置的路径表示请求地址必须为：http://ip:port/工程路径/target.jsp
+
+	2、目录匹配
+		<url-pattern>/admin/*</url-pattern>
+
+		以上配置的路径，表示请求地址必须为：http://ip:port/工程名/admin/*
+
+	3、后缀名匹配（后缀名匹配不能以“/”开头）
+		<url-pattern>*.html</url-pattern>
+
+		以上配置的路径，表示请求地址必须以 html 结尾才会被拦截到。

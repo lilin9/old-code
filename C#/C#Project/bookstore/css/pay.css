@@ -1,0 +1,30 @@
+﻿body {
+}
+#pay-body{
+    background:rgba(247, 247, 247, 0.5);
+    min-height:660px;
+    padding-top:38px;
+}
+#pay-content{
+    width:380px;
+    text-align:center;
+    margin:0px auto;
+    border: 1px solid #E8E8E8;
+    box-shadow:10px 10px #ccc;
+}
+#pay-head{
+    background-color:#e74f4d;
+    color:#fff;
+    line-height:38px;
+    margin:0;
+    margin-bottom:5px;
+}
+#pay-content input[type="submit"]{
+    width:100px;
+    background:#e74f4d;
+    color:#fff;
+    border:none;
+    line-height:30px;
+    margin-top:8px;
+    border-radius:5px;
+}

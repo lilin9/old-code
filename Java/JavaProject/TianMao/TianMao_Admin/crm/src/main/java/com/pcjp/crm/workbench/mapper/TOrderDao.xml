@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pcjp.crm.workbench.mapper.TOrderDao">
+
+    <resultMap type="com.pcjp.crm.workbench.domain.TOrder" id="TOrderMap">
+        <result property="oid" column="oid" jdbcType="INTEGER"/>
+        <result property="uid" column="uid" jdbcType="INTEGER"/>
+        <result property="recvName" column="recv_name" jdbcType="VARCHAR"/>
+        <result property="recvPhone" column="recv_phone" jdbcType="VARCHAR"/>
+        <result property="recvProvince" column="recv_province" jdbcType="VARCHAR"/>
+        <result property="recvCity" column="recv_city" jdbcType="VARCHAR"/>
+        <result property="recvArea" column="recv_area" jdbcType="VARCHAR"/>
+        <result property="recvAddress" column="recv_address" jdbcType="VARCHAR"/>
+        <result property="totalPrice" column="total_price" jdbcType="INTEGER"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="orderTime" column="order_time" jdbcType="TIMESTAMP"/>
+        <result property="payTime" column="pay_time" jdbcType="TIMESTAMP"/>
+        <result property="createdUser" column="created_user" jdbcType="VARCHAR"/>
+        <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/>
+        <result property="modifiedUser" column="modified_user" jdbcType="VARCHAR"/>
+        <result property="modifiedTime" column="modified_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+
+
+
+    <resultMap type="com.pcjp.crm.workbench.domain.ConnectionOrder" id="ConnectionOrder">
+        <result property="oid" column="oid" jdbcType="INTEGER"/>
+
+        <result property="uid" column="uid" jdbcType="INTEGER"/>
+        <result property="recvName" column="recv_name" jdbcType="VARCHAR"/>
+        <result property="recvPhone" column="recv_phone" jdbcType="VARCHAR"/>
+        <result property="recvProvince" column="recv_province" jdbcType="VARCHAR"/>
+        <result property="recvCity" column="recv_city" jdbcType="VARCHAR"/>
+        <result property="recvArea" column="recv_area" jdbcType="VARCHAR"/>
+        <result property="recvAddress" column="recv_address" jdbcType="VARCHAR"/>
+        <result property="totalPrice" column="total_price" jdbcType="INTEGER"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="orderTime" column="order_time" jdbcType="TIMESTAMP"/>
+        <result property="payTime" column="pay_time" jdbcType="TIMESTAMP"/>
+        <result property="createdUser" column="created_user" jdbcType="VARCHAR"/>
+        <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/>
+        <result property="modifiedUser" column="modified_user" jdbcType="VARCHAR"/>
+        <result property="modifiedTime" column="modified_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <!--查询单个-->
+    <select id="queryById" resultMap="TOrderMap">
+        select
+          oid, uid, recv_name, recv_phone, recv_province, recv_city, recv_area, recv_address, total_price, status, order_time, pay_time, created_user, created_time, modified_user, modified_time
+        from t_order
+        where oid = #{oid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="TOrderMap">
+        select
+          oid, uid, recv_name, recv_phone, recv_province, recv_city, recv_area, recv_address, total_price, status, order_time, pay_time, created_user, created_time, modified_user, modified_time
+        from t_order
+        <where>
+            <if test="oid != null">
+                and oid = #{oid}
+            </if>
+            <if test="uid != null">
+                and uid = #{uid}
+            </if>
+            <if test="recvName != null and recvName != ''">
+                and recv_name = #{recvName}
+            </if>
+            <if test="recvPhone != null and recvPhone != ''">
+                and recv_phone = #{recvPhone}
+            </if>
+            <if test="recvProvince != null and recvProvince != ''">
+                and recv_province = #{recvProvince}
+            </if>
+            <if test="recvCity != null and recvCity != ''">
+                and recv_city = #{recvCity}
+            </if>
+            <if test="recvArea != null and recvArea != ''">
+                and recv_area = #{recvArea}
+            </if>
+            <if test="recvAddress != null and recvAddress != ''">
+                and recv_address = #{recvAddress}
+            </if>
+            <if test="totalPrice != null">
+                and total_price = #{totalPrice}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="orderTime != null">
+                and order_time = #{orderTime}
+            </if>
+            <if test="payTime != null">
+                and pay_time = #{payTime}
+            </if>
+            <if test="createdUser != null and createdUser != ''">
+                and created_user = #{createdUser}
+            </if>
+            <if test="createdTime != null">
+                and created_time = #{createdTime}
+            </if>
+            <if test="modifiedUser != null and modifiedUser != ''">
+                and modified_user = #{modifiedUser}
+            </if>
+            <if test="modifiedTime != null">
+                and modified_time = #{modifiedTime}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from t_order
+        <where>
+            <if test="oid != null">
+                and oid = #{oid}
+            </if>
+            <if test="uid != null">
+                and uid = #{uid}
+            </if>
+            <if test="recvName != null and recvName != ''">
+                and recv_name = #{recvName}
+            </if>
+            <if test="recvPhone != null and recvPhone != ''">
+                and recv_phone = #{recvPhone}
+            </if>
+            <if test="recvProvince != null and recvProvince != ''">
+                and recv_province = #{recvProvince}
+            </if>
+            <if test="recvCity != null and recvCity != ''">
+                and recv_city = #{recvCity}
+            </if>
+            <if test="recvArea != null and recvArea != ''">
+                and recv_area = #{recvArea}
+            </if>
+            <if test="recvAddress != null and recvAddress != ''">
+                and recv_address = #{recvAddress}
+            </if>
+            <if test="totalPrice != null">
+                and total_price = #{totalPrice}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="orderTime != null">
+                and order_time = #{orderTime}
+            </if>
+            <if test="payTime != null">
+                and pay_time = #{payTime}
+            </if>
+            <if test="createdUser != null and createdUser != ''">
+                and created_user = #{createdUser}
+            </if>
+            <if test="createdTime != null">
+                and created_time = #{createdTime}
+            </if>
+            <if test="modifiedUser != null and modifiedUser != ''">
+                and modified_user = #{modifiedUser}
+            </if>
+            <if test="modifiedTime != null">
+                and modified_time = #{modifiedTime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="oid" useGeneratedKeys="true">
+        insert into t_order(uid, recv_name, recv_phone, recv_province, recv_city, recv_area, recv_address, total_price, status, order_time, pay_time, created_user, created_time, modified_user, modified_time)
+        values (#{uid}, #{recvName}, #{recvPhone}, #{recvProvince}, #{recvCity}, #{recvArea}, #{recvAddress}, #{totalPrice}, #{status}, #{orderTime}, #{payTime}, #{createdUser}, #{createdTime}, #{modifiedUser}, #{modifiedTime})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="oid" useGeneratedKeys="true">
+        insert into t_order(uid, recv_name, recv_phone, recv_province, recv_city, recv_area, recv_address, total_price, status, order_time, pay_time, created_user, created_time, modified_user, modified_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.uid}, #{entity.recvName}, #{entity.recvPhone}, #{entity.recvProvince}, #{entity.recvCity}, #{entity.recvArea}, #{entity.recvAddress}, #{entity.totalPrice}, #{entity.status}, #{entity.orderTime}, #{entity.payTime}, #{entity.createdUser}, #{entity.createdTime}, #{entity.modifiedUser}, #{entity.modifiedTime})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="oid" useGeneratedKeys="true">
+        insert into t_order(uid, recv_name, recv_phone, recv_province, recv_city, recv_area, recv_address, total_price, status, order_time, pay_time, created_user, created_time, modified_user, modified_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.uid}, #{entity.recvName}, #{entity.recvPhone}, #{entity.recvProvince}, #{entity.recvCity}, #{entity.recvArea}, #{entity.recvAddress}, #{entity.totalPrice}, #{entity.status}, #{entity.orderTime}, #{entity.payTime}, #{entity.createdUser}, #{entity.createdTime}, #{entity.modifiedUser}, #{entity.modifiedTime})
+        </foreach>
+        on duplicate key update
+        uid = values(uid),
+        recv_name = values(recv_name),
+        recv_phone = values(recv_phone),
+        recv_province = values(recv_province),
+        recv_city = values(recv_city),
+        recv_area = values(recv_area),
+        recv_address = values(recv_address),
+        total_price = values(total_price),
+        status = values(status),
+        order_time = values(order_time),
+        pay_time = values(pay_time),
+        created_user = values(created_user),
+        created_time = values(created_time),
+        modified_user = values(modified_user),
+        modified_time = values(modified_time)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update t_order
+        <set>
+            <if test="uid != null">
+                uid = #{uid},
+            </if>
+            <if test="recvName != null and recvName != ''">
+                recv_name = #{recvName},
+            </if>
+            <if test="recvPhone != null and recvPhone != ''">
+                recv_phone = #{recvPhone},
+            </if>
+            <if test="recvProvince != null and recvProvince != ''">
+                recv_province = #{recvProvince},
+            </if>
+            <if test="recvCity != null and recvCity != ''">
+                recv_city = #{recvCity},
+            </if>
+            <if test="recvArea != null and recvArea != ''">
+                recv_area = #{recvArea},
+            </if>
+            <if test="recvAddress != null and recvAddress != ''">
+                recv_address = #{recvAddress},
+            </if>
+            <if test="totalPrice != null">
+                total_price = #{totalPrice},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="orderTime != null">
+                order_time = #{orderTime},
+            </if>
+            <if test="payTime != null">
+                pay_time = #{payTime},
+            </if>
+            <if test="createdUser != null and createdUser != ''">
+                created_user = #{createdUser},
+            </if>
+            <if test="createdTime != null">
+                created_time = #{createdTime},
+            </if>
+            <if test="modifiedUser != null and modifiedUser != ''">
+                modified_user = #{modifiedUser},
+            </if>
+            <if test="modifiedTime != null">
+                modified_time = #{modifiedTime},
+            </if>
+        </set>
+        where oid = #{oid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById" >
+        delete from t_order where oid in
+        <foreach collection="array" item="oid" separator="," open="(" close=")">
+            #{oid}
+        </foreach>
+    </delete>
+
+
+    <select id="queryAllOrderByLimit"  parameterType="map" resultMap="ConnectionOrder">
+    select
+          t_order.oid,t_user.username,t_user.uid, recv_name, recv_phone, recv_province, recv_city, recv_area, recv_address, total_price, status,  t_order.order_time, pay_time,  t_order.created_user,  t_order.created_time,  t_order.modified_user,  t_order.modified_time
+        from t_order
+        left join
+        t_user
+        on
+        t_order.uid = t_user.uid
+        <where>
+            <if test="recvName != null and recvName != ''">
+               and recv_name like  '%' #{recvName} '%'
+            </if>
+        </where>
+        order by created_time desc
+        limit #{beginNo}, #{pageSize}
+    </select>
+
+    <select id="queryAllOrder" resultMap="TOrderMap">
+         select
+          oid, uid, recv_name, recv_phone, recv_province, recv_city, recv_area, recv_address, total_price, status, order_time, pay_time, created_user, created_time, modified_user, modified_time
+        from t_order
+    </select>
+</mapper>
+

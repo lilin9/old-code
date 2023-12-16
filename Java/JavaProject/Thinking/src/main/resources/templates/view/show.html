@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<div id="navigationBar">
+</div>
+<div class="mainDivStyle">
+<h1>个人信息</h1>
+<p>
+  编号：
+  <span id="humanId"></span>
+</p>
+<p>
+  姓名：
+  <span id="humanName"></span>
+</p>
+<p>
+  密码：
+  <span id="humanPassword"></span>
+</p>
+<p>
+  邮箱：
+  <span id="humanEmail"></span>
+</p>
+</div>
+<script type="module">
+    import utils from '/js/utils.js';
+    //渲染dom页面
+    function renderDom(human) {
+        $("#humanId").text(human.humanId);
+        $("#humanName").text(human.humanName);
+        $("#humanPassword").text(human.humanPassword);
+        $("#humanEmail").text(human.humanEmail);
+    }
+
+    //初始化页面信息
+    function initPage() {
+        //获取用户id
+        let human = sessionStorage.getItem("human");
+        $.ajax({
+            type: "POST",
+            url: "/getHuman",
+            async: false,
+            data: human,
+            dataType: "json",
+            headers: {'Content-Type': 'application/json'},
+            success: function (data) {
+                if (data.code == "200") {
+                    //渲染页面
+                    renderDom(data.data);
+                }
+            }
+        });
+    }
+
+    $(function(){
+        $("#navigationBar").load("/to/base/navigation");
+        //在页面加载时
+        initPage();
+    });
+</script>
+</body>
+</html>

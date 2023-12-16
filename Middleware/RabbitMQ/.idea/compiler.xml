@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="RabbitMQ_01_ReceiveMessage" />
+        <module name="RabbitMQ_05_DelayQueue1_Question" />
+        <module name="RabbitMQ_02_DirectExchange" />
+        <module name="RabbitMQ_05_DelayQueue2_DelayMessagePlugins" />
+        <module name="RabbitMQ_06_Confirm" />
+        <module name="RabbitMQ_01_FanoutExchange" />
+        <module name="RabbitMQ_03_TTL1" />
+        <module name="RabbitMQ_05_DelayQueue" />
+        <module name="RabbitMQ_03_TTL2" />
+        <module name="RabbitMQ_04_DeadLetterExchange" />
+        <module name="RabbitMQ_04_DeadLetterExchange2" />
+        <module name="RabbitMQ_07_Return" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="RabbitMQ_01_FanoutExchange" options="-parameters" />
+      <module name="RabbitMQ_01_ReceiveMessage" options="-parameters" />
+      <module name="RabbitMQ_02_DirectExchange" options="-parameters" />
+      <module name="RabbitMQ_03_TTL1" options="-parameters" />
+      <module name="RabbitMQ_03_TTL2" options="-parameters" />
+      <module name="RabbitMQ_04_DeadLetterExchange" options="-parameters" />
+      <module name="RabbitMQ_04_DeadLetterExchange2" options="-parameters" />
+      <module name="RabbitMQ_05_DelayQueue" options="-parameters" />
+      <module name="RabbitMQ_05_DelayQueue1_Question" options="-parameters" />
+      <module name="RabbitMQ_05_DelayQueue2_DelayMessagePlugins" options="-parameters" />
+      <module name="RabbitMQ_06_Confirm" options="-parameters" />
+      <module name="RabbitMQ_07_Return" options="-parameters" />
+    </option>
+  </component>
+</project>

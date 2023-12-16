@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="chs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/JDBCStudy/chs/mssql-jdbc-9.4.0.jre16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JDBCStudy/chs/mssql-jdbc-9.4.0.jre11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JDBCStudy/chs/mssql-jdbc-9.4.0.jre8.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

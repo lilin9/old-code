@@ -1,0 +1,16 @@
+INPUT(
+./debug/chooselevelscene.o
+./debug/coin.o
+./debug/dataconfig.o
+./debug/main.o
+./debug/mainwindow.o
+./debug/mypushbutton.o
+./debug/playscence.o
+./debug/qrc_resource.o
+./debug/moc_chooselevelscene.o
+./debug/moc_coin.o
+./debug/moc_dataconfig.o
+./debug/moc_mainwindow.o
+./debug/moc_mypushbutton.o
+./debug/moc_playscence.o
+);

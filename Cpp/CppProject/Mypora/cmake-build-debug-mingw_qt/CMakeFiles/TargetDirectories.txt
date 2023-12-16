@@ -1,0 +1,4 @@
+D:/Programming/Cpp/CppProject/Mypora/cmake-build-debug-mingw_qt/CMakeFiles/Mypora.dir
+D:/Programming/Cpp/CppProject/Mypora/cmake-build-debug-mingw_qt/CMakeFiles/edit_cache.dir
+D:/Programming/Cpp/CppProject/Mypora/cmake-build-debug-mingw_qt/CMakeFiles/rebuild_cache.dir
+D:/Programming/Cpp/CppProject/Mypora/cmake-build-debug-mingw_qt/CMakeFiles/Mypora_autogen.dir

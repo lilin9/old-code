@@ -1,0 +1,93 @@
+﻿#bookDetail-body{
+    background:rgba(247, 247, 247, 0.5);
+    min-height:660px;
+}
+#bookDetail-content{
+    width:680px;
+    margin:0px auto;
+    padding-top:30px;
+    border: 1px solid #E8E8E8;
+    padding:28px
+}
+#bookDetail-img{
+    width:320px;
+    float:left;
+    margin-right:28px;
+}
+#bookDetail-img img{
+    width:100%;
+}
+#bookDetail-descript{
+    float:left;
+}
+#bookDetail-descript h3{
+    min-height: 21px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 21px;
+    color: #3C3C3C;
+}
+#bookDetail-descript-price-block{
+    padding:10px;
+    background: #FFF2E8;
+    height:57px;
+    line-height:57px;
+}
+#bookDetail-descript-price{
+    vertical-align: baseline;
+    font-size: 26px;
+    font-weight: 700;
+    font-family: Tahoma,Arial,Helvetica,sans-serif;
+    color: #F40;
+}
+#bookDetail-descript table{
+    margin-bottom:18px;
+}
+#bookDetail-descript table tr td{
+    min-width:78px;
+    line-height:30px;
+}
+.bookDetail-desc{
+    color: #6C6C6C;
+    font-size:15px;
+}
+#bookDeatil-book-num{
+    width:40px;
+    text-align:center;
+}
+#bookDeatil-yu{
+    margin-left:5px;
+    font-size:13px;
+}
+#bookDatail-btn input{
+    display:block;
+    color: #FFF;
+    border-color: #F40;
+    background: #F40;
+    height:40px;
+}
+#bookDeatil-pay{
+    display:block;
+    width:136px;
+    text-align:center;
+    color: #E5511D;
+    border-color: #F0CAB6;
+    background: #FFE4D0;
+    height:40px;
+    line-height:40px;
+    float:left;
+    margin-right:20px;
+}
+#bookDeatil-pay:hover{
+    border-color: #F0CAB6;
+    background: #FFD9BC;
+}
+#bookDatail-btn input{
+    border:none;
+    width:175px;
+    display:block;
+    color: #FFF;
+    border-color: #F40;
+    background: #F40;
+    height:40px;
+}

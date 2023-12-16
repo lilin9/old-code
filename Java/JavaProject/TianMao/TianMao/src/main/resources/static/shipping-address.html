@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>收货地址</title>
+    <link rel="stylesheet" type="text/css" href="css/personal-center.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+<!-- /*页面最顶部------开始*/ -->
+<div class="pagetop">
+    <div class="pagetop-content">
+        <p>
+            汪，欢迎来天猫
+            <a href="login.html" target="_Blank" id="pleaseSign">请登录</a>
+            <a href="register.html" target="_Blank">免费注册</a>
+            <a href="login.html" target="_Blank" id="signOut">安全退出</a>
+        </p>
+        <ul>
+            <li><a href="#"><i class="iconfont icon-liebiao"></i>网站导航</a></li>
+            <li><a href="#">商家支持</a></li>
+            <li><a href="https://www.taobao.com/">淘宝网</a></li>
+            <li><a href="#"><i class="iconfont icon-shouji"></i>手机版</a></li>
+            <li><a href="collection.html">收藏夹</a></li>
+            <li><a href="cart.html"><i class="iconfont icon-gouwuchexuanzhong"></i>购物车</a></li>
+            <li><a href="index.html">首页</a></li>
+        </ul>
+    </div>
+</div>
+<!-- /*页面最顶部------结束*/ -->
+<div class="container">
+    <div class="col-md-2">
+        <!--左侧导航开始-->
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <!--主选项：资料修改-->
+                    <p class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">资料修改</a>
+                    </p>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div><a href="update-password.html">修改密码</a></div>
+                        <div><a href="personal-information.html">个人资料</a></div>
+                        <div><a href="upload-avatar.html">上传头像</a></div>
+                        <div><a href="shipping-address.html"><b>收货管理</b></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--左侧导航结束-->
+    </div>
+    <div class="col-md-10">
+        <div class="panel panel-default">
+            <ul class="nav nav-tabs">
+                <li><a href="update-password.html">修改密码</a></li>
+                <li><a href="personal-information.html">个人资料</a></li>
+                <li><a href="upload-avatar.html">上传头像</a></li>
+                <li class="active"><a href="shipping-address.html">收货管理</a></li>
+            </ul>
+            <div class="panel-body">
+                <!--地址显示-->
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>地址类型</th>
+                        <th>收货人姓名</th>
+                        <th>详细地址</th>
+                        <th>联系电话</th>
+                        <th colspan="3">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="address-list">
+                    <tr>
+                        <td>家</td>
+                        <td>八戒</td>
+                        <td>北京市房山区高老庄3排6号</td>
+                        <td>1380***1234</td>
+                        <td><a class="btn btn-xs btn-info"><span class="fa fa-edit"></span> 修改</a></td>
+                        <td><a class="btn btn-xs add-del btn-info"><span class="fa fa-trash-o"></span> 删除</a></td>
+                        <td><a class="btn btn-xs add-def btn-default">设为默认</a></td>
+                    </tr>
+                    <tr>
+                        <td>公司</td>
+                        <td>八戒</td>
+                        <td>北京市海淀区中关村中路1号1001室</td>
+                        <td>1380***1234</td>
+                        <td><a class="btn btn-xs btn-info"><span class="fa fa-edit"></span> 修改</a></td>
+                        <td><a class="btn btn-xs add-del btn-info"><span class="fa fa-trash-o"></span> 删除</a></td>
+                        <td><a class="btn btn-xs add-def btn-default">设为默认</a></td>
+                    </tr>
+                    <tr>
+                        <td>宿舍</td>
+                        <td>八戒</td>
+                        <td>北京市海淀区永丰镇30号</td>
+                        <td>1380***1234</td>
+                        <td><a class="btn btn-xs btn-info"><span class="fa fa-edit"></span> 修改</a></td>
+                        <td><a class="btn btn-xs add-del btn-info"><span class="fa fa-trash-o"></span> 删除</a></td>
+                        <td><a class="btn btn-xs add-def btn-default">设为默认</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <a href="addAddress.html" class="btn btn-sm btn-primary" style="color: white"><span class="fa fa-plus"></span>新增收货地址</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 底部用iframe框架引入写好的foot页面 -->
+<iframe src="foot.html" frameborder="0" style="width: 100%;height: 280px;"></iframe>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+</body>
+<script>
+    $(document).ready(function () {
+        showAddressList();
+        showAvatar();
+    });
+
+    //展示用户地址列表
+    function showAddressList() {
+        //清空页面
+        $("#address-list").empty();
+
+        $.ajax({
+            url: "/address/",
+            type: "GET",
+            dataType: "JSON",
+            success: function (json) {
+                if (json.state === 200) {
+                    let list = json.data;
+                    for (let i = 0; i < list.length; i++) {
+                        let tr = '<tr id="address#{aid}">'
+                            + '<td>#{tag}</td>'
+                            + '<td>#{name}</td>'
+                            + '<td>#{address}</td>'
+                            + '<td>#{phone}</td>'
+                            + '<td><a class="btn btn-xs btn-info" href="update-address.html?aid=#{aid}" style="color: white"><span class="fa fa-edit"></span> 修改</a></td>'
+                            + '<td><a class="btn btn-xs add-del btn-info" onclick="deleteAddress(#{aid})" style="color: white"><span class="fa fa-trash-o"></span> 删除</a></td>'
+                            + '<td><a class="btn btn-xs add-def btn-default" id="btn-default" onclick="setDefault(#{aid})">设为默认</a></td>'
+                            + '</tr>';
+
+                        tr = tr.replace(/#{tag}/g, list[i].tag === null ? "" : list[i].tag);
+                        tr = tr.replace(/#{name}/g, list[i].name === null ? "" : list[i].name);
+                        tr = tr.replace(/#{address}/g, list[i].address === null ? "" : list[i].address);
+                        tr = tr.replace(/#{phone}/g, list[i].phone === 0 ? "" : list[i].phone);
+                        tr = tr.replace(/#{aid}/g, list[i].aid);
+
+                        $("#address-list").append(tr);
+                    }
+
+                    //hide()：可以将某个元素隐藏
+                    $("#btn-default:eq(0)").hide();
+                } else {
+                    alert("收货地址数据加载失败");
+                }
+            },
+            error: function (xhr) {
+                alert("加载收货地址数据产生未知异常" + "\n" + xhr.status);
+            }
+        });
+    }
+
+    //删除收货地址
+    function deleteAddress(aid) {
+        //删除收货地址的误点击事件
+        if (!confirm("你确定要删除这条收货地址吗？")) return;
+
+        $.ajax({
+            url: "/address/delete/" + aid,
+            type: "get",
+            dataType: "JSON",
+            success: function (json) {
+                if (json.state === 200) {
+                    //将删除的收货地址隐藏
+                    $("#address" + aid).hide();
+                } else {
+                    alert("删除收货地址失败");
+                }
+            },
+            error: function (xhr) {
+                alert("删除收货地址发生未知错误" + " \n" + xhr.status);
+            }
+        });
+    }
+
+    //设置收货地址为默认收货地址
+    function setDefault(aid) {
+        $.ajax({
+            url: "/address/setDefault/" + aid,
+            type: "GET",
+            dataType: "JSON",
+            success: function (json) {
+                if (json.state === 200) {
+                    //重新加载收货地址列表页面
+                    showAddressList();
+                } else {
+                    alert("设置默认收货地址失败");
+                }
+            },
+            error: function (xhr) {
+                alert("设置默认收货地址发生未知错误" + " \n" + xhr.status);
+            }
+        });
+    }
+
+    //显示头像
+    function showAvatar() {
+        let userAvatar = '<img src="' + $.cookie("avatar") + '" alt="" style="width: 20px;height: 20px;margin-left: 13px;margin-bottom:2%">'
+        $.ajax({
+            url: "/users/getSession",
+            type: "get",
+            dataType: "json",
+            success: function (json) {
+                if (json.data) {
+                    $("#pleaseSign").replaceWith(userAvatar);
+                }
+            }
+        })
+    }
+
+    //退出登录点击事件
+    $("#signOut").click(function () {
+        if (!confirm("你确定要退出登录吗？")) return;
+        //重置保存在cookie中的头像
+        $.cookie("avatar", "", {path: "/"});
+        //清空session域中的用户信息
+        $.ajax({
+            url: "/users/clear",
+            type: "get",
+            dataType: "json",
+            success: function (json) {
+                if (json.state === 200) {
+                    alert("退出登录成功")
+                    location.href = "login.html"
+                } else {
+                    alert("退出登录失败" + "\n" + json.message)
+                }
+            },
+            error: function (xhr) {
+                alert("退出登录时产生未知错误" + "\n" + xhr.status)
+            }
+        });
+    });
+</script>
+</html>

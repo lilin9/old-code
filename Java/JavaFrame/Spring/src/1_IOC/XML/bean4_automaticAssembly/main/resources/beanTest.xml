@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd" >
+
+    <!--
+    autowire常用属性：byName、byType
+        byName：根据属性名称注入，注入值bean的id值要和类属性名称一致
+        byType：根据属性类型注入
+    -->
+    <bean id="employee1" class="pojo.Employee1" autowire="byName">
+        <!--<property name="dept1" ref="dept1"/>-->
+    </bean>
+    <bean id="dept1" class="pojo.Dept1">
+    </bean>
+</beans>

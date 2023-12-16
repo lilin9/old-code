@@ -1,0 +1,231 @@
+第五阶段：图书模块
+	1、MVC概念
+		MVC全称：Model模型、View视图、Controller控制器
+
+		MVC最早出现在JavaEE三层中的web层，它可以有效的指导Web层的代码是如何有效分离，单独工作的。
+
+		View视图：只负责数据和界面的显示，不接受任何与显示数据无关的的代码，便于程序员和美工的分工合作 -- JSP/HTML
+		Controller控制器：只负责接受请求，调用业务层的代码处理请求，然后派发页面，是一个“调度者”的角色 -- Servlet。（就是转到某个页面，或者是重定向到某个页面）
+		Model模型：将与业务逻辑相关的数据封装为具体的JavaBean类，其中不掺杂任何与数据处理相关的代码 -- JavaBean/Domain/Entity/Pojo。
+
+		MVC是一种思想：
+			MVC的理念是将软件代码拆分成组件，单独开发，组合使用（目的还是为了降低耦合度，让代码合理分层，方便后期升级和维护）。
+
+	2、步骤：
+		（1）编写图书模块的数据库表。
+		（2）编写图书模块的 JavaBean。
+		（3）编写图书模块的 Dao 和测试类 Dao。
+		（4）编写图书模块的 Service 和测试 Service。
+		（5）编写图书模块的Web层，和页面联调测试。
+
+	3、前后台区分：
+				前台 											后台
+		前台是给普通用户使用								后台是给管理员使用的
+
+		一般不需要权限检查，就可以访问的资源，				一般都需要权限检查，才可以访问的资源/
+		功能都属于是前台功能。（比如：淘宝或者				页面/功能。
+		京东，不登录就可以访问首页，包含商品浏览）
+
+		前台的地址：/client/bookServlet					后台的地址：/manager/bookServlet
+
+
+第六阶段：图书分页
+	由分页的视图分析出分页的对象模型Page类的属性有：
+		pageNo			当前页码
+		pageTotal		总页码
+		pageTotalCount	总记录数
+		pageSize		每页显示数量
+		items			当前页数据
+
+		pageNo：当前页码由客户端进行传递
+		pageSize：每页显示的数量由两种因素决定
+			1）客户端进行传递
+			2）有页面布局决定
+		pageTotalCount：总记录数可以有sql语句决定
+			即：select count(*) from tableName
+		pageTotal：总页码可以有总记录数 / 每页数量获得
+			注：如果总记录数 % 每页数量 > 0，除不尽，则使总页码 + 1
+		items：当前页数据，可以有sql语句获得
+			即：select * from tableName limit begin, pageSIze
+			begin 可以由公式求得： (pageNo - 1) × pageSize
+
+
+第七阶段：登陆&登出
+	1、登录 --- 显示用户名
+        <c:if test="${not empty sessionScope.get('user')}">
+            <span>欢迎<span class="um_span">${sessionScope.get("user")}</span>光临尚硅谷书城</span>
+            <a href="userServlet?action=logout">注销</a>
+        </c:if>
+
+	2、登出 --- 注销用户名
+        //1、销毁session中用户登录的信息（或者销毁session）
+        req.getSession().invalidate();
+        //2、重定向回首页（或登陆界面）
+        resp.sendRedirect(req.getContextPath());
+
+	3、表单重复提交 --- 验证码
+		表单重复提交的的三种情况：
+			（1）提交完表单，服务器使用请求转发来进行页面跳转，此时用户按下功能键F5，就会发起最后一次请求，造成表单重复提交问题。
+			解决办法：使用重定向来进行跳转。
+
+			（2）用户正常提交服务器，但是因为网络延迟，未收到服务器的响应，此时用户以为提交失败而多次重复提交表单，从而造成表单重复提交问题。
+
+			（3）用户正常提交服务器，服务器也正常回复用户，但是当提交完成后用户回退浏览器重新提交浏览器，此时同样会造成表单重复提交问题。
+
+		谷歌 kaptcha 图片验证码的使用步骤：
+			（1）导入谷歌验证码的 jar 包：kaptcha-2.3.2.jar
+
+			（2）在web.xml中去配置用于生成验证码的servlet程序
+				    <servlet>
+				        <servlet-name>KaptchaServlet</servlet-name>
+				        <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
+				    </servlet>
+				    <servlet-mapping>
+				        <servlet-name>KaptchaServlet</servlet-name>
+				        <url-pattern>/kaptcha.jpg</url-pattern>
+				    </servlet-mapping>
+
+			（3）在表单中使用img标签去显示验证码图片并使用
+				<form action="http://localhost:8080/Test/registerServlet" method="get">
+					用户名：<label><input type="text" name="username"></label> </br>
+					验证码：<label><input type="text" style="width: 80px" name="code"></label>
+					<img src="http://localhost:8080/Test/kaptcha.jpg" style="width: 100px; height: 28px"></br>
+					<label><input type="submit" value="登录"></label>
+				</form>
+
+			（4）在服务器获取谷歌生成的验证码和客户端发送过来的验证码比较使用
+				//获取session中的验证码
+				String token = (String) req.getSession().getAttribute(KAPTCHA_SESSION_KEY);
+				//立即删除session中的验证码，避免重复使用
+				req.getSession().removeAttribute(KAPTCHA_SESSION_KEY);
+
+
+第八阶段：购物车
+	1、由购物车的界面分析出购物车的模型
+				购物车对象
+		totalCount 		总商品数量
+		totalPrice 		总商品金额
+		items 			购物车商品信息
+
+			购物车商品cartItem
+		id 				商品编号
+		name 			商品名称
+		count 			商品数量
+		price 			商品单价
+		totalPrice 		商品总价
+
+		购物车模型：Cart购物车对象 + CartItem购物车商品项
+
+	2、购物车的功能
+		购物车的功能 			CartServlet程序 							Cart购物车
+
+		加入购物车 			addItem() 添加商品项 			addItem(CartItem); 添加商品项
+
+		删除商品项 			deleteItem() 删除商品项 			deleteItem(id); 删除商品项
+
+		清空购物车 			clear() 清空购物车 				clear(); 清空购物车
+
+		修改商品数量 			updateCount() 修改商品数量 		updateCount(id, count); 修改商品数量
+
+	3、市面上购物车的技术实现版本
+		（1）session版本（将购物车信息保存到session域中）
+		（2）数据库版本（将购物车信息保存到数据库中）
+		（3）redis + 数据库 + Cookie（使用Cookie + Redis缓存以及数据库保存购物车信息）
+
+
+第九阶段：订单
+	1、有订单的界面，分析订单模型
+				Order订单
+		orderId			订单号（唯一）
+		createTime		下单时间
+		price 			金额
+		status 			0未发货，1已发货，2已签收
+		userId 			用户编号
+
+			OrderItem订单项
+		id 				主键编号
+		name 			商品名称
+		count 			数量
+		price 			单价
+		totalPrice 		总价
+		orderId 		订单号
+
+		订单模块的数据模型：Order订单 + OrderItem订单项
+
+	2、订单的功能
+		订单的功能 						
+		
+		生成订单							
+		查询所有订单（管理员）
+		订单状态：发货/未发（管理员）
+		查看订单详情（都有）
+		查看我的订单（用户）
+		签收订单（用户）
+
+
+		OrderServlet程序
+
+		createOrder() 生产订单
+		showAllOrders() 查看所有订单
+		sendOrder() 订单状态：发货/未发
+		showOrderDetail() 查看订单详情
+		showMyOrders() 查看我的订单
+		receiverOrder() 签收订单/确认收货
+
+
+		OrderService程序	
+
+		createOrder(Cart,userId) 生成订单
+		showAllOders() 查询全部订单
+		sendOrder(oderId) 发货状态：发货/未发
+		showOrderDetail(orderId) 查看订单详情
+		showMyOrders(userId) 查看我的订单 
+		receiverOrder(orderId) 签收订单/确认收货
+
+
+		OrderDao程序
+		
+		saveOrder(order) 保存订单
+		queryOrders() 查询全部订单
+		changeOrderStatus(orderId,status) 修改订单状态
+		queryOrderByUserId(userId) 根据用户编号查询订单信息
+
+
+		OrderItemDao程序
+
+		saveOrderItem(orderItem) 保存订单项
+		queryOrderItemByOrderId(orderId) 根据订单号查询订单详细
+
+
+第十阶段：Filter过滤器
+	1、使用Filter过滤器拦截 /pages/manager/ 所有内容，实现权限检查
+		HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
+        Object user = httpServletRequest.getSession().getAttribute("user");
+
+        if (user == null) {
+            servletRequest.getRequestDispatcher("/pages/user/login.jsp").forward(servletRequest, servletResponse);
+        } else {
+            filterChain.doFilter(servletRequest, servletResponse);
+        }
+
+	    <filter-mapping>
+	        <filter-name>ManagerFilter</filter-name>
+	        <url-pattern>/pages/manager/*</url-pattern>
+	        <url-pattern>/manager/bookServlet</url-pattern>
+	    </filter-mapping>
+
+	2、ThreadLocal的使用
+		（1）ThreadLocal可以解决多线程的数据安全问题
+		（2）ThreadLocal可以为当前线程关联一个数据（可以是普通变量/对象/数组/集合）
+		（3）ThreadLocal的特点：
+			a、可以为当前线程关联一个数据（其可以像 Map 一样存取数据，key为当前线程）
+			b、每一个ThreadLocal对象，只能为当前线程关联一个数据；如诺要为当前线程关联多个数据，就需要使用多个ThreadLocal对象实例。
+			c、每个Thread对象被实例定义的时候，一般都是static类型
+			d、ThreadLocal中保存的数据，在线程被销毁后，会被 JVM 虚拟机自动释放
+
+	3、使用Filter和ThreadLocal组合管理事务
+	
+	4、使用Filter过滤器统一给所有的Service方法都加上 try-catch，来进行进程异常的管理
+
+	5、将所有的异常统一交给Tomcat，通过Tomcat来展示友好的错误信息页面。
+		在 web.xml 中可以通过错误页面配置来进行管理

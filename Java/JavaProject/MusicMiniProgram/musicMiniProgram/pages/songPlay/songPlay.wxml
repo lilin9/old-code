@@ -1,0 +1,37 @@
+<view class="songPlayContainer">
+  <view class="author">{{song.ar[0].name}}</view>
+  <view class="circle"></view>
+  <image class="imgNeedle {{isPlay ? 'neddleRotate' : ''}}" src="/static/image/song/needle.png"></image>
+
+  <!-- 磁盘-start -->
+  <view class="discContainer {{isPlay ? 'disAnimation' : ''}}">
+    <image class="imgDisc" src="/static/image/song/disc.png"></image>
+    <image class="musicImg" src="{{song.al.picUrl}}"></image>
+  </view>
+  <!-- 磁盘-end -->
+
+  <!-- 进度条-start -->
+  <view class="progressControl">
+    <text class="timer">{{currentTimer}}</text>
+    <!-- 总进度条 -->
+    <view class="barControl">
+      <!-- 实时进度条 -->
+      <view class="audio_currentTime_bar" style="width: {{currentWidth + 'rpx'}}">
+        <!-- 进度条圆球 -->
+        <view class="audio_circle"></view>
+      </view>
+    </view>
+    <text class="timer">{{durationTimer}}</text>
+  </view>
+  <!-- 进度条-end -->
+
+  <!-- 底部音乐控制区域-start -->
+  <view class="musicControl">
+    <text class="iconfont icon-suijibofang"></text>
+    <text class="iconfont icon-hanhan-01-01" id="pre" bindtap="handleSwitch"></text>
+    <text class="iconfont {{isPlay ? 'icon-bofang1' : 'icon-bofang'}} bigIconfont" bindtap="musicPlay"></text>
+    <text class="iconfont icon-hanhan-01-011" id="next" bindtap="handleSwitch"></text>
+    <text class="iconfont icon-liebiao"></text>
+  </view>
+  <!-- 底部音乐控制区域-end -->
+</view>

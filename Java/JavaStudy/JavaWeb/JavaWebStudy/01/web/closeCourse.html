@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生选课</title>
+
+    <style>
+        body {
+            font-family: "宋体",serif;
+            color: #035DB5;
+            text-align: center;
+        }
+
+        table {
+            margin: auto;
+            border-collapse: collapse;
+        }
+
+        caption {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            font-size: 30px;
+        }
+
+        tr th {
+            border: 1px #7F7F7F solid;
+            padding: 10px;
+        }
+
+        tr td {
+            border: 1px #7F7F7F solid;
+            padding: 10px;
+        }
+    </style>
+
+    <script type="text/javascript" src="static/script/jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            let count = 0;
+            //给所有的按钮绑定单击事件
+            $(":button").click(function (e) {
+                //当点击按钮后，令选课人数加1，表示已选中该课程
+                const id = $(this).attr("id");
+                if (id === "javaButton") {
+                    const java = $("#java");
+
+                    java.text(++count);
+                    java.disabled = true;
+                } else if (id === "jsButton") {
+                    const js = $("#js");
+
+                    js.text(++count);
+                    js.disable = true;
+                } else if (id === "pyButton") {
+                    const py = $("#py");
+
+                    py.text(++count);
+                    py.disable = true;
+                } else if (id === "cButton") {
+                    const c = $("#c");
+
+                    c.text(++count);
+                    c.disable = true;
+                }
+            })
+        })
+
+    </script>
+</head>
+<body>
+<div id="parent">
+    <table>
+        <caption><b>学生选课表</b></caption>
+        <tr>
+            <th>编码</th>
+            <th>课程名称</th>
+            <th>已选人数</th>
+            <th>选择</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Java</td>
+            <td id="java">0</td>
+            <td><button id="javaButton">选择此课程</button></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>JavaScript</td>
+            <td id="js">0</td>
+            <td><button id="jsButton">选择此课程</button></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Python</td>
+            <td id="py">0</td>
+            <td><button id="pyButton">选择此课程</button></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>C++</td>
+            <td id="c">0</td>
+            <td><button id="cButton">选择此课程</button></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

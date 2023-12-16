@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/main.css" rel="stylesheet"/>
+    <script src="/js/jquery-3.6.3.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+
+<!--<style>-->
+<!--    .splitP {-->
+<!--        margin-top: 10px;-->
+<!--    }-->
+
+<!--    #titleStyle {-->
+<!--        text-decoration: none;-->
+<!--        font-size: 26px;-->
+<!--        font-weight: 700;-->
+<!--        color: inherit;-->
+<!--    }-->
+
+<!--    .contextStyle {-->
+<!--        margin-bottom: 36px;-->
+<!--    }-->
+
+<!--</style>-->
+<body>
+
+<div id="navigationBar">
+</div>
+
+<div class="mainDivStyle">
+<div class="container">
+    <div class="row contextStyle">
+        <div class="col-lg-12">
+            <span id="titleStyle" th:text="${article.articleTitle}"></span>
+        </div>
+    </div>
+    <div class="row splitP">
+        <div class="col-lg-12">
+            <span th:text="${session.human.humanName}"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-1">
+        </div>
+        <div class="col-lg-11">
+            <span th:utext="${article.articleContent}"></span>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    $(function(){
+        $("#navigationBar").load("/to/base/navigation");
+    });
+</script>
+</body>
+</html>

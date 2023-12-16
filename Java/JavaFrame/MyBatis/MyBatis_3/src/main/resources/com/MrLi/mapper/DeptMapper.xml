@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.MrLi.mapper.DeptMapper">
+    <!--通过分布查询查询员工以及员工所对应的部门信息
+        分布查询第二步：通过did查询员工所对应的部门-->
+    <select id="getEmpAndDeptByStepTwo" resultType="com.MrLi.pojo.Dept">
+        select * from t_dept where did = #{did}
+    </select>
+</mapper>

@@ -1,0 +1,50 @@
+1、文件的上传介绍（重点）
+	先决条件：commons-fileupload.jar 和 commons-io.jar
+
+	步骤：
+		（1）需要有一个form标签，method=post 请求
+		（2）form标签的encType属性值必须为 multiparty/form-data 值
+		（3）在form标签中使用 input type=file 添加上传的文件
+		（4）编写服务器代码接收（暂时使用servle程序），处理上传的数据
+
+	说明：
+		（1）encType=multiparty/form-data：表示提交的数据，以多段（每一个表单项一个数据段）的形式进行拼接，然后以二进制流的形式发送给服务器。
+		（2）Content-Type：表示提交的数据类型。
+		（3）boundary：表示每段数据的分隔符。
+		（4）------WebKitFormBoundaryEPk4a2453BZ5Ejp3：是由浏览器每次随机生成的，是每段数据的分界符。
+
+	commons-fileupload.jar 和 commons-io.jar包中的常用类：
+		（1）ServletFileUpload类，用于解析上传的数据
+			FileItem类，表示每一个表单项
+
+		（2）boolean ServletFileUpload.isMultipartContent(HttpServletRequest request);
+			判断当前上传的数据格式是否是多段的格式
+
+		（3）public List<FileItem> parseRequest(HttpServletRequest request);
+			解析上传的数据
+
+		（4）boolean FileItem.isFormFiled();
+			判断当前这个表单项，是否是普通的表单项，还是上传的文件类型；
+			true表示上传的是普通类型的表单项；
+			false表示上传的是文件类型
+
+		（5）String FileItem.getFileName()
+			获取表单项的name属性
+
+		（6）String FileItem.getString()
+			获取表单项的值
+
+		（7）String FileItem.getName()
+			获取上传的文件名
+
+		（8）void FileItem.write(file)
+			将上传的文件写到参数 file 所指向的磁盘位置
+
+
+2、文件的下载介绍
+	步骤：
+		（1）获取要下载的文件名
+		（2）读取要下载的文件内容（通过ServletContext对象可以读取）
+		（3）把下载的文件内容回传给客户端
+		（4）在回传前，通过响应头告诉客户端返回的数据类型
+		（5）还要告诉客户端收到的数据适用于下载使用的（通过响应头）。

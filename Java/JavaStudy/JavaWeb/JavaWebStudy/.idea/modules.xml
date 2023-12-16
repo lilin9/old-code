@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/28_BookCity/28_BookCity.iml" filepath="$PROJECT_DIR$/28_BookCity/28_BookCity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/35_EL&amp;JSTL/35_EL&amp;JSTL.iml" filepath="$PROJECT_DIR$/35_EL&amp;JSTL/35_EL&amp;JSTL.iml" />
+      <module fileurl="file://$PROJECT_DIR$/37_cookie_session/37_cookie_session.iml" filepath="$PROJECT_DIR$/37_cookie_session/37_cookie_session.iml" />
+      <module fileurl="file://$PROJECT_DIR$/38_Filter/38_Filter.iml" filepath="$PROJECT_DIR$/38_Filter/38_Filter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/39_JSON_AJAX_i18n/39_JSON_AJAX_i18n.iml" filepath="$PROJECT_DIR$/39_JSON_AJAX_i18n/39_JSON_AJAX_i18n.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaWeb.iml" filepath="$PROJECT_DIR$/JavaWeb.iml" />
+    </modules>
+  </component>
+</project>

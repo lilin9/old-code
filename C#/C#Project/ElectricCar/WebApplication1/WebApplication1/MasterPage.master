@@ -1,0 +1,71 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="bookstore.MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>特斯拉电动摩托之家</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="css/books.css"/>
+    <link rel="stylesheet" type="text/css" href="css/shopCart.css"/>
+    <link rel="stylesheet" type="text/css" href="css/order.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bookDetail.css"/>
+    <link rel="stylesheet" type="text/css" href="css/pay.css"/>
+</head>
+<body>
+    <nav>
+		<img class="logo" src="images2/logo.png"/>
+		<span class="left">特斯拉电动摩托</span>
+		<a href="login.aspx"><span class="login">登录</span>
+		<img class="login" src="images/nav_login.png"></a>
+        <label><asp:Label ID="label1" runat="server"></asp:Label><span id="login-out"><a href="login.aspx">，退出登录</a></span></label>
+		
+		<ul>
+			<li id="li-home"><a href="home.aspx">首页</a></li>
+			<li id="li-books"><a href="cars.aspx?classId=0">特斯拉中心</a></li>
+			<%--<li id="li-favorites"><a href="favorites.aspx">收藏夹</a></li>--%>
+			<li id="li-shopCart"><a href="shopCart.aspx">购物车</a></li>
+			<li id="li-order"><a href="order.aspx">我的订单</a></li>
+		</ul>	
+		
+	</nav>
+ 
+    <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    <footer>copyright &copy; 李林</footer>
+
+</body>
+<script>
+    var text = document.getElementById("label1").innerText;
+    console.log(text);
+    if (text!="") {
+        var a = document.getElementsByClassName("login");
+        a[0].style.display = "none";
+        a[1].style.display = "none";
+    } else {
+        document.getElementById("login-out").style.display = "none";
+    }
+    var url = document.URL;
+    if (url.indexOf("home") != -1) {
+        document.getElementById("li-home").setAttribute("class","current");
+    }
+    else if (url.indexOf("order") != -1) {
+        document.getElementById("li-order").setAttribute("class", "current");
+    }
+    else if (url.indexOf("shopCart") != -1) {
+        document.getElementById("li-shopCart").setAttribute("class", "current");
+    }
+    else if (url.indexOf("favorites") != -1) {
+        document.getElementById("li-favorites").setAttribute("class", "current");
+    }
+    else if (url.indexOf("books") != -1) {
+        document.getElementById("li-books").setAttribute("class", "current");
+    }
+</script>
+</html>

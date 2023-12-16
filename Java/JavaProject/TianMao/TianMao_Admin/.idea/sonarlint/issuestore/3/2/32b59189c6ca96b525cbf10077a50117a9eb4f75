@@ -1,0 +1,23 @@
+
+F
+java:S3740‰"/Provide the parametrized type for this generic.(‰ÌÑŒ
+_
+java:S1192J"IDefine a constant instead of duplicating this literal "loginPwd" 4 times.(¢Ñ§›
+_
+java:S1192I"IDefine a constant instead of duplicating this literal "loginAct" 4 times.(†À¾º
+y
+java:S1488Í"]Immediately return this expression instead of assigning it to the temporary variable "tUser".(ø³‹ıÿÿÿÿ
+a
+java:S2095ó"JUse try-with-resources or close this "HSSFWorkbook" in a "finally" clause.(‚·Ú
+G
+java:S1135!"2Complete the task associated to this TODO comment.(£°§\
+‡
+java:S1130ˆ"qRemove the declaration of thrown exception 'java.text.ParseException', as it cannot be thrown from method's body.(’É‘"
+O
+java:S1854”"8Remove this useless assignment to local variable "cell".(¬’ˆ’
+O
+java:S1854¿"8Remove this useless assignment to local variable "cell".(¬’ˆ’
+U
+java:S1155˜">Use isEmpty() to check whether the collection is empty or not.(ııÔÚ
+W	java:S125Ä"<This block of commented-out lines of code should be removed.(ì£Ïùÿÿÿÿ
+W	java:S125Í"<This block of commented-out lines of code should be removed.(…¦‰Ñüÿÿÿÿ

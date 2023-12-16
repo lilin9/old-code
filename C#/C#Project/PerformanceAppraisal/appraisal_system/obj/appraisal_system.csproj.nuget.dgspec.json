@@ -1,0 +1,113 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Programming\\C#\\C#Project\\PerformanceAppraisal\\appraisal_system\\appraisal_system.csproj": {}
+  },
+  "projects": {
+    "D:\\Programming\\C#\\C#Project\\PerformanceAppraisal\\appraisal_system.model\\appraisal_system.model.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Programming\\C#\\C#Project\\PerformanceAppraisal\\appraisal_system.model\\appraisal_system.model.csproj",
+        "projectName": "appraisal_system.model",
+        "projectPath": "D:\\Programming\\C#\\C#Project\\PerformanceAppraisal\\appraisal_system.model\\appraisal_system.model.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {
+              "D:\\Programming\\C#\\C#Project\\PerformanceAppraisal\\appraisal_system.utility\\appraisal_system.utility.csproj": {
+                "projectPath": "D:\\Programming\\C#\\C#Project\\PerformanceAppraisal\\appraisal_system.utility\\appraisal_system.utility.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
+    "D:\\Programming\\C#\\C#Project\\PerformanceAppraisal\\appraisal_system.utility\\appraisal_system.utility.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Programming\\C#\\C#Project\\PerformanceAppraisal\\appraisal_system.utility\\appraisal_system.utility.csproj",
+        "projectName": "appraisal_system.utility",
+        "projectPath": "D:\\Programming\\C#\\C#Project\\PerformanceAppraisal\\appraisal_system.utility\\appraisal_system.utility.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
+    "D:\\Programming\\C#\\C#Project\\PerformanceAppraisal\\appraisal_system\\appraisal_system.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Programming\\C#\\C#Project\\PerformanceAppraisal\\appraisal_system\\appraisal_system.csproj",
+        "projectName": "appraisal_system",
+        "projectPath": "D:\\Programming\\C#\\C#Project\\PerformanceAppraisal\\appraisal_system\\appraisal_system.csproj",
+        "packagesPath": "C:\\Users\\lilin\\.nuget\\packages\\",
+        "outputPath": "D:\\Programming\\C#\\C#Project\\PerformanceAppraisal\\appraisal_system\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\lilin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0-windows7.0": {
+            "targetAlias": "net7.0-windows",
+            "projectReferences": {
+              "D:\\Programming\\C#\\C#Project\\PerformanceAppraisal\\appraisal_system.model\\appraisal_system.model.csproj": {
+                "projectPath": "D:\\Programming\\C#\\C#Project\\PerformanceAppraisal\\appraisal_system.model\\appraisal_system.model.csproj"
+              },
+              "D:\\Programming\\C#\\C#Project\\PerformanceAppraisal\\appraisal_system.utility\\appraisal_system.utility.csproj": {
+                "projectPath": "D:\\Programming\\C#\\C#Project\\PerformanceAppraisal\\appraisal_system.utility\\appraisal_system.utility.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0-windows7.0": {
+          "targetAlias": "net7.0-windows",
+          "dependencies": {
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WindowsForms": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "D:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

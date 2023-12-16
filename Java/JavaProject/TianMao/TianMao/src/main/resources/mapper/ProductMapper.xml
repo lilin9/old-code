@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tianmao.mapper.ProductMapper">
+
+    <resultMap type="com.tianmao.pojo.Product" id="ProductMapperEntity">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="categoryId" column="category_id" jdbcType="INTEGER"/>
+        <result property="itemType" column="item_type" jdbcType="VARCHAR"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="sellPoint" column="sell_point" jdbcType="VARCHAR"/>
+        <result property="price" column="price" jdbcType="INTEGER"/>
+        <result property="num" column="num" jdbcType="INTEGER"/>
+        <result property="image" column="image" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="priority" column="priority" jdbcType="INTEGER"/>
+        <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/>
+        <result property="modifiedTime" column="modified_time" jdbcType="TIMESTAMP"/>
+        <result property="createdUser" column="created_user" jdbcType="VARCHAR"/>
+        <result property="modifiedUser" column="modified_user" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="ProductMapperEntity">
+        select
+          id, category_id, item_type, title, sell_point, price, num, image, status, priority, created_time, modified_time, created_user, modified_user
+        from t_product
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="ProductMapperEntity">
+        select
+          id, category_id, item_type, title, sell_point, price, num, image, status, priority, created_time, modified_time, created_user, modified_user
+        from t_product
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
+            </if>
+            <if test="itemType != null and itemType != ''">
+                and item_type = #{itemType}
+            </if>
+            <if test="title != null and title != ''">
+                and title = #{title}
+            </if>
+            <if test="sellPoint != null and sellPoint != ''">
+                and sell_point = #{sellPoint}
+            </if>
+            <if test="price != null">
+                and price = #{price}
+            </if>
+            <if test="num != null">
+                and num = #{num}
+            </if>
+            <if test="image != null and image != ''">
+                and image = #{image}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="priority != null">
+                and priority = #{priority}
+            </if>
+            <if test="createdTime != null">
+                and created_time = #{createdTime}
+            </if>
+            <if test="modifiedTime != null">
+                and modified_time = #{modifiedTime}
+            </if>
+            <if test="createdUser != null and createdUser != ''">
+                and created_user = #{createdUser}
+            </if>
+            <if test="modifiedUser != null and modifiedUser != ''">
+                and modified_user = #{modifiedUser}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from t_product
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
+            </if>
+            <if test="itemType != null and itemType != ''">
+                and item_type = #{itemType}
+            </if>
+            <if test="title != null and title != ''">
+                and title = #{title}
+            </if>
+            <if test="sellPoint != null and sellPoint != ''">
+                and sell_point = #{sellPoint}
+            </if>
+            <if test="price != null">
+                and price = #{price}
+            </if>
+            <if test="num != null">
+                and num = #{num}
+            </if>
+            <if test="image != null and image != ''">
+                and image = #{image}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="priority != null">
+                and priority = #{priority}
+            </if>
+            <if test="createdTime != null">
+                and created_time = #{createdTime}
+            </if>
+            <if test="modifiedTime != null">
+                and modified_time = #{modifiedTime}
+            </if>
+            <if test="createdUser != null and createdUser != ''">
+                and created_user = #{createdUser}
+            </if>
+            <if test="modifiedUser != null and modifiedUser != ''">
+                and modified_user = #{modifiedUser}
+            </if>
+        </where>
+    </select>
+
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into t_product(category_id, item_type, title, sell_point, price, num, image, status, priority, created_time, modified_time, created_user, modified_user)
+        values (#{categoryId}, #{itemType}, #{title}, #{sellPoint}, #{price}, #{num}, #{image}, #{status}, #{priority}, #{createdTime}, #{modifiedTime}, #{createdUser}, #{modifiedUser})
+    </insert>
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into t_product(category_id, item_type, title, sell_point, price, num, image, status, priority, created_time, modified_time, created_user, modified_user)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.categoryId}, #{entity.itemType}, #{entity.title}, #{entity.sellPoint}, #{entity.price}, #{entity.num}, #{entity.image}, #{entity.status}, #{entity.priority}, #{entity.createdTime}, #{entity.modifiedTime}, #{entity.createdUser}, #{entity.modifiedUser})
+        </foreach>
+    </insert>
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into t_product(category_id, item_type, title, sell_point, price, num, image, status, priority, created_time, modified_time, created_user, modified_user)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.categoryId}, #{entity.itemType}, #{entity.title}, #{entity.sellPoint}, #{entity.price}, #{entity.num}, #{entity.image}, #{entity.status}, #{entity.priority}, #{entity.createdTime}, #{entity.modifiedTime}, #{entity.createdUser}, #{entity.modifiedUser})
+        </foreach>
+        on duplicate key update
+        category_id = values(category_id),
+        item_type = values(item_type),
+        title = values(title),
+        sell_point = values(sell_point),
+        price = values(price),
+        num = values(num),
+        image = values(image),
+        status = values(status),
+        priority = values(priority),
+        created_time = values(created_time),
+        modified_time = values(modified_time),
+        created_user = values(created_user),
+        modified_user = values(modified_user)
+    </insert>
+    <!--通过主键修改数据-->
+    <update id="update">
+        update t_product
+        <set>
+            <if test="categoryId != null">
+                category_id = #{categoryId},
+            </if>
+            <if test="itemType != null and itemType != ''">
+                item_type = #{itemType},
+            </if>
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="sellPoint != null and sellPoint != ''">
+                sell_point = #{sellPoint},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="num != null">
+                num = #{num},
+            </if>
+            <if test="image != null and image != ''">
+                image = #{image},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="priority != null">
+                priority = #{priority},
+            </if>
+            <if test="createdTime != null">
+                created_time = #{createdTime},
+            </if>
+            <if test="modifiedTime != null">
+                modified_time = #{modifiedTime},
+            </if>
+            <if test="createdUser != null and createdUser != ''">
+                created_user = #{createdUser},
+            </if>
+            <if test="modifiedUser != null and modifiedUser != ''">
+                modified_user = #{modifiedUser},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    <!--Integer updateNum(Integer id, Integer num, String modifiedUser, Date modifiedTime);-->
+    <update id="updateProductNum">
+        update
+            t_product
+        set
+            num=#{num},modified_user=#{modifiedUser},modified_time=#{modifiedTime}
+        where
+            id=#{id}
+    </update>
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from t_product where id = #{id}
+    </delete>
+    <select id="selectAllProduct" resultMap="ProductMapperEntity">
+        select
+               id, category_id, item_type, title, sell_point, price, num, image, status, priority, created_time, modified_time, created_user, modified_user
+        from
+             t_product
+    </select>
+    <!--List<Product> selectProductByPids(Integer[] pids);-->
+    <select id="selectProductByPids" resultMap="ProductMapperEntity">
+        select
+            id, category_id, item_type, title, sell_point, price, num, image, status, priority,
+            created_time, modified_time, created_user, modified_user
+        from
+             t_product
+        where
+            id in (
+                <foreach collection="list" item="pid" separator=",">
+                    #{pid}
+                </foreach>
+            )
+    </select>
+    <!--List<Product> selectProductsByType(String type);-->
+    <select id="selectProductsByType" resultMap="ProductMapperEntity">
+        select
+           id, category_id,item_type,title,sell_point,price,num,image,`status`,priority,
+           created_time,modified_time,created_user,modified_user
+        from
+           t_product
+        where
+           item_type like CONCAT(CONCAT('%', #{type}), '%')
+        order by price desc
+    </select>
+</mapper>
+

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">点击</button>
+</body>
+<script>
+    let token = { 'value': 1, 'startTime': new Date().getTime() }
+    let token1 = undefined
+
+    let btn = document.getElementById("btn")
+    btn.onclick = function () {
+        console.log(token1 !== undefined && token1 !== null && token1 !== '')
+    }
+</script>
+</html>

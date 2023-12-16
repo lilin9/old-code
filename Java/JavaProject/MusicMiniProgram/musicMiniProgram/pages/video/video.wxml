@@ -1,0 +1,64 @@
+<view class="videoContainer">
+  <!-- 顶部搜索栏-start -->
+  <view class="header">
+    <image src="/static/image/video/video.jpg" class="headerImg"></image>
+    <view class="search" bindtap="toSearchView">搜索音乐</view>
+    <image src="/static/image/logo.png" class="headerImg"></image>
+  </view>
+  <!-- 顶部搜索栏-end -->
+
+  <!-- 导航栏-start -->
+  <scroll-view class="navScroll" 
+  scroll-x="true" 
+  enable-flex="true" 
+  scroll-into-view="{{'scroll' + navId}}" 
+  scroll-with-animation="true">
+    <view id="{{'scroll' + item.id}}" class="navItem" wx:for="{{videoGroupList}}" wx:key="id">
+      <view class="navContent {{navId === item.id ? 'active' : ''}}" bindtap="navChange" id="{{item.id}}">
+        {{item.name}}
+      </view>
+    </view>
+  </scroll-view>
+  <!-- 导航栏-end -->
+
+  <!-- 视频列表-start -->
+  <scroll-view 
+  class="videoScroll" 
+  scroll-y="true" 
+  bindrefresherrefresh="handlerRefresher"
+  refresher-enabled="true"
+  refresher-triggered="{{isTriggered}}"
+  bindscrolltolower="handlerTolower">
+    <view class="videoItem" wx:for="{{videoList}}" wx:key="id">
+      <video class="video" 
+      src="{{item.data.vUrl}}" 
+      bindplay="handlerPlay" 
+      id="{{item.data.vid}}"
+      wx:if="{{videoId === item.data.vid}}"
+      bindtimeupdate="timeUpdate"
+      bindended="videoPlayEnded"></video>
+      <image class="video" src="{{item.data.coverUrl}}" wx:else id="{{item.data.vid}}" bindtap="handlerPlay"></image>
+
+      <view class="content">{{item.data.title}}</view>
+
+      <view class="footer">
+        <image class="avatar" src="{{item.data.creator.avatarUrl}}"></image>
+        <text class="nickName">{{item.data.creator.nickname}}</text>
+        <view class="comments_praised">
+          <text class="item">
+            <text class="iconfont icon-shoucang"></text>
+            <text class="count">{{item.data.praisedCount}}</text>
+          </text>
+          <text class="item">
+            <text class="iconfont icon-pinglun"></text>
+            <text class="count">{{item.data.commentCount}}</text>
+          </text>
+          <button open-type="share" class="item btn">
+            <text class="iconfont icon-androidgengduo"></text>
+          </button>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <!-- 视频列表-end -->
+</view>

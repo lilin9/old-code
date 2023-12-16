@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <!--文章 Top10 榜单页面-->
+    <meta charset="UTF-8">
+    <title>热门</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <!--    <link rel="import" href="../base/navigation.html">-->
+    <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/js/wangEditor.min.js"></script>
+</head>
+<body>
+<!--导航栏-->
+<div id="navigationBar"></div>
+
+<!--主体内容-->
+<div class="mainDivStyle">
+    <div class="container w-50" id="ranking">
+        <!--榜单标题-->
+        <div class="title">
+            <span class="text-center">热门榜单</span>
+        </div>
+        <!--榜单列表-->
+        <div class="list-group gap-2" id="rankingList">
+            <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex flex-row content">
+                    <!--序号，排名-->
+                    <div class="number"></div>
+                    <!--文章内容：标题和简略-->
+                    <div class="container d-block">
+                        <div class="topic"></div>
+                        <div class="intro text-truncate"></div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script type="module">
+    import utils from "/js/utils.js";
+
+    //渲染榜单
+    function renderDom(data) {
+        let rankingListDom = '';
+        //循环渲染
+        data.forEach((item, index) => {
+
+            if (index > 3) {
+                rankingListDom +=
+                    '<a href="./articlebyid.html?articleId=' + item.articleId + '" class="list-group-item list-group-item-action">\n' +
+                    '    <div class="d-flex flex-row content">\n' +
+                    '        <!--序号，排名-->\n' +
+                    '        <div class="number">' + (index + 1) + '</div>\n' +
+                    '        <!--文章内容：标题和简略-->\n' +
+                    '        <div class="container d-block">\n' +
+                    '            <div class="topic">' + item.articleTitle + '</div>\n' +
+                    '            <div class="intro">' + item.articleContent + '</div>\n' +
+                    '        </div>\n' +
+                    '    </div>\n' +
+                    '</a>';
+            } else {
+                rankingListDom +=
+                    '<a href="./articlebyid.html?articleId=' + item.articleId + '" class="list-group-item list-group-item-action">\n' +
+                    '    <div class="d-flex flex-row content">\n' +
+                    '        <!--序号，排名-->\n' +
+                    '        <div class="number" style="color:#ff9607">' + (index + 1) + '</div>\n' +
+                    '        <!--文章内容：标题和简略-->\n' +
+                    '        <div class="container d-block">\n' +
+                    '            <div class="topic">' + item.articleTitle + '</div>\n' +
+                    '            <div class="intro">' + item.articleContent + '</div>\n' +
+                    '        </div>\n' +
+                    '    </div>\n' +
+                    '</a>';
+            }
+        });
+
+        //将 dom 加入到页面里面
+        $("#rankingList").html(rankingListDom);
+    }
+
+    //初始化页面
+    function initPage() {
+        $.ajax({
+            type: "POST",
+            url: "/article/ranking",
+            async: false,
+            dataType: "json",
+            headers: {'Content-Type': 'application/json'},
+            success: function (data) {
+                if (data.code == "200") {
+                    //渲染页面
+                    renderDom(data.data);
+                }
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        //加载导航栏
+        $("#navigationBar").load("/to/base/navigation");
+        //初始化页面
+        initPage();
+    });
+</script>
+</body>
+</html>

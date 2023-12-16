@@ -1,0 +1,105 @@
+Cookie
+	一、什么是Cookie
+		1、Cookie是服务器通知客户端保存键值对的一种技术。
+		2、客户端有了Cookie后，每次请求都发送给服务器。
+		3、每个Cookie的大小不能超过4kb。
+
+	二、如何创建Cookie
+		//1、创建Cookie对象
+        Cookie cookie = new Cookie("key1", "value1");
+        //2、通知客户端保存Cookie
+        resp.addCookie(cookie);
+        resp.getWriter().write("Cookie创建成功！");
+
+    三、服务器如何获取Cookie
+    	Cookie[] cookies = req.getCookies();
+
+    四、Cookie值的修改
+    	方案一：
+    		1、先创建一个要修改的同名的Cookie对象
+    		2、在构造器中同时赋予新的Cookie值
+    		3、调用response.addCookie(cookie);保存到客户端
+
+	    	Cookie cookie = new Cookie("key1", "newValue1");
+	        resp.addCookie(cookie);
+
+	    方案二：
+	    	1、先查找到需要修改的Cookie对象
+	    	2、调用setValue()方法赋予新的Cookie值
+	    	3、调用response.addCookie()通知客户端保存修改
+
+	    	Cookie cookie = CookieUtils.findCookie("key2", req.getCookies());
+        	if(cookie != null) cookie.setValue("newValue2");
+        	resp.addCookie(cookie);
+
+    五、Cookie的生命控制
+    	Cookie的生命控制指的是如何管理Cookie什么时候被销毁/删除
+
+    	setMaxAge()
+    		正数：表示在指定的秒数后删除
+    		负数：表示浏览器一旦关闭，Cookie就会被删除（默认值是-1）
+    		零：表示Cookie马上会被删除
+
+    	Cookie cookie = new Cookie("defaultLife", "defaultLife");
+        cookie.setMaxAge(-3);
+        resp.addCookie(cookie);
+
+    六、Cookie的有效路径Path的设置
+    	Cookie的path属性可以有效决定哪些Cookie可以发送给服务器，哪些不发。
+    	path属性通过请求的地址来进行有效的过滤
+
+    	Cookie1 	path=/工程路径
+    	Cookie2 	path=/工程路径/abc
+
+    	请求地址如下：
+    		http://ip:port/工程路径/a.html
+    			Cookie1 发送
+    			Cookie2 不发送
+
+    		http://ip:port/工程路径/abc/a.html
+    			Cookie1 发送
+    			Cookie2 发送
+
+
+session：
+	一、什么是session会话
+		1、session是一个接口（HttpSession）
+		2、session是一个会话，用来维护客户端和服务器之间关联的一种技术
+		3、每个客户端都有一个自己的session会话
+		4、session会话，经常用来保存用户登陆之后的信息
+
+	二、session的创建和获取
+		request.getSession();
+			第一次调用：创建session会话；
+			之后的调用：获取前面创建的session会话
+
+		isNew();
+			判断当前的session会话是否是刚创建的
+
+	三、session的特点
+		每个session会话都有一个唯一的ID值，通过 getId() 获取session的ID值
+
+	四、session域数据的存取
+		1、设置session域数据
+			req.getSession().setAttribute("key1", "session1");
+		2、获取session域数据
+			Object key1 = req.getSession().getAttribute("key1");
+
+	五、session生命周期控制
+		public void setMaxInactiveInterval(int interval);	（以秒为单位）
+		设置session的超时时间，超过指定时长，session就会被销毁。
+
+			//1、获取session对象
+	        HttpSession session = req.getSession();
+	        //2、设置session对象超时时长为3秒
+	        session.setMaxInactiveInterval(3);
+
+		public void getMaxInactiveInterval();
+		获取session的超时时间。
+
+		session默认超时时长为 30 minute
+
+		session的超时的含义：指的是客户端两次请求的最大间隔时长。
+
+		public void invalidate();
+		使当前session会话立马超时失效

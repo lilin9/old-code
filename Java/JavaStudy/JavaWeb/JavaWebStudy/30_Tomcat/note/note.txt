@@ -1,0 +1,35 @@
+如何启动Tomcat服务器？
+
+找到Tomcat目录下的bin目录下的startup.bat文件，双击启动
+
+如何测试Tomcat服务器启动成功？
+    1、http://localhost:8080
+    2、http://127.0.0.1:8080
+    3、http://真实IP:8080
+    4、在bin目录下的 dos 窗口中输入命令 startup.bat run
+
+如何修改Tomcat默认端口号？
+    MySQL默认端口号：3306
+    Tomcat默认端口号：8080
+
+    找到Tomcat目录下的 conf 目录，找到 server.xml配置文件，找到 Connector 标签，修改 port 属性。端口号范围：1 ~ 65535
+    修改完端口号需要重启Tomcat服务器
+
+如何部署web工程到Tomcat中
+    第一种方式：将web工程目录拷贝到Tomcat的webapps目录下，然后在浏览器中输入如下地址格式访问：
+        http://ip:port/工程名/目录下/文件名 (http://192.168.0.8:8080/waitingStaff/index.html)
+
+    第二种方式：找到Tomcat下的 Tomcat\conf\Catalina\Jocalhost\ 下，创建如下配置文件
+        <Context path="/abc" docBase="E:\book"/>
+        <!-- 
+            Context表示一个工程上下文
+             path表示工程访问路径：/abc
+             docBase表示工程目录路径
+         -->
+
+Root工程的访问，以及默认index.html页面的访问
+    当在浏览器地址栏输入访问地址如下：
+        http://ip:port/     -->     没有工程名的时候，默认访问的是Root工程
+
+    当在浏览器地址中输入的访问地址如下：
+        http://ip:port/工程名/     -->     没有资源名，默认访问index.html页面

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/../../../../APP/Java/java-jdk-11/install/Maven/repository/org/springframework/boot/spring-boot-starter-parent/3.1.1/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../../../APP/Java/java-jdk-11/install/Maven/repository/org/springframework/boot/spring-boot-starter-parent/3.1.2/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RabbitMQ_01_FanoutExchange/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RabbitMQ_01_ReceiveMessage/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RabbitMQ_02_DirectExchange/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RabbitMQ_03_TTL1/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RabbitMQ_03_TTL1/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RabbitMQ_03_TTL2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RabbitMQ_04_DeadLetterExchange/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RabbitMQ_04_DeadLetterExchange2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RabbitMQ_05_DelayQueue/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RabbitMQ_05_DelayQueue1_Question/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RabbitMQ_05_DelayQueue2_DelayMessagePlugins/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RabbitMQ_05_DelayQueue_Question1/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RabbitMQ_06_Confirm/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RabbitMQ_07_Return/src/main/java" charset="UTF-8" />
+  </component>
+</project>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"-->
+    <!--          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">-->
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link href="/css/main.css" rel="stylesheet"/>
+    <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/js/wangEditor.min.js"></script>
+
+    <!--    <style>-->
+    <!--        .page-link {-->
+    <!--            cursor: pointer;-->
+    <!--        }-->
+
+    <!--        .page-link.active {-->
+    <!--            background: #0f5132;-->
+    <!--        }-->
+
+    <!--        #titleStyle {-->
+    <!--            text-decoration: none;-->
+    <!--            font-size: 26px;-->
+    <!--            font-weight: 700;-->
+    <!--            color: inherit;-->
+    <!--        }-->
+    <!--        -->
+
+    <!--    </style>-->
+
+</head>
+<body>
+<div id="navigationBar">
+</div>
+<div class="mainDivStyle">
+    <div class="container" id="container">
+
+        <p>
+            <span id="titleStyle" th:text="${article.articleTitle}"></span>
+        </p>
+        <p>
+            <span th:text="${article.human.humanNiceName}"></span>
+            发布时间：<span th:text="${#dates.format(article.articleIssueTime,'yyyy年MM月dd日 HH时mm分ss秒')}"></span>
+        </p>
+        <p>
+            <span id="contentStyle" th:utext="${article.articleContent }"></span>
+        </p>
+        <p th:if="${session.human != null}">
+          <span th:if="${session.human.humanId} eq ${article.humanId}">
+             <span class="aStyle"><a
+                     th:href="@{'/to/article/articleupdate?articleId='+${article.articleId}}">修改文章</a></span>
+              <span class="aStyle"><a th:href="@{'/article/del/'+${article.articleId}}">删除文章</a></span>
+          </span>
+        </p>
+    </div>
+    <div>
+
+        <hr>
+        <div class="container">
+            <div id="replyEditor" style="width: 666px;">
+            </div>
+            <textarea id="replyContent" style="display: none;"></textarea>
+            <p>
+                <button id="replyButton"> 发布回复</button>
+            </p>
+            <div>
+                <nav aria-label="...">
+                    <ul class="pagination pagination-sm reply-split">
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="container">
+
+        <div id="reply-show">
+        </div>
+        <div>
+            <nav aria-label="...">
+                <ul class="pagination pagination-sm reply-split">
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+</div>
+<script type="module">
+    import utils from '/js/utils.js';
+
+    // 获取后端传递的对象值
+    let articleId = '';
+    //删除文章 按钮的点击事件
+    $(document).on("click", ".deleteArticle", function () {
+        console.log("点击函数")
+        // 获取当前要删除的文章id
+        let id = utils.getUrlLastVal(this.href);
+        console.log("你点击了删除键，删除的文章id = ", id);
+        //发送请求
+        $.ajax({
+            type: "POST",
+            url: "/article/del/" + id,
+            async: false,
+            dataType: "json",
+            headers: {'Content-Type': 'application/json'},
+            success: function (data) {
+                if (data.code == "200") {
+                    window.location.href = "../index.html";
+                } else {
+                    window.location.href = "../view/login.html";
+                }
+            }
+        });
+        return false;
+    });
+
+    //渲染文章数据
+    function renderArticle(article) {
+        //判空
+        if (Object.keys(article).length === 0) {
+            return;
+        }
+        //从 session 中获取用户数据
+        let human = JSON.parse(sessionStorage.getItem("human"));
+        let dom =
+            '<p>\n' +
+            '    <span id="titleStyle">' + article.articleTitle + '</span>\n' +
+            '</p>\n' +
+            '<p>\n' +
+            '    <span>' + article.human.humanNiceName + '</span>\n' +
+            '    发布时间：<span>' + utils.timeFormat(article.articleIssueTime) + '</span>\n' +
+            '</p>\n' +
+            '<p>\n' +
+            '    <span id="contentStyle">' + article.articleContent + '</span>\n' +
+            '</p>\n';
+        if (Object.keys(human).length !== 0 && human.humanId === article.humanId) {
+            dom +=
+                '<p>\n' +
+                '  <span>\n' +
+                '     <span class="aStyle"><a\n' +
+                '             href="./articleupdate.html?articleId=' + article.articleId + '">修改文章</a></span>\n' +
+                '      <span class="aStyle"><a class="deleteArticle" href="' + article.articleId + '">删除文章</a></span>\n' +
+                '  </span>\n' +
+                '</p>';
+        }
+
+        $("#container").html(dom);
+    }
+
+    //页面加载时查询文章数据
+    function selectArticleList() {
+        //获取文章 id
+        articleId = utils.getUrlParam(window.location.href, "articleId");
+        //发送 ajax 请求
+        $.ajax({
+            type: "POST",
+            url: "/article/articleById/" + articleId,
+            async: false,
+            dataType: "json",
+            headers: {'Content-Type': 'application/json'},
+            success: function (data) {
+                if (data.code == "200") {
+                    articleId = data.data.articleId;
+                    //渲染文章数据
+                    renderArticle(data.data);
+                }
+            }
+        });
+    }
+
+
+    const E = window.wangEditor;
+    const editor = new E("#replyEditor");
+    //定义wangEditor图片文件的名字
+    editor.config.uploadFileName = 'file';
+    // editor.config.uploadImgMaxLength = 5 // 一次最多上传 5 个图片
+    // wangEditor上传文件触发该事件 editor.config.uploadImgServer
+    editor.config.height = 168
+    editor.config.uploadImgServer = '/issue/article-image-upload';
+    editor.config.onchange = function (data) {
+        $("#replyContent").val(data);
+    }
+    editor.create();
+
+
+    /**
+     * 查出当前页的数据
+     * @param curPage
+     */
+    function ajaxQueryReply(curPage) {
+        $.ajax({
+            url: "/reply/split/" + articleId + "/" + curPage,
+            type: "POST",
+            data: "",
+            success: function (data) {
+                console.log(data);
+                showReply(data.data, curPage);
+            },
+            error: function () {
+                console.log("ajax请求失败");
+            },
+        });
+    }
+
+
+    function showReply(res, curPage) {
+        // 清除回复信息
+        $("#reply-show").children().remove();
+        // 清除分页码
+        $(".reply-split").children().remove();
+        // 回复信息
+        var replies = res.replies;
+
+        $.each(replies, function (i, reply) {
+                var replyDelSpan = $("<span class='page-link replyDelStyle'>删除</span>");
+                replyDelSpan.attr('reply_Id', reply.replyId);
+                replyDelSpan.click(replyDeleteById);
+                // 拼凑回复信息
+                var text = "<p><span>" + reply.human.humanNiceName + "</span><span>" +
+                    "回复于:" + reply.replyTime + "</span></p>"
+                    + "<p>" + reply.replyContent;
+                $("#reply-show").append(text);
+                $("#reply-show").append(replyDelSpan);
+                $("#reply-show").append("</p><hr>");
+            }
+        );
+
+        var pageNum = res.allPage;
+        for (let j = 1; j <= pageNum; j++) {
+            var bullet = $("<li class='page-item'><span class='page-link'></span></li>");
+            if (curPage == j) bullet.find("span").addClass("active");
+            bullet.find("span").attr("page", j);
+            bullet.find("span").text(j);
+            bullet.find("span").click(bulletClick);
+            $(".reply-split").append(bullet);
+        }
+    }
+
+    function bulletClick() {
+        var page = $(this).attr("page");
+        ajaxQueryReply(page);
+    }
+
+
+    function issueClick() {
+        var replyContent = $("#replyContent").val();
+        var replyJson = {'replyContent': replyContent, 'articleId': articleId};
+        ajaxIssueReply(replyJson);
+        $("#replyContent").val("");
+        $("#replyContent").text("")
+
+    }
+
+    function ajaxIssueReply(replyJson) {
+        $.ajax({
+            type: "POST",
+            url: "/reply/issue",
+            async: false,
+            data: JSON.stringify(replyJson),
+            dataType: "json",
+            headers: {'Content-Type': 'application/json'},
+            success: function (data) {
+                if (data.code == 200) {
+                    ajaxQueryReply(1);
+                }
+            },
+            error: function () {
+                console.log("ajax请求失败");
+            },
+        });
+    }
+
+
+    function replyDeleteById() {
+        var replyId = $(this).attr("reply_Id");
+        console.log("reply_Id=" + replyId)
+        $.ajax(
+            {
+                url: "/reply/del/" + replyId,
+                type: "POST",
+                success: function () {
+                    ajaxQueryReply(1);
+                }
+            }
+        )
+    }
+
+    $(document).ready(function () {
+        //查询文章列表数据
+        selectArticleList();
+        ajaxQueryReply(1);
+        $("#replyButton").click(
+            function () {
+                issueClick();
+                editor.txt.clear();
+            }
+        );
+    });
+
+    $(function () {
+        $("#navigationBar").load("/to/base/navigation");
+    });
+
+
+</script>
+</body>
+</html>

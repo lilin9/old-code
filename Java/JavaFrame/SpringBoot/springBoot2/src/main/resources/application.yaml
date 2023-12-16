@@ -1,0 +1,17 @@
+#spring:
+#  mvc:
+#    static-path-pattern: /res/**
+#  web:
+#    resources:
+#      static-locations: classpath:/temp
+
+#开启Rest风格支持
+spring:
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+    #开启参数方式的内容协商
+    contentnegotiation:
+      favor-parameter: true

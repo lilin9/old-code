@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>购物车</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/cart.css">
+</head>
+<body>
+
+<!-- /*页面最顶部------开始*/ -->
+<div class="pagetop">
+    <div class="pagetop-content">
+        <p>
+            汪，欢迎来天猫
+            <a href="login.html" target="_Blank" id="pleaseSign">请登录</a>
+            <a href="register.html" target="_Blank">免费注册</a>
+            <a href="javascript:void(0)" target="_Blank" id="signOut">安全退出</a>
+        </p>
+        <ul>
+            <li><a href="#"><i class="iconfont icon-liebiao"></i>网站导航</a></li>
+            <li><a href="#">商家支持</a></li>
+            <li><a href="https://www.taobao.com/">淘宝网</a></li>
+            <li><a href="#"><i class="iconfont icon-shouji"></i>手机版</a></li>
+            <li><a href="collection.html">收藏夹</a></li>
+            <li><a href="cart.html"><i class="iconfont icon-gouwuchexuanzhong"></i>购物车</a></li>
+            <li id="my-taobao">
+                <span class="btn-list-group">
+                  <a class="btn">我的淘宝</a>
+                  <span class="btn-list-area">
+                    <a href="update-password.html" class="btn">修改密码</a>
+                    <a href="personal-information.html" class="btn">个人资料</a>
+                    <a href="upload-avatar.html" class="btn">上传头像</a>
+                    <a href="shipping-address.html" class="btn">收货管理</a>
+                  </span>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- /*页面最顶部------结束*/ -->
+
+<!-- 头部--------------开始 -->
+<div class="head">
+    <div class="logo"><a href="index.html"><!--<img src="images/head-logo.png" width="184px" height="33px">--></a></div>
+    <div class="text"></div>
+</div>
+<!-- 头部--------------结束 -->
+
+<!-- 购物车表单开始 -->
+<div class="container ">
+    <p style="text-align: right;"><img src="images/购物车流程.jpg" alt=""></p><br>
+    <form action="" role="form">
+        <table id="tablestyle">
+            <thead>
+            <tr>
+                <th><label><input type="checkbox" id="allcheck" onclick="changeProductObj()"></label>&nbsp;全选</th>
+                <th>商品图片</th>
+                <th>商品名字</th>
+                <th>单价</th>
+                <th>数量</th>
+                <th width="14%">小计</th>
+                <th>修改</th>
+            </tr>
+            </thead>
+            <tbody id="cart-list">
+            <tr>
+                <td><input type="checkbox" class="checkBox" name="cids"></td>
+                <td><img src="images/天猫国际-right-2.jpg"></td>
+                <td>吕洗发水</td>
+                <td name="goodsprice">128</td>
+                <td>
+                    <div id="goods-num">
+                        <a href="javascript:void(0)" onclick="addGoodsNum(this)">-</a>
+                        <input type="text" value="1" onkeyup="value=value.replace(/[^\d]/g,'')"
+                               oninput="changeGoodsNum(this)" onporpertychange="changeGoodsNum(this)">
+                        <a href="javascript:void(0)" style="right: 0;" onclick="reduceGoodsNum(this)">+</a>
+                    </div>
+                </td>
+                <td name="goodssum">128</td>
+                <td><a href="javascript:void(0)" onclick="deleteRow()">删除</a></td>
+            </tr>
+
+            <tr>
+                <td><input type="checkbox" class="checkBox" name="cids"></td>
+                <td><img src="images/天猫国际-right-1.jpg"></td>
+                <td>毕加索钢笔</td>
+                <td name="goodsprice">50</td>
+                <td>
+                    <div id="goods-num">
+                        <a href="javascript:void(0)" onclick="addGoodsNum(this)">-</a>
+                        <input type="text" value="1" onkeyup="value=value.replace(/[^\d]/g,'')"
+                               oninput="changeGoodsNum(this)" onporpertychange="changeGoodsNum(this)">
+                        <a href="javascript:void(0)" style="right: 0;" onclick="reduceGoodsNum(this)">+</a>
+                    </div>
+                </td>
+                <td name="goodssum">100</td>
+                <td><a href="javascript:void(0)" onclick="deleteRow()">删除</a></td>
+            </tr>
+
+            <tr>
+                <td><input type="checkbox" class="checkBox" name="cids"></td>
+                <td><img src="images/天猫国际-right-4.jpg"></td>
+                <td>厨房用锅</td>
+                <td name="goodsprice">749</td>
+                <td>
+                    <div id="goods-num">
+                        <a href="javascript:void(0)" onclick="addGoodsNum(this)">-</a>
+                        <input type="text" value="1" onkeyup="value=value.replace(/[^\d]/g,'')"
+                               oninput="changeGoodsNum(this)" onporpertychange="changeGoodsNum(this)">
+                        <a href="javascript:void(0)" style="right: 0;" onclick="reduceGoodsNum(this)">+</a>
+                    </div>
+                </td>
+                <td name="goodssum">749</td>
+                <td><a href="javascript:void(0)" onclick="deleteRow()">删除</a></td>
+            </tr>
+
+            <tr>
+                <td><input type="checkbox" class="checkBox" name="cids"></td>
+                <td><img src="images/天猫国际-right-5.jpg"></td>
+                <td>进口皮带</td>
+                <td name="goodsprice">300</td>
+                <td>
+                    <div id="goods-num">
+                        <a href="javascript:void(0)" onclick="addGoodsNum(this)">-</a>
+                        <input type="text" value="1" onkeyup="value=value.replace(/[^\d]/g,'')"
+                               oninput="changeGoodsNum(this)" onporpertychange="changeGoodsNum(this)">
+                        <a href="javascript:void(0)" style="right: 0;" onclick="reduceGoodsNum(this)">+</a>
+                    </div>
+                </td>
+                <td name="goodssum">300</td>
+                <td><a href="javascript:void(0)" onclick="deleteRow()">删除</a></td>
+            </tr>
+
+            <tr>
+                <td><input type="checkbox" class="checkBox" name="cids"></td>
+                <td><img src="images/天猫国际-right-6.jpg"></td>
+                <td>Adidas Yeezy Boost 350 V2 侃爷冰蓝</td>
+                <td name="goodsprice">3500</td>
+                <td>
+                    <div id="goods-num">
+                        <a href="javascript:void(0)" onclick="addGoodsNum(this)">-</a>
+                        <input type="text" value="1" onkeyup="value=value.replace(/[^\d]/g,'')"
+                               oninput="changeGoodsNum(this)" onporpertychange="changeGoodsNum(this)">
+                        <a href="javascript:void(0)" style="right: 0;" onclick="reduceGoodsNum(this)">+</a>
+                    </div>
+                </td>
+                <td name="goodssum">3500</td>
+                <td><a href="javascript:void(0)" onclick="deleteRow()">删除</a></td>
+            </tr>
+
+            <tr>
+                <td><input type="checkbox" class="checkBox" name="cids"></td>
+                <td><img src="images/天猫国际-right-3.jpg"></td>
+                <td>小ck女包</td>
+                <td name="goodsprice">1200</td>
+                <td>
+                    <div id="goods-num">
+                        <a href="javascript:void(0)" onclick="addGoodsNum(this)">-</a>
+                        <input type="text" value="1" onkeyup="value=value.replace(/[^\d]/g,'')"
+                               oninput="changeGoodsNum(this)" onporpertychange="changeGoodsNum(this)">
+                        <a href="javascript:void(0)" style="right: 0;" onclick="reduceGoodsNum(this)">+</a>
+                    </div>
+                </td>
+                <td name="goodssum">1200</td>
+                <td><a href="javascript:void(0)" onclick="deleteRow()">删除</a></td>
+            </tr>
+            </tbody>
+        </table>
+        <div id="tablefoot">
+            <ul>
+                <li><input type="button" value="结算" id="jiesuan"></li>
+                <li id="allmoney">0</li>
+                <li>合计:&nbsp;</li>
+                <label>
+                    <button id="deleteBut">删除</button>
+                </label>
+            </ul>
+        </div>
+    </form>
+</div>
+<!-- 购物车表单结束 -->
+
+<!--  底部------------开始   -->
+<iframe src="foot.html" frameborder="0"
+        style="width: 100%;height: 280px; border-top: 2px solid red; margin-top: 150px;padding-top: 20px;"></iframe>
+<!-- 底部-------------结束 -->
+
+<script type="text/javascript" src="js/cart.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-getUrlParam.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script>
+    $(document).ready(function () {
+        showAvatar();
+        //先清空购物车里面的静态数据
+        $("#cart-list").empty();
+        showCartList();
+    });
+
+    //这个函数用来展示动态购物车数据
+    function showCartList() {
+        $.ajax({
+            url: "/carts/",
+            type: "post",
+            dataType: "json",
+            success: function (json) {
+                let list = json.data;
+                let allGoodsPrice = 0;
+                for (let i = 0; i < list.length; i++) {
+                    let divData = '<tr>\n' +
+                        '            <td><label><input name="pid" value="#{pid}" id="goodsButton#{pid}" onclick="checkedRadio()" type="checkbox" class="checkBox"></label></td>\n' +
+                        '            <td><img src="#{image}" alt=""></td>\n' +
+                        '            <td>#{title}</td>\n' +
+                        '            <td name="goodsprice">#{realPrice}</td>\n' +
+                        '            <td>\n' +
+                        '                <div id="goods-num">\n' +
+                        '                    <a href="javascript:void(0)" onclick="addGoodsNum(this, #{cid})">-</a>\n' +
+                        '                    <input id="goodsCount#{cid}" type="text" value="#{num}" onkeyup="value=value.replace(/[^\\d]/g,\'\')" oninput="changeGoodsNum(this, #{cid})" onporpertychange="changeGoodsNum(this, #{cid})">\n' +
+                        '                    <a href="javascript:void(0)" style="right: 0;" onclick="reduceGoodsNum(this, #{cid})">+</a>\n' +
+                        '                </div>\n' +
+                        '            </td>\n' +
+                        '            <td name="goodssum">#{totalPrice}</td>\n' +
+                        '            <td><a href="javascript:void(0)" onclick="deleteRow(#{cid})">删除</a></td>\n' +
+                        '        </tr>';
+
+                    divData = divData.replace(/#{cid}/g, list[i].cid);
+                    divData = divData.replace(/#{pid}/g, list[i].pid);
+                    divData = divData.replace(/#{image}/g, list[i].image);
+                    divData = divData.replace(/#{title}/g, list[i].title);
+                    divData = divData.replace(/#{realPrice}/g, list[i].realPrice);
+                    divData = divData.replace(/#{num}/g, list[i].num);
+                    divData = divData.replace(/#{totalPrice}/g, list[i].num * list[i].realPrice);
+
+                    //将购物车商品添加到购物车中
+                    $("#cart-list").append(divData);
+
+                    allGoodsPrice += list[i].num * list[i].realPrice;
+                }
+                //更新购物车中的总金额
+                $("#allmoney").text(allGoodsPrice);
+            },
+            error: function (xhr) {
+                alert("加载购物车数据时产生未知错误" + "\n" + xhr.status)
+            }
+        });
+    }
+
+    //表单提交的误触发函数
+    //确保用户不会提交一个空的表单
+    $("#jiesuan").click(function () {
+        let checkBox = $(".checkBox");
+        //这个数组用来存放被选中的input框的value值
+        let values = [];
+        for (let i = checkBox.length - 1; i >= 0; i--) {
+            if (checkBox[i].checked) {
+                values.push(checkBox[i].value);
+            }
+        }
+
+        let href = "order.html?pid=" + values.join("&pid=");
+        for (let i = checkBox.length - 1; i >= 0; i--) {
+            //如果用户选择了商品，提交表单
+            if (checkBox[i].checked) {
+                location.href = href;
+                return;
+            }
+        }
+        //如果用户没有选中商品数据，就阻止表单的提交
+        alert("您还没有选择购物车商品");
+    });
+
+    //每当单选框被点击时，都遍历循环一次所有的单选框
+    //如果所有的单选框都被选中，就将全选框设为选中状态
+    function checkedRadio() {
+        let objInput = document.getElementsByName('cids');
+        for (let i = objInput.length - 1; i >= 0; i--) {
+            if (objInput[i].checked === false) {
+                return;
+            }
+        }
+        $("#allcheck").prop("checked", true);
+    }
+
+    //全选框
+    function changeProductObj() {
+        let checkBox = $(".checkBox");
+        checkBox.prop("checked", $("#allcheck").prop("checked"));
+    }
+
+    //删除选中的所有购物车数据
+    $("#deleteBut").click(function () {
+        if (!confirm("您确定要删除选中的商品么"))
+            return
+        let checkBox = $(".checkBox");
+        for (let i = checkBox.length - 1; i >= 0; i--) {
+            //如果选中
+            if (checkBox[i].checked) {
+                //删除
+                deleteCart(checkBox[i].value);
+            }
+        }
+    });
+
+    //删除效果
+    function deleteRow(cid) {
+        deleteCart(cid);
+        let objInput = document.getElementsByName('cids');
+        for (let i = objInput.length - 1; i >= 0; i--) {
+            if (objInput[i].checked) {
+                let index = Number(i + 1);
+                $("tablestyle").deleteRow(index);
+                productCount();
+            }
+        }
+    }
+
+    //删除商品
+    function deleteCart(cid) {
+        $.ajax({
+            url: "/carts/deleteCart/" + cid,
+            type: "get",
+            dataType: "json",
+            success: function (json) {
+                if (json.state === 200) {
+                    //先清空购物车里面的静态数据
+                    $("#cart-list").empty();
+                    //重新刷新购物车数据
+                    showCartList();
+                } else {
+                    alert("删除商品失败");
+                }
+            },
+            error: function (xhr) {
+                alert("删除商品时产生未知错误" + "\n" + xhr.status)
+            }
+        });
+    }
+
+    //增加商品数目
+    function addGoodsNum(obj, cid) {
+        let numText = obj.nextSibling;
+        while (numText.nodeType !== 1) {
+            numText = numText.nextSibling;
+        }
+        numText.value -= 1;
+        if (numText.value < 1 || numText.value == null) numText.value = 1;
+        productCount();
+        updateNum(cid, numText.value);
+    }
+
+    //修改商品数目
+    function changeGoodsNum(obj, cid) {
+        if (obj.value < 1 || obj.value == null) obj.value = 1;
+        productCount();
+        updateNum(cid, obj.value)
+    }
+
+    //减少商品数目
+    function reduceGoodsNum(obj, cid) {
+        let numText = obj.previousSibling;
+        while (numText.nodeType !== 1) {
+            numText = numText.previousSibling;
+        }
+        numText.value = numText.value * 1 + 1;
+        productCount();
+        updateNum(cid, numText.value);
+    }
+
+    //修改商品数量
+    function updateNum(cid, num) {
+        $.ajax({
+            url: "/carts/updateNum",
+            type: "get",
+            data: "cid=" + cid + "&num=" + num,
+            dataType: "json",
+            success: function (json) {
+                if (json.state === 200) {
+                    //更新购物车中的总金额
+                    $("#allmoney").text(json.data);
+                } else if (json.state === 4003) {
+                    alert("查询不到商品数据");
+                } else if (json.state === 4004) {
+                    alert("登录异常，请重新登录");
+                    location.href = "login.html";
+                } else if (json.state === 6000) {
+                    alert("发生未知异常，更新数据失败");
+                }
+            },
+            error: function (xhr) {
+                alert("更新商品数量时产生未知错误" + "\n" + xhr.status)
+            }
+        });
+    }
+
+    //显示头像
+    function showAvatar() {
+        let userAvatar = '<img src="' + $.cookie("avatar") + '" alt="" style="width: 20px;height: 20px;margin-left: 13px;margin-top:2%">'
+        $.ajax({
+            url: "/users/getSession",
+            type: "get",
+            dataType: "json",
+            success: function (json) {
+                if (json.data) {
+                    $("#pleaseSign").replaceWith(userAvatar);
+                }
+            }
+        })
+    }
+
+    //退出登录点击事件
+    $("#signOut").click(function () {
+        if (!confirm("你确定要退出登录吗？")) return;
+        //重置保存在cookie中的头像
+        $.cookie("avatar", "", {path: "/"});
+        //清空session域中的用户信息
+        $.ajax({
+            url: "/users/clear",
+            type: "get",
+            dataType: "json",
+            success: function (json) {
+                if (json.state === 200) {
+                    alert("退出登录成功")
+                    location.href = "login.html"
+                } else {
+                    alert("退出登录失败" + "\n" + json.message)
+                }
+            },
+            error: function (xhr) {
+                alert("退出登录时产生未知错误" + "\n" + xhr.status)
+            }
+        });
+    });
+</script>
+</body>
+</html>

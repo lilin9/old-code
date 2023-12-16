@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/js/jquery-3.6.3.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <link href="/css/main.css" rel="stylesheet"/>
+    <!--    <style>-->
+    <!--        .splitP {-->
+    <!--            margin-top: 10px;-->
+    <!--        }-->
+
+    <!--        #titleStyle {-->
+    <!--            text-decoration: none;-->
+    <!--            font-size: 15px;-->
+    <!--            font-weight: 700;-->
+    <!--            color: inherit;-->
+    <!--        }-->
+
+    <!--        .contextStyle {-->
+    <!--            margin-bottom: 20px;-->
+    <!--        }-->
+    <!--    </style>-->
+</head>
+
+<body>
+
+<div id="navigationBar"></div>
+<div class="mainDivStyle">
+    <div class="container">
+        <span th:if="${articles != null}" id="content">
+            <span th:each="article,status:${articles}">
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-11">
+                         <a id="titleStyle" th:href="@{'/article/articleById/'+${article.articleId}}">
+                             <span th:text="${article.articleTitle}"></span>
+                         </a>
+                    </div>
+                </div>
+                <div class="row contextStyle">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-1">
+                        <span th:text="${article.human.humanNiceName}"></span>
+                    </div>
+                    <div class="col-lg-5">
+                        <span th:text="|最后修改时间:${#dates.format(article.articleIssueTime,'yyyy年MM月dd日 HH时mm分ss秒')}|"></span>
+                    </div>
+                </div>
+            </span>
+        </span>
+
+        <span th:if="${allPage > 0}">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination splitP" id="navigation">
+                   <span th:each="index:${#numbers.sequence(1,allPage)}">
+                        <li class="page-item">
+                            <a class="page-link" th:href="@{'/article/articleTypeList/'+${index}+'/'+${typeId}}"
+                                                 th:text="${index}"></a>
+                        </li>
+                   </span>
+                </ul>
+            </nav>
+        </span>
+    </div>
+</div>
+<script type="module">
+    import utils from "/js/utils.js"
+
+    //为 navigation 添加点击事件
+    $(document).on("click", ".page-link", function () {
+        //获取链接
+        let href = this.href;
+        //获取相应的参数
+        let currentPage = href.split("/")[href.split("/").length-2];
+        let typeId = utils.getUrlLastVal(href);
+        //重新加载页面
+        init(currentPage, typeId);
+        return false;
+    })
+
+    //渲染页面
+    function renderPage(data) {
+        let typeId = data.typeId;
+        let articles = data.articles;
+        let allPage = data.allPage;
+
+        //循环渲染 articles
+        let articlesDom = "";
+        articles.forEach(item => {
+            articlesDom +=
+                '<span>\n' +
+                '    <div class="row">\n' +
+                '        <div class="col-lg-1"></div>\n' +
+                '        <div class="col-lg-11">\n' +
+                '             <a id="titleStyle" th:href="/article/articlebyid.html?articleId=' + item.articleId + '">\n' +
+                '                 <span>' + item.articleTitle + '</span>\n' +
+                '             </a>\n' +
+                '        </div>\n' +
+                '    </div>\n' +
+                '    <div class="row contextStyle">\n' +
+                '        <div class="col-lg-1"></div>\n' +
+                '        <div class="col-lg-1">\n' +
+                '            <span>' + item.human.humanNiceName + '</span>\n' +
+                '        </div>\n' +
+                '        <div class="col-lg-5">\n' +
+                '            <span>最后修改时间:' + utils.timeFormat(item.articleIssueTime) + '</span>\n' +
+                '        </div>\n' +
+                '    </div>\n' +
+                '</span>';
+        });
+        //渲染 navigation
+        let navigationDom = "";
+        if (allPage > 0) {
+            for (let i = 1; i <= allPage; i++) {
+                navigationDom +=
+                    '<span>\n' +
+                    '    <li class="page-item">\n' +
+                    '        <a class="page-link" href="' + i + '/' + typeId + '">' + i + '</a>\n' +
+                    '    </li>\n' +
+                    '</span>';
+            }
+        }
+
+        //将 articlesDom 添加到页面里面
+        $("#content").html(articlesDom);
+        //将 navigationDom 添加到页面里面
+        $("#navigation").html(navigationDom);
+    }
+
+    //ajax 预加载数据
+    function init(currentPage, typeId) {
+        $.ajax({
+            type: "POST",
+            url: "/article/articleTypeList/" + currentPage + "/" + typeId,
+            async: false,
+            dataType: "json",
+            headers: {'Content-Type': 'application/json'},
+            success: function (data) {
+                if (data.code == "200") {
+                    //渲染页面
+                    renderPage(data.data);
+                } else {
+                    $("#content").hide();
+                }
+            }
+        });
+    }
+
+    $(function () {
+        //获取当前页面的地址
+        let url = window.location.href;
+        console.log("当前页面地址: ", url);
+        //初始化页面
+        init(utils.getUrlParam(url, "currentPage"), utils.getUrlParam(url, "typeId"));
+        $("#navigationBar").load("/to/base/navigation");
+    });
+</script>
+</body>
+</html>

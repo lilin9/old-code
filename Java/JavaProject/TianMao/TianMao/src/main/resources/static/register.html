@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+    <link rel="stylesheet" href="css/base.css"/>
+    <link rel="stylesheet" href="css/register.css"/>
+
+</head>
+<body>
+<div id="main">
+    <div id="header">
+    </div>
+    <div class="container">
+        <div class="bgPic"><img src="images/loginAndRegister/loginRegister.jpg" alt=""/></div>
+        <div class="register">
+            <div class="title">
+                <span>注册</span>
+                <a href="login.html">去登录</a>
+            </div>
+            <form id="form-register">
+                <div class="default">
+                    <p>用户名由3~10个数字和英文字符组成</p>
+                    <input id="username" name="username" data-form="username" type="text" placeholder="用户名"/>
+                    <label for="username"></label>
+                </div>
+                <div class="default">
+                    <p>密码由8~10个数字和英文字符组成</p>
+                    <input id="password" name="password" data-form="password" type="password" placeholder="密码"/>
+                    <label for="password"></label>
+                </div>
+                <div class="default">
+                    <p>请确认两次输入密码一致</p>
+                    <input id="password_2" data-form="password_2" type="password" placeholder="确认密码"/>
+                    <label for="password_2"></label>
+                </div>
+                <div class="default">
+                    <p>请输入中国大陆手机号码</p>
+                    <input id="phone" name="phone" data-form="phone" type="text" placeholder="手机"/>
+                    <label for="phone"></label>
+                </div>
+                <div class="submit">
+                        <span class="notice">点击"注册"代表您同意遵守
+                            <a href="#">用户协议</a>
+                            和
+                            <a href="#">隐私条款</a>
+                        </span>
+<!--                    <button class="s_hover" data-form="submit">注册</button>-->
+                    <input class="s_hover" type="button" value="注册">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="footer">
+    </div>
+</div>
+
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquerysession.js"></script>
+<script>
+    $(".s_hover").click(function () {
+        $.ajax({
+            url: "/users/register",
+            type: "POST",
+            data: $("#form-register").serialize(),
+            dataType: "json",
+            success: function (json) {
+                let result = json.state;
+                if (result === 200) {
+                    alert("注册成功");
+                    location.href = "login.html";
+                } else if (result === 4000) {
+                    alert("用户名已被占用");
+                } else if ((result === 5000)) {
+                    alert("注册用户信息时产生未知错误");
+                }
+            },
+            error: function (xhr) {
+                alert("注册时产生未知错误" + "\n" + xhr.status)
+            }
+        });
+    });
+</script>
+</body>
+</html>

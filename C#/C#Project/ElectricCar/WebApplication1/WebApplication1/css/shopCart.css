@@ -1,0 +1,132 @@
+﻿#shopCart-body{
+    background:rgba(247, 247, 247, 0.5);
+    min-height:660px;
+}
+#shopCart-content{
+    width:70%;
+    margin:0 auto;
+}
+#shopCart-content img{
+    width:30px;
+    vertical-align:middle;
+    margin-right:8px;
+}
+#shopCart-content{
+    padding:28px;
+    min-height:550px;
+}
+#shopCart-content table{
+    width:100%;
+    margin:0 auto;
+    border:none;
+    text-align:center;
+}
+#shopCart-content table th{
+    border:1px;
+}
+#shopCart-content table td{
+    border:1px;
+}
+#shopCart-content table tr{
+    height:50px;
+    line-height:50px;
+}
+#shopCart-content table tr td{
+    border-bottom:2px solid #fff;
+}
+#shopCart-content table tr td input[type="number"]{
+    width:35px;
+    text-align:center;
+}
+#shopCart-content table thead{
+    
+}
+#shopCart-content-table-head{
+    background:#e8504e;
+    color:#fff;
+    height:35px;
+}
+#shopCart-content tfoot button{
+    height:38px;
+    line-break:38px;
+    letter-spacing:2px;
+    text-align:center;
+    width:100px;
+    border:none;
+    margin-left:22px;
+    border-radius:3px;
+    float:right;
+    margin-top:28px;
+}
+#shopCart-content-select{
+    background:#ccc;
+}
+#shopCart-content-pay{
+    background:#e74f4d;
+    color:#fff;
+}
+#shopCart-content-sum{
+    color:#e74f4d;
+    font-size:25px;
+    text-align:right;
+}
+#ContentPlaceHolder_Label5{
+    color:gray;
+    font-size:14px;
+}
+#ContentPlaceHolder_btnContinue{
+    height:38px;
+    line-break:38px;
+    letter-spacing:2px;
+    text-align:center;
+    width:100px;
+    border:none;
+    margin-left:22px;
+    border-radius:3px;
+    float:right;
+    margin-top:28px;
+}
+#ContentPlaceHolder_btnTotal{
+    height:38px;
+    line-break:38px;
+    letter-spacing:2px;
+    text-align:center;
+    width:100px;
+    border:none;
+    margin-left:22px;
+    border-radius:3px;
+    float:right;
+    margin-top:28px;
+    background:#e74f4d;
+    color:#fff;
+}
+#ContentPlaceHolder_btnContinue:hover{
+    height:38px;
+    line-height:38px;
+    letter-spacing:2px;
+    text-align:center;
+    width:100px;
+    border:none;
+    margin-left:22px;
+    border-radius:3px;
+    float:right;
+    margin-top:28px;
+    border:1px solid #000000;
+    background:#fff;
+    color:#000000;
+}
+#ContentPlaceHolder_btnTotal:hover{
+    height:38px;
+    line-break:38px;
+    letter-spacing:2px;
+    text-align:center;
+    width:100px;
+    border:none;
+    margin-left:22px;
+    border-radius:3px;
+    float:right;
+    margin-top:28px;
+    border:1px solid #e74f4d;
+    background-color:#fff;
+    color:#e74f4d;
+}

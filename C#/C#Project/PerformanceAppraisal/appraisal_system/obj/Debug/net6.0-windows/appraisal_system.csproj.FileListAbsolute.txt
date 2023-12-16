@@ -1,0 +1,9 @@
+D:\Programming\C#\C#Project\PerformanceAppraisal\appraisal_system\obj\Debug\net6.0-windows\appraisal_system.csproj.AssemblyReference.cache
+D:\Programming\C#\C#Project\PerformanceAppraisal\appraisal_system\obj\Debug\net6.0-windows\appraisal_system.PAMain.resources
+D:\Programming\C#\C#Project\PerformanceAppraisal\appraisal_system\obj\Debug\net6.0-windows\appraisal_system.SetUser.resources
+D:\Programming\C#\C#Project\PerformanceAppraisal\appraisal_system\obj\Debug\net6.0-windows\appraisal_system.UserManager.resources
+D:\Programming\C#\C#Project\PerformanceAppraisal\appraisal_system\obj\Debug\net6.0-windows\appraisal_system.csproj.GenerateResource.cache
+D:\Programming\C#\C#Project\PerformanceAppraisal\appraisal_system\obj\Debug\net6.0-windows\appraisal_system.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\C#\C#Project\PerformanceAppraisal\appraisal_system\obj\Debug\net6.0-windows\appraisal_system.AssemblyInfoInputs.cache
+D:\Programming\C#\C#Project\PerformanceAppraisal\appraisal_system\obj\Debug\net6.0-windows\appraisal_system.AssemblyInfo.cs
+D:\Programming\C#\C#Project\PerformanceAppraisal\appraisal_system\obj\Debug\net6.0-windows\appraisal_system.csproj.CoreCompileInputs.cache

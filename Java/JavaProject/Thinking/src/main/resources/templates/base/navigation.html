@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/js/jquery-3.6.3.min.js"></script>
+    <script src="/js/popper.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="p-3 mb-3 border-bottom"
+     style="background-color: #1369bf; height:58px; position: relative;display: flex;justify-content: space-around;align-items: center;">
+
+    <div class="container" style="position: absolute;">
+        <div class="d-flex flex-wrap align-items-center justify-content-center">
+            <!--      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">-->
+            <!--        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>-->
+            <!--      </a>-->
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 link-light">
+                <li><a href="../index.html" class="nav-link px-2 link-light">主页</a></li>
+                <li><a href="../article/issue.html" class="nav-link px-2 link-light">发帖</a></li>
+                <li>
+                    <div class="dropdown text-end nav-link px-2">
+                        <span class="d-block link-light text-decoration-none dropdown-toggle " data-bs-toggle="dropdown"
+                              aria-expanded="false">
+                          文章类型
+                        </span>
+                        <ul class="dropdown-menu text-small" id="navigationTypeList">
+                            <li><a class='dropdown-item' href="#"></a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="../article/articleRanking.html" class="nav-link px-2 link-light">热门</a></li>
+            </ul>
+
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+            </form>
+
+            <div class="dropdown text-end">
+                <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                    <img src="/image/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                </a>
+                <ul class="dropdown-menu text-small">
+                    <li><a class="dropdown-item" href="../view/index.html">个人主页</a></li>
+                    <li><a class="dropdown-item" href="../view/show.html">个人信息</a></li>
+                    <li><a class="dropdown-item" href="../view/update.html">修改密码</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#" id="logout">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#logout").click(function () {
+        console.log("退出登录")
+        $.ajax({
+            type: "POST",
+            url: "/getOut",
+            async: false,
+            dataType: "json",
+            headers: {'Content-Type': 'application/json'},
+            success: function (data) {
+                if (data.code == "200") {
+                    //清空session
+                    sessionStorage.setItem("human", "");
+                    //跳转到登录页面
+                    window.location.href = "../view/login.html";
+                }
+            }
+        });
+        return false;
+    });
+
+    $(function () {
+        $.ajax({
+            url: "/type/typeList",
+            type: "POST",
+            success: function (data) {
+                let typeList = data.data;
+                $.each(typeList, function (i, type_d) {
+                    var context = "<li><a class='dropdown-item' href='../article/indexType.html?currentPage=1&typeId=" + type_d.typeId + "'>" + type_d.typeName + "</a></li>"
+                    $('#navigationTypeList').append(context);
+                });
+
+            },
+            error: function () {
+                console.log("fail list")
+            }
+
+        });
+    });
+</script>
+</body>
+</html>

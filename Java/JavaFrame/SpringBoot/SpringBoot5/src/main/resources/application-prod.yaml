@@ -1,0 +1,5 @@
+person:
+  name: prod-tom
+
+server:
+  port: 7070

@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" build-on-make="true" name="28_BookCity:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/28_BookCity_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="28_BookCity/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="28_BookCity" />
+        </element>
+        <element id="library" level="project" name="BookCity-commons-beanutils-1.8.0" />
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="BookCity" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

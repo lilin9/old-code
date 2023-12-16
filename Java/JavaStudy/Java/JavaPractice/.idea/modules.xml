@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/00_Demo/00_Demo.iml" filepath="$PROJECT_DIR$/00_Demo/00_Demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01_Calendar/01_Calendar.iml" filepath="$PROJECT_DIR$/01_Calendar/01_Calendar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/02_IOWorlk/02_IOWorlk.iml" filepath="$PROJECT_DIR$/02_IOWorlk/02_IOWorlk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/04_AlgorithmWork/04_AlgorithmWork.iml" filepath="$PROJECT_DIR$/04_AlgorithmWork/04_AlgorithmWork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/05_ObjectOriented/05_ObjectOriented.iml" filepath="$PROJECT_DIR$/05_ObjectOriented/05_ObjectOriented.iml" />
+      <module fileurl="file://$PROJECT_DIR$/06_CopyFile/06_CopyFile.iml" filepath="$PROJECT_DIR$/06_CopyFile/06_CopyFile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/07_Thread/07_Thread.iml" filepath="$PROJECT_DIR$/07_Thread/07_Thread.iml" />
+      <module fileurl="file://$PROJECT_DIR$/08_FileUploadDownloadService/08_FileUploadDownloadService.iml" filepath="$PROJECT_DIR$/08_FileUploadDownloadService/08_FileUploadDownloadService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/JavaPractice.iml" filepath="$PROJECT_DIR$/.idea/JavaPractice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Test/Test.iml" filepath="$PROJECT_DIR$/Test/Test.iml" />
+    </modules>
+  </component>
+</project>

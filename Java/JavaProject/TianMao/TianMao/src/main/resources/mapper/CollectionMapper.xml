@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tianmao.mapper.CollectionMapper">
+    <resultMap id="collectionEntityMapper" type="com.tianmao.pojo.Collection">
+        <!--在定义映射规则时主键不可省略-->
+        <result property="coid" column="coid" />
+        <result property="createdUser" column="created_user" />
+        <result property="createdTime" column="created_time" />
+        <result property="modifiedUser" column="modified_user" />
+        <result property="modifiedTime" column="modified_time" />
+    </resultMap>
+    <!--Integer insertToCollection(Collection collection);-->
+    <insert id="insertToCollection" useGeneratedKeys="true" keyProperty="coid">
+        insert into t_collection
+            (uid,pid,created_time,modified_time,created_user,modified_user)
+        values
+               (#{uid},#{pid},#{createdTime},#{modifiedTime},#{createdUser},#{modifiedUser})
+    </insert>
+    <!--Integer deleteCollectionByCoid(Integer coid);-->
+    <delete id="deleteCollectionByPid">
+        delete from
+                    t_collection
+        where
+              pid=#{pid}
+    </delete>
+    <!--Collection selectCollectionByCoid(Integer coid);-->
+    <select id="selectCollectionByPid" resultMap="collectionEntityMapper">
+        select
+               coid,uid,pid,created_time,modified_time,created_user,modified_user
+        from
+             t_collection
+        where
+              pid=#{pid}
+    </select>
+    <!--List<CollectionVo> selectCollectionVo();-->
+    <select id="selectCollectionVoByUid" resultType="com.tianmao.vo.CollectionVo">
+        select
+            t_collection.coid,t_collection.pid,t_collection.uid,t_product.image,t_product.title,t_product.price
+        from
+            t_collection
+        left join
+            t_product
+        on
+            t_collection.pid = t_product.id
+        where
+            uid=#{uid}
+        order by
+            t_collection.modified_time desc
+    </select>
+    <!--Collection selectCollectionByCoid(Integer coid)-->
+    <select id="selectCollectionByCoid" resultMap="collectionEntityMapper">
+        select
+            coid,uid,pid,created_time,modified_time,created_user,modified_user
+        from
+            t_collection
+        where
+            coid=#{coid}
+    </select>
+</mapper>

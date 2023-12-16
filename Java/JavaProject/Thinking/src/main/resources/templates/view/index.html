@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/js/jquery-3.6.3.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <link href="/css/main.css" rel="stylesheet"/>
+    <!--    <style>-->
+    <!--        .splitP {-->
+    <!--            margin-top: 10px;-->
+    <!--        }-->
+
+    <!--        #titleStyle {-->
+    <!--            text-decoration: none;-->
+    <!--            font-size: 26px;-->
+    <!--            font-weight: 700;-->
+    <!--            color: inherit;-->
+    <!--        }-->
+
+    <!--        .contextStyle {-->
+    <!--            margin-bottom: 36px;-->
+    <!--        }-->
+
+    <!--        #hTitle{-->
+    <!--            text-align: center;-->
+    <!--        }-->
+    <!--    </style>-->
+    <style>
+        .d1 {
+            margin-top: 200px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="navigationBar"></div>
+
+<div class="mainDivStyle">
+    <span id="hTitle">
+        <h1>个人主页</h1>
+    </span>
+
+
+    <span th:if="${articles != null}" id="articlesList">
+        <div class="container" id="container">
+            <span th:each="article,status:${articles}">
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-11">
+                         <a id="titleStyle" th:href="@{'/article/articleById/'+${article.articleId}}">
+                             <span th:text="${article.articleTitle}"></span>
+                         </a>
+                    </div>
+                </div>
+                <div class="row contextStyle">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-1">
+                        <span th:text="${session.human.humanNiceName}"></span>
+                    </div>
+                    <div class="col-lg-5">
+                        <span th:text="|最后修改时间:${#dates.format(article.articleIssueTime,'yyyy年MM月dd日 HH时mm分ss秒')}|"></span>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-11">
+                            <spann th:utext="${article.articleContent}"></spann>
+                        </div>
+                    </div>
+                </div>
+                 <hr>
+            </span>
+        </div>
+    </span>
+
+    <div class="container">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination splitP" id="pagination">
+               <span th:each="index:${#numbers.sequence(1,allPage)}">
+                    <li class="page-item">
+                        <a class="page-link" th:href="@{'/article/articleListbyId/'+${index}}" th:text="${index}"></a>
+                    </li>
+               </span>
+            </ul>
+        </nav>
+    </div>
+</div>
+<script type="module">
+    import utils from '/js/utils.js';
+
+    //页码的点击事件
+    $(document).on("click", ".page-link", function () {
+        let href = this.href;
+        //获取点击的页码是多少，然后根据页码重新获取数据
+        //页码在跳转地址最后一个 / 后面
+        initPage(utils.getUrlLastVal(href));
+        return false;
+    });
+
+    //渲染文章数据
+    function renderArticle(data) {
+        //获取数据
+        let allPage = data.allPage;
+        let articles = data.articles;
+        //从 sessin 中获取用户数据
+        let human = JSON.parse(sessionStorage.getItem("human"));
+
+        //循环渲染出文章页面
+        let articleDom = '';
+        articles.forEach(article => {
+            articleDom +=
+                '<span>\n' +
+                '    <div class="row">\n' +
+                '        <div class="col-lg-1"></div>\n' +
+                '        <div class="col-lg-11">\n' +
+                '             <a id="titleStyle" href="../article/articlebyid.html?articleId=' + article.articleId + '">\n' +
+                '                 <span>' + article.articleTitle + '</span>\n' +
+                '             </a>\n' +
+                '        </div>\n' +
+                '    </div>\n' +
+                '    <div class="row contextStyle">\n' +
+                '        <div class="col-lg-1"></div>\n' +
+                '        <div class="col-lg-1">\n' +
+                '            <span>' + human.humanNiceName + '</span>\n' +
+                '        </div>\n' +
+                '        <div class="col-lg-5">\n' +
+                '            <span>最后修改时间: ' + utils.timeFormat(article.articleIssueTime) + '</span>\n' +
+                '        </div>\n' +
+                '    </div>\n' +
+                '    <div class="container">\n' +
+                '        <div class="row">\n' +
+                '            <div class="col-lg-1"></div>\n' +
+                '            <div class="col-lg-11">\n' +
+                '                <spann>' + article.articleContent + '</spann>\n' +
+                '            </div>\n' +
+                '        </div>\n' +
+                '    </div>\n' +
+                '     <hr>\n' +
+                '</span>';
+        });
+
+        let paginationDom = '';
+        for (let i = 0; i < allPage; i++) {
+            paginationDom +=
+                '<span>\n' +
+                '    <li class="page-item">\n' +
+                '        <a class="page-link" href="' + (i+1) + '">' + (i+1) + '</a>\n' +
+                '    </li>\n' +
+                '</span>';
+        }
+
+        //将 dom 加入到页面中
+        $("#container").html(articleDom);
+        $("#pagination").html(paginationDom);
+    }
+
+    //初始化页面
+    function initPage(currentPage) {
+        console.log("个人主页，文章数据")
+        //ajax 请求页面数据
+        $.ajax({
+            type: "POST",
+            url: "/article/articleListbyId/" + currentPage,
+            async: false,
+            dataType: "json",
+            headers: {'Content-Type': 'application/json'},
+            success: function (data) {
+                console.log(data);
+                //获取数据成功
+                if (data.code == "200") {
+                    renderArticle(data.data);
+                } else {
+                    //失败，不显示文章列表
+                    $("#articlesList").hide();
+                }
+            }
+        });
+    }
+
+    $(function () {
+        //加载页面数据
+        initPage(1);
+        $("#navigationBar").load("/to/base/navigation");
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="Admin_MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>新世界书城--后台管理页面</title>
+    <link href="../css/index.css" rel="stylesheet"/>
+    <link href="../css/add.css" rel="stylesheet"/>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+      <nav>
+		<img class="logo" src="../images/logo.png"/>
+		<span class="left">新世界</span>
+		<a href="../login.aspx"><span class="login">登录</span>
+		<img class="login" src="../images/nav_login.png"></a>
+        <label><asp:Label ID="label1" runat="server"></asp:Label><span id="login-out"><a href="../login.aspx">，退出登录</a></span></label>
+		
+		<ul>
+			<li id="li-add"><a href="add.aspx">添加图书</a></li>
+			<li id="li-update"><a href="update.aspx">修改图书</a></li>
+			<%--<li id="li-favorites"><a href="favorites.aspx">收藏夹</a></li>--%>
+			<%--<li id="li-shopCart"><a href="shopCart.aspx"></a></li>
+			<li id="li-order"><a href="order.aspx">我的订单</a></li>--%>
+		</ul>	
+		
+	</nav>
+ 
+    <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    <footer>copyright &copy; 吴纯玲 谢裕聪 李群峰</footer>
+    </form>
+</body>
+    <script>
+    var text = document.getElementById("label1").innerText;
+    console.log(text);
+    if (text!="") {
+        var a = document.getElementsByClassName("login");
+        a[0].style.display = "none";
+        a[1].style.display = "none";
+    } else {
+        document.getElementById("login-out").style.display = "none";
+    }
+    var url = document.URL;
+    if (url.indexOf("add") != -1) {
+        document.getElementById("li-add").setAttribute("class","current");
+    }
+    else if (url.indexOf("update") != -1) {
+        document.getElementById("li-update").setAttribute("class", "current");
+    }
+</script>
+</html>

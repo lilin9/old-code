@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/wangEditor.min.js"></script>
+    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/js/jquery-3.6.3.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <link href="/css/main.css" rel="stylesheet"/>
+    <!--    <style>-->
+    <!--        .btm{-->
+    <!--            width: 168px;-->
+    <!--        }-->
+    <!--        .btmStyle{-->
+    <!--            margin-top : 20px;-->
+    <!--            text-align: right;-->
+    <!--            margin-right: 36px;-->
+    <!--        }-->
+    <!--    </style>-->
+</head>
+<body>
+<div id="navigationBar">
+</div>
+<div class="mainDivStyle">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-10">
+                <form id="updateForm">
+                    <input name="articleId" type="hidden" id="articleId"/>
+                    <div class="form-group">
+                        <label for="articleTitle">发布文章标题</label>
+                        <textarea class="form-control" name="articleTitle" id="articleTitle" rows="2"></textarea>
+                        <select id="typeSelect" name="typeId" class="form-control">
+
+                        </select>
+                    </div>
+                    <p>
+                        内容：<textarea name="articleContent" id="articleContent" style="display: none"></textarea>
+                    </p>
+                    <div id="div1" style="width: 100%;"></div>
+                    <div class="btmStyle">
+                        <button type="button" class="btn btn-primary btm" id="updateBtn">修改发布信息</button>
+                        <hr>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="module">
+    import utils from "/js/utils.js"
+
+    //修改发布消息 点击按钮
+    //action="/article/update" method="post"
+    $("#updateBtn").click(function () {
+        //获取 修改发布消息 表单数据,并转成 json 数据
+        let articleData = utils.getObjectJson($("#updateForm").serializeArray());
+        $.ajax({
+            type: "POST",
+            url: "/article/update",
+            async: false,
+            data: articleData,
+            dataType: "json",
+            headers: {'Content-Type': 'application/json'},
+            success: function (data) {
+                console.log("data --> ")
+                console.log(data)
+                if (data.code == "200") {
+                    window.location.href = "./articlebyid.html?articleId=" + data.data;
+                } else {
+                    alert("修改发布信息失败")
+                }
+            }
+        });
+    });
+
+
+
+    const E = window.wangEditor;
+    const editor = new E("#div1");
+    //定义wangEditor图片文件的名字
+    editor.config.uploadFileName = 'file';
+    // wangEditor上传文件触发该事件 editor.config.uploadImgServer
+    editor.config.uploadImgServer = '/issue/article-image-upload';
+    editor.config.onchange = function (data) {
+        $("#articleContent").val(data);
+    }
+    editor.create();
+
+    let articleId = utils.getUrlParam(window.location.href, "articleId");
+
+    $(document).ready(
+        function () {
+            $.post("/issue/updateById/" + articleId, function (data) {
+                let articleData = data.data;
+                editor.txt.html(articleData.articleContent);
+                $("#articleTitle").val(articleData.articleTitle);
+                $("#articleId").val(articleData.articleId);
+                let options = $("<option selected='selected'></option>");
+                if (articleData.typeId > 0) {
+                    options.text(articleData.type.typeName);
+                    options.val(articleData.typeId);
+                } else {
+                    options.text("没有选择类型");
+                }
+
+
+                $("#typeSelect").append(options);
+
+            })
+        }
+    );
+
+    function loadTypes() {
+        $.ajax({
+            url: "/type/typeList",
+            type: "POST",
+            success: function (data) {
+                let typeList = data.data;
+                let typeSelect = $("#typeSelect");
+                $.each(typeList, function (i, type) {
+                    let options = $("<option></option>");
+                    options.text(type.typeName);
+                    options.val(type.typeId);
+                    typeSelect.append(options);
+                });
+            }
+        });
+    }
+
+    $(function () {
+        $("#navigationBar").load("/to/base/navigation");
+        loadTypes();
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+
+@font-face {  
+    /* 重命名字体名 */
+    font-family: 'HWKT';  
+    /* 引入字体 */
+    src: url('华文楷体.ttf');
+    font-weight: normal;
+    font-style: normal; 
+}

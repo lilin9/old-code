@@ -1,0 +1,22 @@
+
+E
+java:S3740:"/Provide the parametrized type for this generic.(‰ÌÑŒ
+f	java:S117A"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÏæÇÊ
+y
+java:S1488N"^Immediately return this expression instead of assigning it to the temporary variable "tOrder".(˜Á¡úÿÿÿÿ
+a
+java:S2095Š"JUse try-with-resources or close this "HSSFWorkbook" in a "finally" clause.(‚·Ú
+Ž
+java:S11309"qRemove the declaration of thrown exception 'java.text.ParseException', as it cannot be thrown from method's body.(áîÔÇ8Ï‹ßö’0
+N
+java:S1854¨"8Remove this useless assignment to local variable "cell".(ÏÝŸZ
+N
+java:S1854Ò"8Remove this useless assignment to local variable "cell".(ÏÝŸZ
+U
+java:S1155®">Use isEmpty() to check whether the collection is empty or not.(±Æ÷¦
+^
+java:S1128"ARemove this unused import 'com.pcjp.crm.commons.utils.DataUitls'.(ž¹ó¼8ó‹ßö’0
+`
+java:S1128	"CRemove this unused import 'com.pcjp.crm.workbench.domain.TProduct'.(Íé¢Ž8ó‹ßö’0
+H
+java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü8ó‹ßö’0

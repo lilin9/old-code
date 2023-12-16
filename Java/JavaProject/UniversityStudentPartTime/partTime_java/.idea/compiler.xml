@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="partTime_admin" />
+        <module name="partTime_framework" />
+        <module name="partTime" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="partTime" target="11" />
+      <module name="partTime_admin" target="11" />
+      <module name="partTime_framework" target="11" />
+      <module name="partTime_java" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="partTime" options="-parameters" />
+      <module name="partTime_admin" options="-parameters" />
+      <module name="partTime_framework" options="-parameters" />
+      <module name="partTime_java" options="" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,55 @@
+
+rjavascript:S3776$"VRefactor this function to reduce its Cognitive Complexity from 1140 to the 15 allowed.(¤ûûƒ
+]javascript:S2137$"ADo not use "undefined" to declare a parameter - use another name.(¤ûûƒ
+3javascript:S2814<"'i' is already defined.(»‚äâ
+5javascript:S2814<"'len' is already defined.(»‚äâ
+Zjavascript:S1121>">Extract the assignment of "abbreviation" from this expression.(®Üåâ
+`javascript:S3358`"DExtract this nested ternary operation into an independent statement.(¤âŠ¦
+]javascript:S1121`"AExtract the assignment of "this.bootcssVer" from this expression.(¤âŠ¦
+`javascript:S3358`"DExtract this nested ternary operation into an independent statement.(¤âŠ¦
+`javascript:S3358b"DExtract this nested ternary operation into an independent statement.(µóŒ“
+`javascript:S3358c"DExtract this nested ternary operation into an independent statement.(ğèİ¨
+ejavascript:S3358s"DExtract this nested ternary operation into an independent statement.(éÑ±ûÿÿÿÿ
+ejavascript:S3358t"DExtract this nested ternary operation into an independent statement.(’Ö»²şÿÿÿÿ
+:javascript:S125ı"Remove this commented out code.(ƒœä#
+>javascript:S1656ş"'top' is assigned to itself.(€‰Æ°şÿÿÿÿ
+pjavascript:S5850”"TGroup parts of the regex together to make the intended operator precedence explicit.(âòãH
+ijavascript:S3686æ"GCorrect the use of this function; on line 723 it was called with "new".(¥¥ ×øÿÿÿÿ
+sjavascript:S2392”"WConsider moving declaration of 'i' as it is referenced outside current binding context.(¦Ë€
+4javascript:S2814Á"'i' is already defined.(³ùšı
+3javascript:S2814õ"'i' is already defined.(ÿìêk
+fjavascript:S3358Ø"DExtract this nested ternary operation into an independent statement.(¸ßÿ•şÿÿÿÿ
+|javascript:S2392³"ZConsider moving declaration of 'year' as it is referenced outside current binding context.(ãÕš—şÿÿÿÿ
+}javascript:S2392´"[Consider moving declaration of 'month' as it is referenced outside current binding context.(áÅóüøÿÿÿÿ
+{javascript:S2392µ"YConsider moving declaration of 'day' as it is referenced outside current binding context.(Ò‡™‰üÿÿÿÿ
+}javascript:S2392¶"[Consider moving declaration of 'hours' as it is referenced outside current binding context.(¸İı´ùÿÿÿÿ
+zjavascript:S2392·"]Consider moving declaration of 'minutes' as it is referenced outside current binding context.(±óŠü
+javascript:S2392¸"]Consider moving declaration of 'seconds' as it is referenced outside current binding context.(ëÔ¦­øÿÿÿÿ
+~javascript:S2392î"aConsider moving declaration of 'oldViewMode' as it is referenced outside current binding context.(äµğ
+6javascript:S2814ş"'day' is already defined.(³¯°à
+<javascript:S2814ÿ"'year' is already defined.(ãÕš—şÿÿÿÿ
+=javascript:S2814€	"'month' is already defined.(áÅóüøÿÿÿÿ
+=javascript:S2814	"'hours' is already defined.(¸İı´ùÿÿÿÿ
+:javascript:S2814‚	"'minutes' is already defined.(±óŠü
+?javascript:S2814ƒ	"'seconds' is already defined.(ëÔ¦­øÿÿÿÿ
+>javascript:S2814	"!'oldViewMode' is already defined.(äµğ
+;javascript:S125Ã	"Remove this commented out code.(Û­”Ò
+;javascript:S125Ë	"Remove this commented out code.(Û­”Ò
+;javascript:S125Ó	"Remove this commented out code.(Û­”Ò
+@javascript:S125¢"Remove this commented out code.(ìÆ±Íıÿÿÿÿ
+Xjavascript:S1121Å"6Extract the assignment of "data" from this expression.(íšÛşÿÿÿÿ
+qjavascript:S5843˜"TSimplify this regular expression to reduce its complexity from 31 to the 20 allowed.(çàŸ¿
+Wjavascript:S6353¶"5Use concise quantifier syntax '?' instead of '{0,1}'.(¼¢£èûÿÿÿÿ
+}javascript:S2392»"[Consider moving declaration of 'parts' as it is referenced outside current binding context.(‰ÉğÃÿÿÿÿÿ
+|javascript:S2392¼"ZConsider moving declaration of 'part' as it is referenced outside current binding context.(ô÷¯Óøÿÿÿÿ
+njavascript:S4138¾"LExpected a `for-of` loop instead of a `for` loop with this simple iteration.(ä¸®åıÿÿÿÿ
+yjavascript:S2392¾"WConsider moving declaration of 'i' as it is referenced outside current binding context.(ä¸®åıÿÿÿÿ
+8javascript:S2814Ò"'parts' is already defined.(ı±Íä
+<javascript:S2814Ó"'date' is already defined.(¼İØ•úÿÿÿÿ
+7javascript:S2814‹"'part' is already defined.(çŒ¸ş
+9javascript:S2814’"'i' is already defined.(ÆîÌıÿÿÿÿ
+bjavascript:S905­"FExpected an assignment or function call and instead saw an expression.(àÜåà
+4javascript:S2814´"'i' is already defined.(Ş¢Š
+fjavascript:S3358Ï"DExtract this nested ternary operation into an independent statement.(à¨ñıùÿÿÿÿ
+ajavascript:S3358û"DExtract this nested ternary operation into an independent statement.(ƒ…­ß
+7javascript:S2814"'date' is already defined.(¢µãí

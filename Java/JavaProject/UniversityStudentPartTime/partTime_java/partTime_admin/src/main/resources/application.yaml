@@ -1,0 +1,50 @@
+server:
+  #端口名
+  port: 8089
+  #为控制层请求添加统一前缀
+  servlet:
+    context-path: /admin
+
+spring:
+  #数据库
+  datasource:
+    url: jdbc:mysql://localhost:3306/part_time?characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    hikari:
+      username: root
+      password: 123abc
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+  #文件上传
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 5MB
+
+  #消除依赖循环引用
+  main:
+    allow-circular-references: true
+    #覆盖 bean
+    allow-bean-definition-overriding: true
+
+  #redis 配置
+  redis:
+    host: 192.168.200.129
+    port: 6379
+    database: 0
+    lettuce:
+      shutdown-timeout: 86400000
+      pool:
+        max-active: 10
+        max-wait: -1
+        max-idle: 5
+        min-idle: 0
+
+
+#mybatis-plus
+mybatis-plus:
+  global-config:
+    db-config:
+#      logic-delete-field: delFlag
+#      logic-delete-value: 1
+#      logic-not-delete-value: 0
+      id-type: auto

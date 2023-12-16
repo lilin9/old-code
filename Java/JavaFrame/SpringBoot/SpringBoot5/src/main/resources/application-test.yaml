@@ -1,0 +1,5 @@
+person:
+  name: test-tom
+
+server:
+  port: 9090

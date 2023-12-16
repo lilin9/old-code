@@ -1,0 +1,11 @@
+D:\Programming\C#\C#Project\PerformanceAppraisal\appraisal_system.model\bin\Debug\appraisal_system.model.dll
+D:\Programming\C#\C#Project\PerformanceAppraisal\appraisal_system.model\bin\Debug\appraisal_system.model.pdb
+D:\Programming\C#\C#Project\PerformanceAppraisal\appraisal_system.model\obj\Debug\appraisal_system.model.csproj.AssemblyReference.cache
+D:\Programming\C#\C#Project\PerformanceAppraisal\appraisal_system.model\obj\Debug\appraisal_system.model.csproj.CoreCompileInputs.cache
+D:\Programming\C#\C#Project\PerformanceAppraisal\appraisal_system.model\obj\Debug\appraisal_system.model.dll
+D:\Programming\C#\C#Project\PerformanceAppraisal\appraisal_system.model\obj\Debug\appraisal_system.model.pdb
+D:\Programming\C#\C#Project\PerformanceAppraisal\appraisal_system.model\bin\Debug\appraisal_system.utility.dll
+D:\Programming\C#\C#Project\PerformanceAppraisal\appraisal_system.model\bin\Debug\MySql.Data.dll
+D:\Programming\C#\C#Project\PerformanceAppraisal\appraisal_system.model\bin\Debug\appraisal_system.utility.pdb
+D:\Programming\C#\C#Project\PerformanceAppraisal\appraisal_system.model\bin\Debug\MySql.Data.xml
+D:\Programming\C#\C#Project\PerformanceAppraisal\appraisal_system.model\obj\Debug\appraisal_system.model.csproj.CopyComplete

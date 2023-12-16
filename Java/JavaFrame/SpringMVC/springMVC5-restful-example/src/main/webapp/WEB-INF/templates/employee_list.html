@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>员工列表</title>
+</head>
+<body>
+<table id="dataTable">
+    <caption>员工信息</caption>
+    <tr>
+        <th>员工编号</th>
+        <th>员工姓名</th>
+        <th>员工性别</th>
+        <th>员工邮箱</th>
+        <th>操作|<a th:href="toAdd">添加</a></th>
+    </tr>
+    <tr th:each="employee: ${employeeList}">
+        <td th:text="${employee.id}"></td>
+        <td th:text="${employee.lastName}"></td>
+        <td th:text="${employee.gender}"></td>
+        <td th:text="${employee.email}"></td>
+        <td>
+            <a @click="deleteEmployee" th:href="@{'/employee/' + ${employee.id}">删除</a>
+            <a th:href="@{'/employee/' + ${employee.id}">修改</a>
+        </td>
+    </tr>
+</table>
+
+<form id="deleteForm" method="post">
+    <input type="hidden" name="_method" value="delete">
+</form>
+
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script>
+    const vue = new Vue({
+        el:"#dataTable",
+        data:{},
+        methods:{
+            deleteEmployee:function (event) {
+                const deleteForm = document.getElementById("deleteForm");
+                deleteForm.action = event.target.href;
+                //提交表单
+                deleteForm.submit();
+                //取消超链接的默认行为
+                event.preventDefault();
+            },
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>什么是生命周期</title>
+    <!--导入vue start-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!--导入vue end-->
+</head>
+
+<body>
+    <div id="app">
+        <h1 :style="{opacity:opacity}">{{name}}</h1>
+    </div>
+</body>
+<script>
+    /* 阻止 vue 在启动时生成生产错误 */
+    Vue.config.productionTip = false;
+    const vm = new Vue({
+        el: "#app",
+        data: {
+            name: "欢迎学习Vue",
+            opacity: 1,
+        },
+        methods: {
+
+        },
+        //Vue完成模板的解析并把真实DOM放入页面后（完成挂载）会调用mounted
+        mounted() {
+            setInterval(() => {
+                this.opacity -= 0.01;
+                if (this.opacity <= 0.1) vm.opacity += 0.01;
+            }, 30);
+        },
+    });
+
+    /* 通过外部定时器实现（不推荐） */
+    /* setInterval(() =>{
+        vm.opacity -= 0.01;
+        if(vm.opacity <= 0) vm.opacity = 1;
+    },30); */
+</script>
+
+</html>
